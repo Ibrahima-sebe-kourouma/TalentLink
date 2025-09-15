@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TalentLink — Document de projet</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --card:#f8f9fa;
+      --text:#111827;
+      --muted:#6b7280;
+      --accent:#2563eb;
+      --card-radius:10px;
+    }
+    [data-theme="dark"]{
+      --bg:#0b1220;
+      --card:#0f1724;
+      --text:#e6eef8;
+      --muted:#9aa6bd;
+      --accent:#60a5fa;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.5;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:28px auto;
+      padding:20px;
+    }
+
+    .header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+    .title{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent), #7c3aed);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      box-shadow:0 6px 18px rgba(37,99,235,0.12);
+    }
+    h1{ font-size:20px; margin:0; }
+    p.lead{ margin:0; color:var(--muted); font-size:14px; }
+
+    .controls{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn{
+      background:transparent;
+      border:1px solid rgba(0,0,0,0.06);
+      padding:8px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    [data-theme="dark"] .btn{ border:1px solid rgba(255,255,255,0.06); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width:900px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:var(--card-radius);
+      box-shadow: 0 6px 20px rgba(2,6,23,0.04);
+    }
+    .card h2{ margin-top:0; font-size:16px; }
+    .muted{ color:var(--muted); font-size:14px; }
+
+    ul{ margin:8px 0 16px 20px; }
+    li{ margin-bottom:8px; }
+
+    .small{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .section-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .timeline .step{
+      background:rgba(0,0,0,0.03);
+      padding:10px;
+      border-radius:8px;
+    }
+    [data-theme="dark"] .timeline .step{ background: rgba(255,255,255,0.025); }
+
+    footer{
+      margin-top:22px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+    code{ background:rgba(0,0,0,0.04); padding:2px 6px; border-radius:4px; font-family:monospace; }
+  </style>
+
+  
+</head>
+<body>
+  <div class="container" id="page">
+    <div class="header">
+      <div class="title">
+        <div class="logo">TL</div>
+        <div>
+          <h1>TalentLink — Plateforme de recrutement</h1>
+          <p class="lead">Nom de l'équipe : TechNova — Nanouga Daouda Yeo, Ibrahima Sebe Kourouma</p>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="toggle-theme" title="Basculer mode sombre / clair">Basculer thème</button>
+        <div class="small">Date : <strong id="current-date">--/--/----</strong></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Left / principal -->
+      <main>
+        <!-- Bloc résumé (ton bloc existant amélioré) -->
+        <section class="card" aria-labelledby="infos-projet">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+            <div>
+              <h2 id="infos-projet">📋 Informations du Projet</h2>
+              <p class="small"><strong>Nom :</strong> Plateforme de Recrutement (TalentLink)</p>
+              <p class="small"><strong>Équipe :</strong> TechNova (Nanouga Daouda Yeo, Ibrahima Sebe Kourouma)</p>
+            </div>
+            <div style="text-align:right">
+              <p class="small"><strong>Acteurs :</strong><br>Candidat · Recruteur · Administrateur</p>
+            </div>
+          </div>
+
+          <hr style="border:none;height:12px;background:transparent">
+
+          <h3 style="margin:0 0 8px 0;">Contexte et justification</h3>
+          <p class="muted">De nombreux individus — étudiants, jeunes diplômés ou personnes sans emploi — rencontrent des difficultés pour trouver des opportunités de stage ou d'emploi adaptées à leur profil. La recherche actuelle, répartie sur plusieurs plateformes, est longue et peu efficace. TalentLink vise à centraliser les offres, simplifier la mise en relation et offrir une chance équitable à tous via une interface web moderne fonctionnant comme une application.</p>
+
+          <h3 style="margin-top:14px;">Objectifs de l’application</h3>
+          <ul>
+            <li>Permettre aux recruteurs de publier des offres (stage, emploi, alternance).</li>
+            <li>Permettre aux étudiants/candidats de créer un profil et de postuler directement.</li>
+            <li>Offrir un moteur de recherche filtré (domaine, localisation, compétences).</li>
+            <li>Proposer un système de recommandation basé sur le profil et les offres disponibles.</li>
+            <li>Intégrer une messagerie simplifiée entre recruteurs et candidats.</li>
+            <li>Ajouter un mode sombre / clair pour améliorer l’expérience utilisateur.</li>
+            <li>Fournir un tableau de bord analytique pour candidats et recruteurs.</li>
+          </ul>
+        </section>
+
+        <!-- Description fonctionnelle -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="desc-fonct">
+          <div class="section-title">
+            <h2 id="desc-fonct">🛠️ Description fonctionnelle</h2>
+            <span class="small">Interfaces clés</span>
+          </div>
+
+          <ul>
+            <li><strong>Espace candidat :</strong> création de CV en ligne, dépôt de candidatures, suivi (acceptée, en attente, refusée), portfolio (projets, GitHub, Behance, vidéos).</li>
+            <li><strong>Espace recruteur :</strong> publication et gestion des offres, consultation de profils, statistiques (visibilité, candidatures reçues).</li>
+            <li><strong>Recherche avancée :</strong> filtres par mots-clés, domaine, région, type de contrat.</li>
+            <li><strong>Notifications :</strong> email et notifications internes pour nouvelles offres et réponses.</li>
+            <li><strong>Tableau de bord analytique :</strong>
+              <ul>
+                <li>Pour les candidats : nombre de vues du profil, suivi des candidatures.</li>
+                <li>Pour les recruteurs : performances des offres publiées, nombre de candidatures reçues.</li>
+              </ul>
+            </li>
+            <li><strong>Administration :</strong> modération, bannissement, suivi des statistiques globales.</li>
+            <li><strong>Accessibilité & Responsive :</strong> utilisable sur ordinateur, tablette, mobile. Option mode sombre/clair.</li>
+          </ul>
+        </section>
+
+        <!-- Contraintes techniques -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="contraintes">
+          <h2 id="contraintes">⚙️ Contraintes techniques</h2>
+          <ul>
+            <li><strong>Frontend :</strong> React.js (PWA, responsive).</li>
+            <li><strong>Backend :</strong> FastAPI (Python) exposant une API REST.</li>
+            <li><strong>Base de données :</strong> SQLite (possibilité migration vers PostgreSQL en production).</li>
+            <li><strong>Authentification :</strong> JWT, bonnes pratiques (refresh tokens, hashing des mots de passe).</li>
+            <li><strong>Déploiement :</strong> Cloud (Heroku / alternatives) ou local pour développement.</li>
+            <li><strong>Messagerie interne :</strong> WebSocket (ou Django Channels si besoin).</li>
+            <li><strong>Tests :</strong> tests unitaires & d'intégration, CI/CD recommandé.</li>
+            <li><strong>Sécurité :</strong> validation côté serveur, contrôle d'accès, protection contre XSS/CSRF.</li>
+          </ul>
+        </section>
+
+        <!-- Utilisateurs ciblés -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="users">
+          <h2 id="users">🎯 Utilisateurs ciblés</h2>
+          <ul>
+            <li>Étudiants, jeunes diplômés et demandeurs d'emploi.</li>
+            <li>Recruteurs : entreprises, associations, startups, écoles.</li>
+            <li>Administrateurs de la plateforme.</li>
+          </ul>
+        </section>
+
+        <!-- Livrables -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="livrables">
+          <h2 id="livrables">📦 Livrables attendus</h2>
+          <ul>
+            <li>Site web fonctionnel (PWA) accessible sur tous supports.</li>
+            <li>Documentation technique (README, documentation API, schéma BD).</li>
+            <li>Guide utilisateur pour candidats et recruteurs.</li>
+            <li>Présentation finale avec démonstration (slides + démo fonctionnelle).</li>
+          </ul>
+        </section>
+
+        <!-- Calendrier prévisionnel -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="calendrier">
+          <div class="section-title">
+            <h2 id="calendrier">🗓️ Calendrier prévisionnel</h2>
+            <span class="small">Plan par sprints</span>
+          </div>
+
+          <div class="timeline">
+            <div class="step"><strong>Semaine 1 :</strong> Analyse du besoin, maquettes UI/UX.</div>
+            <div class="step"><strong>Sprint 1 (Semaine 2-3) :</strong> Authentification & espace utilisateur.</div>
+            <div class="step"><strong>Sprint 2 (Semaine 4-5) :</strong> Publication des offres & moteur de recherche.</div>
+            <div class="step"><strong>Sprint 3 (Semaine 6-7) :</strong> Système de candidature, portfolio et messagerie interne.</div>
+            <div class="step"><strong>Sprint 4 (Semaine 8-9) :</strong> Tableau de bord analytique, interface responsive & notifications.</div>
+            <div class="step"><strong>Sprint 5 (Semaine 10-11) :</strong> Mode sombre/clair, espace admin, tests, documentation, démo finale.</div>
+          </div>
+        </section>
+
+        <!-- Critères de réussite -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="succes">
+          <h2 id="succes">✅ Critères de réussite</h2>
+          <ul>
+            <li>Inscription et connexion sécurisées pour tous les utilisateurs.</li>
+            <li>Publication et gestion des offres simple et rapide pour les recruteurs.</li>
+            <li>Suivi efficace des candidatures côté candidat et statistiques détaillées côté recruteur.</li>
+            <li>Portfolio intégré valorisant les compétences des candidats.</li>
+            <li>Interface fluide, responsive et intuitive avec mode sombre/clair.</li>
+            <li>Feedbacks positifs lors de la présentation finale et démonstration fonctionnelle.</li>
+          </ul>
+        </section>
+      </main>
+
+      <!-- Right / résumé rapide & contacts -->
+      <aside>
+        <div class="card">
+          <h2>Résumé rapide</h2>
+          <p class="muted">TalentLink centralise les offres, facilite la mise en relation candidat/recruteur, et propose des fonctionnalités modernes (PWA, recherche avancée, messagerie, tableau de bord).</p>
+
+          <hr style="margin:12px 0">
+
+          <h3 style="margin-bottom:8px;">Stack technique</h3>
+          <ul>
+            <li>React.js (PWA)</li>
+            <li>FastAPI (Python)</li>
+            <li>SQLite (DB)</li>
+            <li>JWT (auth)</li>
+            <li>WebSocket (messagerie)</li>
+          </ul>
+
+          <hr style="margin:12px 0">
+
+          <h3>Livrables & Démo</h3>
+          <p class="small">Site PWA, docs techniques, guide utilisateur, slides de présentation.</p>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <h2>Contacts équipe</h2>
+          <p><strong>TechNova</strong></p>
+          <p class="small">Nanouga Daouda Yeo — Lead design / UX<br>Ibrahima Sebe Kourouma — Dev full-stack</p>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <h2>Notes</h2>
+          <ul>
+            <li>Prévoir possibilité migration DB (SQLite → Postgres) pour production.</li>
+            <li>Mettre en place CI/CD et pipeline de tests avant démo finale.</li>
+            <li>Considérer intégration avec services externes (GitHub login, Google Jobs) ultérieurement.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <small>Projet TalentLink — TechNova</small>
+    </footer>
+  </div>
+
+  <!-- Bouton pour aller vers la page des diagrammes -->
+<div style="margin-top: 20px; text-align:center;">
+  <button id="btn-diagrammes" 
+          style="background:#2563eb; color:white; padding:12px 20px; border:none; 
+                 border-radius:8px; cursor:pointer; font-size:16px; font-weight:600;
+                 box-shadow:0 4px 10px rgba(37,99,235,0.2); transition: all 0.3s ease;">
+    📊 Voir les Diagrammes
+  </button>
+</div>
+
+<script>
+  // Bouton redirige vers la page des diagrammes
+  document.getElementById('btn-diagrammes').addEventListener('click', () => {
+    window.location.href = "site_de_recrutement.html"; 
+    // 🔹 Remplace "diagrammes.html" par le vrai nom de ta page
+  });
+
+  // Effet hover interactif
+  const btnn = document.getElementById('btn-diagrammes');
+  btnn.addEventListener('mouseover', () => {
+    btnn.style.background = "#1e40af"; // bleu plus foncé
+    btnn.style.transform = "scale(1.05)";
+  });
+  btnn.addEventListener('mouseout', () => {
+    btnn.style.background = "#2563eb"; 
+    btnn.style.transform = "scale(1)";
+  });
+</script>
+
+  <script>
+    // Affiche la date courante au format JJ/MM/AAAA
+    const dateEl = document.getElementById('current-date');
+    const now = new Date();
+    const dd = String(now.getDate()).padStart(2,'0');
+    const mm = String(now.getMonth()+1).padStart(2,'0');
+    const yyyy = now.getFullYear();
+    dateEl.textContent = dd + '/' + mm + '/' + yyyy;
+
+    // Thème sombre / clair (persisté via localStorage)
+    const root = document.documentElement;
+    const page = document.getElementById('page');
+    const btn = document.getElementById('toggle-theme');
+
+    function applyTheme(theme){
+      if(theme === 'dark'){
+        document.documentElement.setAttribute('data-theme','dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    }
+
+    // Lire préférence
+    const saved = localStorage.getItem('talentlink_theme');
+    if(saved) applyTheme(saved);
+
+    btn.addEventListener('click', ()=>{
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('talentlink_theme', next === 'dark' ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
