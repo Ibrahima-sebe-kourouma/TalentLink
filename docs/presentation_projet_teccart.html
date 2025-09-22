@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TalentLink – Projet Institut Teccart</title>
+  <meta name="description" content="Plateforme de recrutement développée pour l'Institut Teccart par l'équipe InnovLife">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container" id="page">
+    <div class="header">
+      <div class="title">
+        <div class="logo">TL</div>
+        <div>
+          <h1>TalentLink – <span class="teccart-highlight">Institut Teccart</span></h1>
+          <p class="lead">Équipe : InnovLife – Nanouga Daouda Yeo, Ibrahima Sebe Kourouma</p>
+          <div class="institut-badge">Projet Institut Teccart</div>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="project-status">
+          <span>🚀</span> En développement
+        </div>
+        <div class="small">Date : <strong id="current-date">22/09/2025</strong></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Left / principal -->
+      <main>
+        <!-- Bloc résumé -->
+        <section class="card" aria-labelledby="infos-projet">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+            <div>
+              <h2 id="infos-projet">📋 Informations du Projet</h2>
+              <p class="small"><strong>Nom :</strong> Plateforme de Recrutement (TalentLink)</p>
+              <p class="small"><strong>Équipe :</strong> InnovLife (Nanouga Daouda Yeo, Ibrahima Sebe Kourouma)</p>
+              <p class="small"><strong>Client :</strong> <span class="teccart-highlight">Institut Teccart</span></p>
+              <p class="small"><strong>Durée :</strong> 11 semaines (Sprint Agile)</p>
+            </div>
+            <div style="text-align:right">
+              <p class="small"><strong>Acteurs :</strong><br>Candidat · Recruteur · Administrateur</p>
+              <p class="small"><strong>Budget :</strong><br>5 365$ TTC</p>
+            </div>
+          </div>
+
+          <hr style="border:none;height:12px;background:transparent">
+
+          <h3 style="margin:0 0 8px 0;">Contexte et justification</h3>
+          <p class="muted">De nombreux individus, qu'ils soient étudiants, jeunes diplômés ou personnes sans emploi, rencontrent des difficultés pour trouver des opportunités de stage ou d'emploi adaptées à leur profil. Actuellement, la recherche se fait via plusieurs plateformes dispersées, ce qui rend le processus long et peu efficace. TalentLink vise à centraliser les offres, simplifier la mise en relation et offrir une chance équitable à tous en proposant un accompagnement personnalisé via une interface web moderne fonctionnant comme une application.</p>
+
+          <h3 style="margin-top:14px;">Objectifs de l'application</h3>
+          <ul>
+            <li>Permettre aux recruteurs partenaires de l'Institut Teccart de publier des offres (stage, emploi, alternance).</li>
+            <li>Permettre aux étudiants/candidats de créer un profil et de postuler directement.</li>
+            <li>Offrir un moteur de recherche filtré (domaine, localisation, compétences).</li>
+            <li>Proposer un système de recommandation basé sur le profil et les offres disponibles.</li>
+            <li>Intégrer une messagerie simplifiée entre recruteurs et candidats.</li>
+            <li>Ajouter un mode sombre / clair pour améliorer l'expérience utilisateur.</li>
+            <li>Fournir un tableau de bord analytique pour candidats et recruteurs.</li>
+            <li>Respecter les standards de l'Institut Teccart en matière de qualité et d'accessibilité.</li>
+          </ul>
+        </section>
+
+        <!-- Description fonctionnelle -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="desc-fonct">
+          <div class="section-title">
+            <h2 id="desc-fonct">🛠️ Description fonctionnelle</h2>
+            <span class="small">Interfaces clés</span>
+          </div>
+
+          <ul>
+            <li><strong>Espace candidat :</strong> création de CV en ligne, dépôt de candidatures, suivi (acceptée, en attente, refusée), portfolio (projets, GitHub, Behance, vidéos).</li>
+            <li><strong>Espace recruteur :</strong> publication et gestion des offres, consultation de profils, statistiques (visibilité, candidatures reçues).</li>
+            <li><strong>Recherche avancée :</strong> filtres par mots-clés, domaine, région, type de contrat.</li>
+            <li><strong>Notifications :</strong> email et notifications internes pour nouvelles offres et réponses.</li>
+            <li><strong>Tableau de bord analytique :</strong>
+              <ul>
+                <li>Pour les candidats : nombre de vues du profil, suivi des candidatures.</li>
+                <li>Pour les recruteurs : performances des offres publiées, nombre de candidatures reçues.</li>
+                <li>Pour l'Institut : statistiques globales, taux de placement, satisfaction.</li>
+              </ul>
+            </li>
+            <li><strong>Administration :</strong> modération, bannissement, suivi des statistiques globales.</li>
+            <li><strong>Accessibilité & Responsive :</strong> utilisable sur ordinateur, tablette, mobile. Option mode sombre/clair.</li>
+          </ul>
+        </section>
+
+        <!-- Contraintes techniques -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="contraintes">
+          <h2 id="contraintes">⚙️ Contraintes techniques</h2>
+          <ul>
+            <li><strong>Frontend :</strong> React.js (PWA, responsive) avec design system Institut Teccart.</li>
+            <li><strong>Backend :</strong> FastAPI (Python) exposant une API REST sécurisée.</li>
+            <li><strong>Base de données :</strong> SQLite (développement) → PostgreSQL (production).</li>
+            <li><strong>Authentification :</strong> JWT avec gestion des rôles (étudiant, recruteur, admin Teccart).</li>
+            <li><strong>Déploiement :</strong> Cloud (Heroku / Vercel) avec domaine Institut Teccart.</li>
+            <li><strong>Messagerie interne :</strong> WebSocket pour communication temps réel.</li>
+            <li><strong>Tests :</strong> tests unitaires & d'intégration, CI/CD avec GitHub Actions.</li>
+            <li><strong>Sécurité :</strong> conformité RGPD, protection données étudiants, validation côté serveur.</li>
+            <li><strong>Performance :</strong> temps de réponse < 2 secondes, optimisation mobile.</li>
+          </ul>
+        </section>
+
+        <!-- Modèle de données -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="donnees">
+          <h2 id="donnees">🗄️ Modèle de données</h2>
+          <div class="muted">
+            <p><strong>Entités principales :</strong></p>
+            <ul>
+              <li><code>Candidat</code> : profil complet, compétences, formations, expériences</li>
+              <li><code>Recruteur</code> : entreprise, secteur, offres publiées</li>
+              <li><code>Offre</code> : détails poste, compétences requises, localisation</li>
+              <li><code>Candidature</code> : liaison candidat-offre, statut, feedback</li>
+              <li><code>Message</code> : communication interne, notifications</li>
+              <li><code>Administrateur</code> : gestion plateforme, modération</li>
+            </ul>
+            <p class="small">Base de données relationnelle avec contraintes d'intégrité et index de performance.</p>
+          </div>
+        </section>
+
+        <!-- Utilisateurs ciblés -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="users">
+          <h2 id="users">🎯 Utilisateurs ciblés</h2>
+          <ul>
+            <li><strong>Étudiants Institut Teccart :</strong> formations IT, ingénierie, design.</li>
+            <li><strong>Jeunes diplômés :</strong> recherche premier emploi, stages de fin d'études.</li>
+            <li><strong>Entreprises partenaires :</strong> startups tech, PME, grandes entreprises.</li>
+            <li><strong>Équipe Institut Teccart :</strong> placement étudiant, relations entreprises.</li>
+          </ul>
+        </section>
+
+        <!-- Budget et charges -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="budget">
+          <h2 id="budget">💰 Budget et charges</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div>
+              <h4>Développement (250h total)</h4>
+              <ul class="small">
+                <li>Frontend React.js : 95h</li>
+                <li>Backend FastAPI : 105h</li>
+                <li>Tâches communes : 50h</li>
+              </ul>
+              <p><strong>Coût développement : 5 000$</strong></p>
+            </div>
+            <div>
+              <h4>Infrastructure (1ère année)</h4>
+              <ul class="small">
+                <li>Hébergement cloud : 180$</li>
+                <li>Domaine & SSL : 65$</li>
+                <li>Stockage & sécurité : 120$</li>
+              </ul>
+              <p><strong>Coût infrastructure : 365$</strong></p>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:12px;padding:12px;background:rgba(0,51,102,0.05);border-radius:8px;">
+            <strong style="font-size:18px;color:var(--teccart-blue);">Budget total projet : 5 365$ TTC</strong>
+          </div>
+        </section>
+
+        <!-- Livrables -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="livrables">
+          <h2 id="livrables">📦 Livrables attendus</h2>
+          <ul>
+            <li>Application web fonctionnelle (PWA) avec charte graphique Institut Teccart.</li>
+            <li>Documentation technique complète (README, API, schéma BD).</li>
+            <li>Guide utilisateur pour candidats, recruteurs et administrateurs.</li>
+            <li>Formation équipe Institut Teccart (2h d'accompagnement).</li>
+            <li>Code source versionné sur GitHub avec licence appropriée.</li>
+            <li>Présentation finale avec démonstration fonctionnelle.</li>
+            <li>Plan de maintenance et évolutions futures.</li>
+          </ul>
+        </section>
+
+        <!-- Calendrier prévisionnel -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="calendrier">
+          <div class="section-title">
+            <h2 id="calendrier">🗓️ Calendrier prévisionnel</h2>
+            <span class="small">Plan par sprints - 11 semaines</span>
+          </div>
+
+          <div class="timeline">
+            <div class="step"><strong>Semaine 1 :</strong> Analyse besoins, maquettes UI/UX.</div>
+            <div class="step"><strong>Sprint 1 (Semaine 2-3) :</strong> Authentification & espace utilisateur.</div>
+            <div class="step"><strong>Sprint 2 (Semaine 4-5) :</strong> Publication offres & moteur de recherche.</div>
+            <div class="step"><strong>Sprint 3 (Semaine 6-7) :</strong> Système candidature, portfolio et messagerie.</div>
+            <div class="step"><strong>Sprint 4 (Semaine 8-9) :</strong> Tableaux de bord, responsive & notifications.</div>
+            <div class="step"><strong>Sprint 5 (Semaine 10-11) :</strong> Interface admin, tests, formation, démo finale.</div>
+          </div>
+        </section>
+
+        <!-- Critères de réussite -->
+        <section class="card" style="margin-top:16px;" aria-labelledby="succes">
+          <h2 id="succes">✅ Critères de réussite</h2>
+          <ul>
+            <li>Authentification sécurisée intégrée au système.</li>
+            <li>Interface intuitive respectant les standards UX.</li>
+            <li>Fonctionnalités complètes : candidature, messagerie, tableau de bord.</li>
+            <li>Performance optimale : temps de réponse < 2 secondes.</li>
+            <li>Conformité RGPD et sécurisation des données étudiants.</li>
+            <li>Formation réussie de l'équipe.</li>
+            <li>Validation finale et mise en production.</li>
+            <li>Satisfaction client ≥ 4.5/5 lors de la présentation finale.</li>
+          </ul>
+        </section>
+      </main>
+
+      <!-- Right / résumé rapide & contacts -->
+      <aside>
+        <div class="card">
+          <h2>Résumé rapide</h2>
+          <p class="muted">TalentLink centralise les offres d'emploi et stages pour l'<strong>Institut Teccart</strong>, facilite la mise en relation candidat/recruteur, et propose des fonctionnalités modernes (PWA, recherche avancée, messagerie, tableau de bord).</p>
+
+          <hr style="margin:12px 0">
+
+          <h3 style="margin-bottom:8px;">Stack technique</h3>
+          <ul>
+            <li>React.js (PWA)</li>
+            <li>FastAPI (Python)</li>
+            <li>PostgreSQL (DB)</li>
+            <li>JWT (authentification)</li>
+            <li>WebSocket (messagerie)</li>
+            <li>GitHub Actions (CI/CD)</li>
+          </ul>
+
+          <hr style="margin:12px 0">
+
+          <h3>Livrables & Formation</h3>
+          <p class="small">Application PWA, documentation technique, formation équipe Teccart, présentation finale.</p>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <h2>Équipe InnovLife</h2>
+          <div style="text-align:center;margin-bottom:12px;">
+            <div style="width:40px;height:40px;background:linear-gradient(135deg,var(--teccart-blue),var(--teccart-orange));border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">IL</div>
+          </div>
+          <p class="small">
+            <strong>Nanouga Daouda Yeo</strong><br>
+            Lead Frontend / UX Designer<br><br>
+            <strong>Ibrahima Sebe Kourouma</strong><br>
+            Lead Backend / DevOps
+          </p>
+          <div style="margin-top:12px;text-align:center;">
+            <span style="font-size:12px;color:var(--muted);">Contact : team@innovlife.dev</span>
+          </div>
+        </div>
+
+        
+
+      </aside>
+    </div>
+
+    <footer>
+      <small>
+        Projet TalentLink – Équipe InnovLife pour <strong class="teccart-highlight">Institut Teccart</strong><br>
+        © 2024 Institut Teccart - Tous droits réservés
+      </small>
+    </footer>
+  </div>
+
+  <!-- Bouton pour aller vers la page des diagrammes -->
+  <div style="margin-top: 20px; text-align:center;">
+    <button id="btn-diagrammes" class="btn-primary">
+      <a href="site_de_recrutement.html">📊 Voir les Diagrammes & Maquettes</a>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
