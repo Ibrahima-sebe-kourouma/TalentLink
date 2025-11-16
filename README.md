@@ -315,7 +315,9 @@ SMTP_SERVER=your-smtp-server.com
 
 ## 👨‍💻 Équipe
 
-- **[Ibrahima Sebe Kourouma](https://github.com/Ibrahima-sebe-kourouma)** - Développeur Principal
+- **[Ibrahima Sebe Kourouma](https://github.com/Ibrahima-sebe-kourouma)** - Développeur Backend
+
+- **[Nanouga Daouda Yeo](https://github.com/Nanou04)** - Développeur Frontend
 
 ## 📄 Licence
 
