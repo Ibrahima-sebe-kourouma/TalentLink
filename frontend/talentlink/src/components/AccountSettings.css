@@ -1,0 +1,13 @@
+.account-settings { padding: 16px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.account-settings h2 { margin-bottom: 16px; }
+.settings-section { margin-top: 16px; padding: 16px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fafafa; }
+.settings-section h3 { margin-top: 0; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.form-group input { padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; }
+button { padding: 10px 14px; border: none; background: #2563eb; color: #fff; border-radius: 6px; cursor: pointer; }
+button:hover { background: #1e40af; }
+.danger-zone { border-color: #fecaca; background: #fff7f7; }
+.danger-zone .delete-account { background: #dc2626; }
+.danger-zone .delete-account:hover { background: #991b1b; }
+.success-message { margin-top: 12px; color: #065f46; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 8px 12px; border-radius: 6px; }
+.error-message { margin-top: 12px; color: #7f1d1d; background: #fef2f2; border: 1px solid #fecaca; padding: 8px 12px; border-radius: 6px; }

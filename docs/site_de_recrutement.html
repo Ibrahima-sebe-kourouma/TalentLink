@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrammes - Plateforme de Recrutement</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .diagram-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            background: #ffffff;
+            page-break-inside: avoid;
+        }
+        .diagram-title {
+            font-size: 1.2em;
+            font-weight: bold;  
+            margin-bottom: 15px;
+            color: #495057;
+            text-align: center;
+        }
+        .mermaid {
+            text-align: center;
+            background: white;
+        }
+        .export-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+            .export-info { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Diagrammes - Plateforme de Recrutement</h1>
+        <!--
+            <div class="export-info">
+                <strong>💡 Pour exporter :</strong>
+                <ul>
+                    <li><strong>PDF :</strong> Ctrl+P puis "Enregistrer au format PDF"</li>
+                    <li><strong>Image :</strong> Clic droit sur chaque diagramme → "Enregistrer l'image sous"</li>
+                    <li><strong>Word :</strong> Copier-coller les diagrammes dans Word</li>
+                </ul>
+            </div>
+        -->
+
+
+        <!-- Bouton pour aller vers la page du projet -->
+        <div style="margin-top: 20px; text-align:center;">
+        <button id="btn-diagrammes" 
+                style="background:#2563eb; color:white; padding:12px 20px; border:none; 
+                        border-radius:8px; cursor:pointer; font-size:16px; font-weight:600;
+                        box-shadow:0 4px 10px rgba(37,99,235,0.2); transition: all 0.3s ease;">
+            📊 Voir la présentation du projet
+        </button>
+        </div>
+
+        <script>
+        // Bouton redirige vers la page du projet
+        document.getElementById('btn-diagrammes').addEventListener('click', () => {
+            window.location.href = "presentation_projet_teccart.html"; 
+            // 🔹 Remplace "diagrammes.html" par le vrai nom de ta page
+        });
+
+        // Effet hover interactif
+        const btnn = document.getElementById('btn-diagrammes');
+        btnn.addEventListener('mouseover', () => {
+            btnn.style.background = "#1e40af"; // bleu plus foncé
+            btnn.style.transform = "scale(1.05)";
+        });
+        btnn.addEventListener('mouseout', () => {
+            btnn.style.background = "#2563eb"; 
+            btnn.style.transform = "scale(1)";
+        });
+        </script>
+
+       <!-- Diagramme de cas d'utilisation -->
+        <div class="diagram-container">
+            <div class="diagram-title">1. Diagramme de Cas d'Utilisation</div>
+            <div class="mermaid">
+graph TD
+    %% === ACTEURS ===
+    subgraph Actors["👥 Acteurs du système"]
+        A1["👤 Candidat"]
+        A2["👤 Recruteur"]
+        A3["👤 Administrateur"]
+    end
+
+    %% === SYSTÈME ===
+    subgraph System["🏢 Plateforme TalentLink"]
+        %% Candidat - Cas d'utilisation détaillés
+        UC1(["UC1: Créer un compte candidat"])
+        UC2(["UC2: Créer et gérer son profil"])
+        UC3(["UC3: Postuler à une offre"])
+        UC4(["UC4: Consulter le suivi des candidatures"])
+        UC5(["Rechercher offres via moteur de recherche"])
+        UC6(["Ajouter CV et portfolio"])
+        UC7(["Ajouter liens GitHub"])
+        UC8(["Retirer une candidature"])
+
+        %% Recruteur - Cas d'utilisation détaillés
+        UC9(["UC5: Créer une offre d'emploi/stage"])
+        UC10(["UC6: Consulter candidatures reçues"])
+        UC11(["UC7: Visualiser statistiques des offres"])
+        UC12(["Accéder au tableau de bord recruteur"])
+        UC13(["Changer statut candidature"])
+        UC14(["Consulter profil candidat"])
+        UC15(["Filtrer statistiques par période"])
+
+        %% Administrateur - Cas d'utilisation détaillés
+        UC16(["UC8: Gérer les utilisateurs"])
+        UC17(["UC9: Gérer les offres publiées"])
+        UC18(["UC10: Consulter statistiques globales"])
+        UC19(["Suspendre/Réactiver compte"])
+        UC20(["Supprimer compte utilisateur"])
+        UC21(["Supprimer offre signalée"])
+        UC22(["Envoyer notification au recruteur"])
+        UC23(["Exporter données pour analyse"])
+    end
+
+    %% === LIENS CANDIDAT ===
+    A1 --> UC1
+    A1 --> UC2
+    A1 --> UC3
+    A1 --> UC4
+    A1 --> UC5
+    A1 --> UC6
+    A1 --> UC7
+    A1 --> UC8
+
+    %% === LIENS RECRUTEUR ===
+    A2 --> UC9
+    A2 --> UC10
+    A2 --> UC11
+    A2 --> UC12
+    A2 --> UC13
+    A2 --> UC14
+    A2 --> UC15
+
+    %% === LIENS ADMINISTRATEUR ===
+    A3 --> UC16
+    A3 --> UC17
+    A3 --> UC18
+    A3 --> UC19
+    A3 --> UC20
+    A3 --> UC21
+    A3 --> UC22
+    A3 --> UC23
+
+    %% === RELATIONS INCLUDE/EXTEND ===
+    UC2 -.->|include| UC6
+    UC2 -.->|include| UC7
+    UC3 -.->|include| UC5
+    UC10 -.->|include| UC14
+    UC10 -.->|include| UC13
+    UC16 -.->|include| UC19
+    UC16 -.->|include| UC20
+    UC17 -.->|include| UC21
+    UC17 -.->|include| UC22
+    UC18 -.->|include| UC23
+
+    %% === STYLES PERSONNALISÉS ===
+    classDef actor fill:#e3f2fd,stroke:#2563eb,stroke-width:3px,color:#0d47a1,font-weight:bold;
+    classDef usecase fill:#ffffff,stroke:#90caf9,stroke-width:2px,color:#1565c0,font-weight:500,rx:8px,ry:8px;
+    classDef system fill:#f5faff,stroke:#1565c0,stroke-width:2px,color:#0d47a1;
+
+    class A1,A2,A3 actor
+    class UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14,UC15,UC16,UC17,UC18,UC19,UC20,UC21,UC22,UC23 usecase
+    class System system
+</div>
+
+        </div>
+
+        <!-- Diagramme de classes -->
+        <div class="diagram-container">
+            <div class="diagram-title">2. Diagramme de Classes UML</div>
+            <div class="mermaid">
+classDiagram
+    class Utilisateur {
+        -int id
+        -string nom
+        -string email
+        -string motDePasse
+        -enum role
+        +s'inscrire()
+        +seConnecter()
+        +modifierProfil()
+    }
+    
+    class Candidat {
+        -string cv
+        -list~Projet~ portfolio
+        +postuler(offre)
+        +suivreCandidatures()
+        +consulterTableauBord()
+    }
+    
+    class Recruteur {
+        -string entreprise
+        -list~Offre~ offres
+        +publierOffre()
+        +consulterCandidatures()
+        +consulterTableauBord()
+    }
+    
+    class Administrateur {
+        +gérerUtilisateurs()
+        +modérerOffres()
+    }
+    
+    class Offre {
+        -int id
+        -string titre
+        -string description
+        -string typeContrat
+        -string localisation
+        -date datePublication
+        -enum statut
+        +publier()
+        +modifier()
+        +supprimer()
+    }
+    
+    class Candidature {
+        -int id
+        -enum statut
+        -date dateCandidature
+        +mettreAJourStatut()
+    }
+    
+    class Projet {
+        -int id
+        -string titre
+        -string description
+        -string lien
+        -enum type
+    }
+    
+    class Message {
+        -int id
+        -string contenu
+        -date dateEnvoi
+        +envoyer()
+        +lire()
+    }
+    
+    %% Relations d'héritage
+    Utilisateur <|-- Candidat
+    Utilisateur <|-- Recruteur
+    Utilisateur <|-- Administrateur
+    
+    %% Relations d'association
+    Candidat "1" --> "0..*" Projet : possède
+    Candidat "1" --> "0..*" Candidature : effectue
+    Recruteur "1" --> "0..*" Offre : publie
+    Offre "1" --> "0..*" Candidature : reçoit
+    
+    %% Messagerie
+    Utilisateur "1" --> "0..*" Message : envoie
+    Utilisateur "1" --> "0..*" Message : reçoit
+            </div>
+        </div>
+
+        <!-- Diagramme ERD -->
+        <div class="diagram-container">
+            <div class="diagram-title">3. Diagramme Entité-Relation (ERD)</div>
+            <div class="mermaid">
+erDiagram
+    UTILISATEUR {
+        int id PK
+        string nom
+        string email UK
+        string motDePasse
+        string role
+    }
+    
+    PROJET {
+        int id PK
+        string titre
+        string description
+        string lien
+        string type
+        int candidat_id FK
+    }
+    
+    OFFRE {
+        int id PK
+        string titre
+        string description
+        string typeContrat
+        string localisation
+        date datePublication
+        string statut
+        int recruteur_id FK
+    }
+    
+    CANDIDATURE {
+        int id PK
+        date dateCandidature
+        string statut
+        int candidat_id FK
+        int offre_id FK
+    }
+    
+    MESSAGE {
+        int id PK
+        string contenu
+        date dateEnvoi
+        int expediteur_id FK
+        int destinataire_id FK
+    }
+    
+    %% Relations
+    UTILISATEUR ||--o{ PROJET : "candidat possède"
+    UTILISATEUR ||--o{ OFFRE : "recruteur publie"
+    UTILISATEUR ||--o{ CANDIDATURE : "candidat postule"
+    OFFRE ||--o{ CANDIDATURE : "reçoit candidatures"
+    UTILISATEUR ||--o{ MESSAGE : "expéditeur"
+    UTILISATEUR ||--o{ MESSAGE : "destinataire"
+            </div>
+        </div>
+
+        <!-- Informations supplémentaires -->
+        <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h2>📋 Informations du Projet</h2>
+            <p><strong>Nom :</strong> Plateforme de Recrutement (TalentLink)</p>
+            <p><strong>Nom de l'equipe :</strong> InnovLife (Nanouga Daouda Yeo, Ibrahima Sebe Kourouma)</p>
+
+            <p><strong>Date :</strong> <span id="current-date"></span></p>
+            <p><strong>Acteurs :</strong> Candidat, Recruteur, Administrateur</p>
+            <p><strong>Contexte et Justification :</strong> De nombreux individus, qu'ils soient étudiants, jeunes diplômés ou personnes sans emploi, rencontrent des difficultés pour trouver des opportunités de stage ou d'emploi adaptées à leur profil. Actuellement, la recherche se fait via plusieurs plateformes dispersées, ce qui rend le processus long et peu efficace. TalentLink vise à centraliser les offres, simplifier la mise en relation et offrir une chance équitable à tous en proposant un accompagnement personnalisé via une interface web moderne fonctionnant comme une application.</p>
+            <p><strong>Objectifs de l’application :</strong> 
+            <ul>
+                <li>Permettre aux recruteurs de publier des offres (stage, emploi, alternance).</li>
+                <li>Permettre aux étudiants/candidats de créer un profil et de postuler directement.</li>
+                <li>Offrir un moteur de recherche filtré (domaine, localisation, compétences).</li>
+                <li>Proposer un système de recommandation basé sur le profil et les offres disponibles.</li>
+                <li>Intégrer une messagerie simplifiée entre recruteurs et candidats.</li>
+                <li>Ajouter un mode sombre / clair pour améliorer l’expérience utilisateur.</li>
+                <li>Fournir un tableau de bord analytique pour candidats et recruteurs.</li>
+            </ul>
+            </p>
+
+            
+        </div>
+    </div>
+
+    <script>
+        // Initialiser Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true
+            },
+            er: {
+                useMaxWidth: true
+            },
+            class: {
+                useMaxWidth: true
+            }
+        });
+
+        // Ajouter la date actuelle
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('fr-FR');
+
+        // Fonction pour télécharger en tant qu'image
+        function downloadDiagram(elementId, filename) {
+            const svg = document.querySelector(elementId + ' svg');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            const img = document.createElement("img");
+            
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                
+                const link = document.createElement('a');
+                link.download = filename + '.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            };
+            
+            img.src = "data:image/svg+xml;base64," + btoa(svgData);
+        }
+    </script>
+</body>
+</html>

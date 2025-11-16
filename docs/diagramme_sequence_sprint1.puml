@@ -1,0 +1,148 @@
+@startuml Diagramme de Séquence - Sprint 1 Talentlink
+
+title Diagramme de Séquence - Sprint 1 : Gestion Candidat
+
+actor Candidat
+participant "Frontend\n(React)" as Frontend
+participant "Service Auth\n(Port 8001)" as Auth
+participant "Service Mail\n(Port 8004)" as Mail
+participant "Service Profile\n(Port 8002)" as Profile
+participant "Service Offers\n(Port 8003)" as Offers
+database "Base de données" as DB
+
+== UC1: Inscription ==
+Candidat -> Frontend: Remplit formulaire d'inscription
+Frontend -> Auth: POST /register\n(email, password, name, prenom)
+Auth -> DB: Créer utilisateur (role=candidate)
+Auth -> DB: Créer token de confirmation
+Auth --> Frontend: 201 Created (user_id, message)
+Auth -> Mail: POST /send-email\n(confirmation_email)
+Mail --> Candidat: Email de confirmation
+note right: Email contient lien\navec token
+
+== UC2: Confirmation par email ==
+Candidat -> Frontend: Clique lien de confirmation
+Frontend -> Auth: GET /confirm-email?token=xxx
+Auth -> DB: Vérifier et activer token
+Auth -> DB: Mettre à jour user.is_verified=true
+Auth --> Frontend: 200 OK (compte confirmé)
+Frontend --> Candidat: Message de confirmation
+
+== UC3: Connexion ==
+Candidat -> Frontend: Saisit email + password
+Frontend -> Auth: POST /login\n(email, password)
+Auth -> DB: Vérifier credentials
+Auth --> Frontend: 200 OK (access_token, user_info)
+Frontend -> Frontend: Stocker token en localStorage
+Frontend --> Candidat: Redirection vers Dashboard
+
+== UC4: Récupération mot de passe ==
+Candidat -> Frontend: Demande réinitialisation MDP
+Frontend -> Auth: POST /forgot-password\n(email)
+Auth -> DB: Créer reset_token
+Auth -> Mail: POST /send-email\n(reset_password_email)
+Mail --> Candidat: Email avec lien reset
+Candidat -> Frontend: Clique lien + nouveau MDP
+Frontend -> Auth: POST /reset-password\n(token, new_password)
+Auth -> DB: Vérifier token + MAJ password
+Auth --> Frontend: 200 OK
+Frontend --> Candidat: Confirmation changement
+
+== UC5: Accès au tableau de bord ==
+Candidat -> Frontend: Accède à /profile
+Frontend -> Profile: GET /candidates/by-user/{user_id}
+Profile -> DB: Récupérer profil candidat
+Profile --> Frontend: 200 OK (candidat_data)
+Frontend -> Offers: GET /applications?candidate_id={id}
+Offers -> DB: Récupérer candidatures
+Offers --> Frontend: 200 OK (applications[])
+Frontend --> Candidat: Affiche Dashboard avec stats
+
+== UC6: Compléter/Modifier profil ==
+Candidat -> Frontend: Remplit formulaire profil\n(Stepper 8 étapes)
+loop Pour chaque étape du profil
+    Frontend -> Profile: PATCH /candidates/{id}/partial-update\n(step_data, progression)
+    Profile -> DB: Mise à jour partielle
+    Profile --> Frontend: 200 OK (updated_candidat)
+end
+Frontend --> Candidat: Profil mis à jour
+
+== UC7: Upload CV et lettre motivation ==
+Candidat -> Frontend: Upload fichiers (Step 5)
+Frontend -> Profile: POST /candidates/{id}/upload-cv\n(multipart/form-data)
+Profile -> Profile: Valider fichier (type, taille)
+Profile -> Profile: Sauvegarder dans /uploads/cv/
+Profile -> DB: Mettre à jour cv path
+Profile --> Frontend: 200 OK (cv_url)
+Frontend -> Profile: POST /candidates/{id}/upload-cover-letter
+Profile -> Profile: Sauvegarder dans /uploads/cover_letters/
+Profile -> DB: Mettre à jour lettre_motivation path
+Profile --> Frontend: 200 OK (cover_letter_url)
+Frontend --> Candidat: Confirmation upload
+
+== UC8: Ajouter au portfolio ==
+Candidat -> Frontend: Ajoute projet/lien (Step 7)
+Frontend -> Profile: PATCH /candidates/{id}/partial-update\n(projets: [{title, description, url}])
+Profile -> DB: Mettre à jour JSON projets
+Profile --> Frontend: 200 OK
+Frontend --> Candidat: Portfolio mis à jour
+
+== UC9: Supprimer profil ==
+Candidat -> Frontend: Demande suppression compte
+Frontend -> Frontend: Confirmation modal
+Candidat -> Frontend: Confirme suppression
+Frontend -> Auth: DELETE /users/{user_id}
+Auth -> DB: Supprimer utilisateur
+Auth -> Profile: Notification (via cascade/webhook)
+Profile -> DB: Supprimer profil candidat
+Auth --> Frontend: 204 No Content
+Frontend -> Frontend: Déconnexion + clear storage
+Frontend --> Candidat: Redirection vers HomePage
+
+== UC10: Rechercher offres ==
+Candidat -> Frontend: Saisit critères de recherche
+Frontend -> Offers: GET /offers/search?\ndomaine={x}&localisation={y}&\nmots_cles={z}&type_contrat={t}
+Offers -> DB: Query avec filtres
+Offers --> Frontend: 200 OK (filtered_offers[])
+Frontend --> Candidat: Affiche liste d'offres
+
+== UC11: Trier résultats ==
+Candidat -> Frontend: Sélectionne tri (date/salaire)
+Frontend -> Frontend: Tri côté client des offres
+Frontend --> Candidat: Liste triée
+
+== UC12: Consulter détail offre ==
+Candidat -> Frontend: Clique sur une offre
+Frontend -> Offers: GET /offers/{offer_id}
+Offers -> DB: Récupérer offre complète
+Offers --> Frontend: 200 OK (offer_detail)
+Frontend --> Candidat: Affiche détail complet
+
+== UC13: Postuler à une offre ==
+Candidat -> Frontend: Clique "Postuler"
+Frontend -> Offers: POST /applications/\n(offre_id, auth_user_id,\ncandidat_id, message)
+Offers -> DB: Créer candidature\n(statut=submitted)
+Offers --> Frontend: 201 Created (application)
+Offers -> Mail: POST /send-email\n(notification_recruteur)
+Mail --> "Recruteur": Email nouvelle candidature
+Frontend --> Candidat: Confirmation candidature
+
+== UC14: Suivre état candidatures ==
+Candidat -> Frontend: Accède "Mes candidatures"
+Frontend -> Offers: GET /applications/user/{auth_user_id}
+Offers -> DB: Récupérer candidatures user
+Offers --> Frontend: 200 OK (applications[])
+loop Pour chaque candidature
+    Frontend -> Offers: GET /offers/{offre_id}
+    Offers --> Frontend: Offre info (titre, entreprise)
+end
+Frontend --> Candidat: Liste avec statuts\n(submitted, in_review,\ninterview, offered, rejected)
+
+== UC15: Notification réponse candidature ==
+"Recruteur" -> Offers: PATCH /applications/{id}\n(statut=offered/rejected)
+Offers -> DB: Mettre à jour statut
+Offers -> Mail: POST /send-email\n(notification_candidat)
+Mail --> Candidat: Email notification changement
+note right: Email informe du\nnouveau statut
+
+@enduml

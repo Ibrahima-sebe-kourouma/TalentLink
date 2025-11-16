@@ -1,0 +1,342 @@
+@startuml Diagramme de Classes - Sprint 1 Talentlink
+
+title Diagramme de Classes - Sprint 1 : Architecture Microservices
+
+package "Service Auth (Port 8001)" {
+    class User {
+        +id: Integer {PK}
+        +email: String {unique}
+        +hashed_password: String
+        +name: String
+        +prenom: String
+        +role: UserRole
+        +is_verified: Boolean
+        +is_active: Boolean
+        +reset_token: String
+        +reset_token_expiry: DateTime
+        +confirmation_token: String
+        +created_at: DateTime
+        +updated_at: DateTime
+        --
+        +verify_password(password: String): Boolean
+        +generate_reset_token(): String
+        +generate_confirmation_token(): String
+    }
+
+    enum UserRole {
+        CANDIDATE
+        RECRUITER
+        ADMIN
+    }
+
+    User --> UserRole
+}
+
+package "Service Profile (Port 8002)" {
+    class Candidat {
+        +id: Integer {PK}
+        +auth_user_id: Integer {FK, unique}
+        +nom: String
+        +prenom: String
+        +email: String
+        +telephone: String
+        +adresse: String
+        +ville: String
+        +code_postal: String
+        +pays: String
+        +date_naissance: Date
+        +nationalite: String
+        +linkedin: String
+        +github: String
+        +portfolio_url: String
+        +resume_professionnel: Text
+        +cv: String (file_path)
+        +lettre_motivation: String (file_path)
+        +experience: JSON[]
+        +formation: JSON[]
+        +competences: JSON[]
+        +langues: JSON[]
+        +certifications: JSON[]
+        +projets: JSON[]
+        +progression: Integer
+        +created_at: DateTime
+        +updated_at: DateTime
+        --
+        +add_experience(exp: Experience): void
+        +update_experience(id: int, exp: Experience): void
+        +delete_experience(id: int): void
+        +add_formation(form: Formation): void
+        +add_competence(comp: Competence): void
+        +add_projet(proj: Projet): void
+        +upload_cv(file: File): String
+        +upload_cover_letter(file: File): String
+        +update_progression(step: int): void
+    }
+
+    class Experience <<ValueObject>> {
+        +poste: String
+        +entreprise: String
+        +start_date: String
+        +end_date: String
+        +description: Text
+        +en_cours: Boolean
+    }
+
+    class Formation <<ValueObject>> {
+        +diplome: String
+        +institution: String
+        +start_date: String
+        +end_date: String
+        +description: Text
+    }
+
+    class Competence <<ValueObject>> {
+        +nom: String
+        +niveau: String
+        +categorie: String
+    }
+
+    class Langue <<ValueObject>> {
+        +langue: String
+        +niveau: String
+    }
+
+    class Certification <<ValueObject>> {
+        +nom: String
+        +organisme: String
+        +date_obtention: String
+        +url: String
+    }
+
+    class Projet <<ValueObject>> {
+        +titre: String
+        +description: Text
+        +url: String
+        +technologies: String[]
+        +date: String
+    }
+
+    Candidat "1" *-- "0..*" Experience
+    Candidat "1" *-- "0..*" Formation
+    Candidat "1" *-- "0..*" Competence
+    Candidat "1" *-- "0..*" Langue
+    Candidat "1" *-- "0..*" Certification
+    Candidat "1" *-- "0..*" Projet
+}
+
+package "Service Offers (Port 8003)" {
+    class Offer {
+        +id: Integer {PK}
+        +recruiter_user_id: Integer {FK}
+        +titre: String
+        +description: Text
+        +type_contrat: ContractType
+        +localisation: String
+        +entreprise: String
+        +domaine: String
+        +mots_cles: Text (CSV)
+        +remote: Boolean
+        +salaire_min: Integer
+        +salaire_max: Integer
+        +experience_requise: String
+        +education_requise: String
+        +nb_postes: Integer
+        +date_publication: DateTime
+        +date_expiration: DateTime
+        +statut: OfferStatus
+        +created_at: DateTime
+        +updated_at: DateTime
+        --
+        +publish(): void
+        +close(): void
+        +update_status(status: OfferStatus): void
+        +match_criteria(filters: SearchFilters): Boolean
+    }
+
+    enum ContractType {
+        CDI
+        CDD
+        STAGE
+        FREELANCE
+        ALTERNANCE
+    }
+
+    enum OfferStatus {
+        DRAFT
+        PUBLISHED
+        CLOSED
+    }
+
+    class Application {
+        +id: Integer {PK}
+        +offre_id: Integer {FK}
+        +auth_user_id: Integer {FK}
+        +candidat_id: Integer {FK}
+        +statut: ApplicationStatus
+        +date_candidature: DateTime
+        +message_motivation: Text
+        +cv_url: String
+        +updated_at: DateTime
+        --
+        +update_status(status: ApplicationStatus): void
+        +withdraw(): void
+        +is_unique_per_user(): Boolean
+    }
+
+    enum ApplicationStatus {
+        SUBMITTED
+        IN_REVIEW
+        INTERVIEW
+        OFFERED
+        REJECTED
+        WITHDRAWN
+    }
+
+    class SearchFilters <<ValueObject>> {
+        +domaine: String
+        +localisation: String
+        +mots_cles: String[]
+        +type_contrat: ContractType
+        +remote: Boolean
+        +salaire_min: Integer
+        +experience_requise: String
+    }
+
+    Offer --> ContractType
+    Offer --> OfferStatus
+    Offer "1" -- "0..*" Application
+    Application --> ApplicationStatus
+    Application ..> SearchFilters : uses
+}
+
+package "Service Mail (Port 8004)" {
+    class EmailRequest {
+        +to: String
+        +subject: String
+        +body: Text
+        +html_body: Text
+        +cc: String[]
+        +bcc: String[]
+        --
+        +validate(): Boolean
+    }
+
+    class EmailService {
+        -smtp_config: SMTPConfig
+        --
+        +send_email(request: EmailRequest): Boolean
+        +send_confirmation_email(user: User, token: String): Boolean
+        +send_password_reset(user: User, token: String): Boolean
+        +send_application_notification(recruiter: User, application: Application): Boolean
+        +send_status_change_notification(candidate: User, application: Application): Boolean
+    }
+
+    EmailService ..> EmailRequest : uses
+}
+
+package "Frontend (React - Port 3000)" {
+    class AuthContext {
+        +user: User
+        +token: String
+        +isAuthenticated: Boolean
+        --
+        +login(email: String, password: String): Promise<void>
+        +logout(): void
+        +register(userData: RegisterData): Promise<void>
+        +forgotPassword(email: String): Promise<void>
+        +resetPassword(token: String, password: String): Promise<void>
+        +confirmEmail(token: String): Promise<void>
+    }
+
+    class CandidateProfile {
+        +candidat: Candidat
+        +loading: Boolean
+        +error: String
+        --
+        +loadProfile(): Promise<void>
+        +updateProfile(data: Partial<Candidat>): Promise<void>
+        +uploadCV(file: File): Promise<void>
+        +uploadCoverLetter(file: File): Promise<void>
+        +deleteProfile(): Promise<void>
+    }
+
+    class OffersBrowser {
+        +offers: Offer[]
+        +filters: SearchFilters
+        +sortBy: String
+        +loading: Boolean
+        --
+        +searchOffers(filters: SearchFilters): Promise<void>
+        +sortResults(criteria: String): void
+        +viewOfferDetail(offerId: Integer): Promise<void>
+        +applyToOffer(offerId: Integer, message: String): Promise<void>
+    }
+
+    class MyApplications {
+        +applications: Application[]
+        +loading: Boolean
+        --
+        +loadApplications(): Promise<void>
+        +getApplicationStatus(appId: Integer): ApplicationStatus
+        +withdrawApplication(appId: Integer): Promise<void>
+    }
+
+    class Dashboard {
+        +stats: DashboardStats
+        --
+        +loadStats(): Promise<void>
+        +displayRecentApplications(): void
+        +displayProfileCompletion(): void
+    }
+
+    AuthContext ..> User
+    CandidateProfile ..> Candidat
+    OffersBrowser ..> Offer
+    OffersBrowser ..> SearchFilters
+    MyApplications ..> Application
+}
+
+' Relations entre services
+User "1" -- "0..1" Candidat : auth_user_id
+User "1" -- "0..*" Application : auth_user_id
+Candidat "1" -- "0..*" Application : candidat_id
+Offer "1" -- "1" User : recruiter_user_id
+
+' Relations avec EmailService
+EmailService ..> User : sends to
+EmailService ..> Application : notifies about
+
+' API Clients
+AuthContext ..> User
+CandidateProfile ..> Candidat
+OffersBrowser ..> Offer
+MyApplications ..> Application
+
+note right of User
+  Service central d'authentification.
+  Gère inscription, connexion,
+  confirmation email, reset password.
+end note
+
+note right of Candidat
+  Profil détaillé du candidat.
+  Stocke toutes les informations
+  professionnelles, CV, portfolio.
+  Progression sur 8 étapes.
+end note
+
+note right of Application
+  Candidature à une offre.
+  Contrainte unique par
+  (offre_id, auth_user_id).
+  Cycle de vie géré par statuts.
+end note
+
+note bottom of SearchFilters
+  Critères de recherche pour
+  filtrer les offres d'emploi.
+  Utilisé par le moteur de
+  recherche côté frontend.
+end note
+
+@enduml

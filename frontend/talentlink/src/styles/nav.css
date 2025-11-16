@@ -1,0 +1,105 @@
+:root {
+  --nav-item-h: 44px;
+}
+
+.nav-modern {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-modern .nav-list {
+  position: relative;
+  display: grid;
+  grid-auto-rows: var(--nav-item-h);
+}
+
+.nav-modern .active-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: var(--nav-item-h);
+  background: linear-gradient(180deg, var(--tl-primary-400), var(--tl-primary-600));
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(99,102,241,0.35);
+  transform: translateY(0);
+  transition: transform 220ms cubic-bezier(.2,.8,.2,1);
+}
+
+.nav-modern .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--nav-item-h);
+  padding: 0 12px 0 16px;
+  border-radius: 10px;
+  color: var(--tl-text-muted);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 80ms ease;
+}
+
+.nav-modern .nav-item:hover {
+  background: rgba(99,102,241,0.08);
+  color: var(--tl-text);
+}
+
+.nav-modern .nav-item:active {
+  transform: scale(0.98);
+}
+
+.nav-modern .nav-item.active {
+  background: linear-gradient(180deg, rgba(99,102,241,0.12), rgba(99,102,241,0.06));
+  border-color: rgba(99,102,241,0.25);
+  color: var(--tl-text);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+.nav-modern .nav-icon {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.nav-modern .nav-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Header & footer polish */
+.tl-sidebar-modern {
+  width: 280px;
+  background: #fff;
+  border-right: 1px solid var(--tl-border);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.tl-sidebar-modern .tl-header {
+  margin-bottom: 14px;
+}
+
+.tl-sidebar-modern .tl-footer {
+  margin-top: auto;
+}
+
+.tl-sidebar-modern .tl-logout {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--tl-danger-300, #fecaca);
+  color: var(--tl-danger-600, #dc2626);
+  background: #fff;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.tl-sidebar-modern .tl-logout:hover {
+  background: rgba(239,68,68,0.06);
+  border-color: var(--tl-danger-400, #fca5a5);
+}

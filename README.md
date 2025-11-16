@@ -325,8 +325,8 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 Pour toute question ou problème :
 - 📧 **Email** : talentlinkmontreal@gmail.com
-- 🐛 **Issues** : [GitHub Issues](https://github.com/Ibrahima-sebe-kourouma/TalentLink/issues)
-- 💬 **Discussions** : [GitHub Discussions](https://github.com/Ibrahima-sebe-kourouma/TalentLink/discussions)
+- 🐛 **Issues** : talentlinkmontreal@gmail.com
+- 💬 **Discussions** : talentlinkmontreal@gmail.com
 
 ---
 

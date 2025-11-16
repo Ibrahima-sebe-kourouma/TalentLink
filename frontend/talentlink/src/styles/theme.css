@@ -1,0 +1,69 @@
+/* Design tokens for Talentlink */
+
+:root {
+  /* Fonts */
+  --tl-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+
+  /* Brand colors */
+  --tl-primary-600: #1d4ed8; /* hover */
+  --tl-primary-500: #2563eb; /* base */
+  --tl-primary-400: #3b82f6; /* light */
+  --tl-primary-50: #eff6ff;
+
+  --tl-success-500: #16a34a;
+  --tl-success-600: #15803d;
+
+  --tl-danger-500: #dc2626;
+  --tl-danger-600: #b91c1c;
+
+  --tl-warning-500: #f59e0b;
+  --tl-warning-600: #d97706;
+
+  /* Neutrals */
+  --tl-text: #1f2937; /* gray-800 */
+  --tl-text-secondary: #6b7280; /* gray-500 */
+  --tl-border: #e5e7eb; /* gray-200 */
+  --tl-border-strong: #d1d5db; /* gray-300 */
+  --tl-background: #f8fafc; /* slate-50 */
+  --tl-surface: #ffffff;
+  --tl-surface-muted: #f3f4f6; /* gray-100 */
+
+  /* Effects */
+  --tl-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --tl-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --tl-ring: 0 0 0 3px rgba(37, 99, 235, 0.15); /* primary 500 */
+
+  /* Radii */
+  --tl-radius-sm: 6px;
+  --tl-radius-md: 10px;
+  --tl-radius-lg: 12px;
+
+  /* Spacing scale */
+  --tl-space-1: 4px;
+  --tl-space-2: 8px;
+  --tl-space-3: 12px;
+  --tl-space-4: 16px;
+  --tl-space-5: 20px;
+  --tl-space-6: 24px;
+}
+
+/* Utility classes (optional) */
+.tl-card {
+  background: var(--tl-surface);
+  border: 1px solid var(--tl-border);
+  border-radius: var(--tl-radius-md);
+  box-shadow: var(--tl-shadow-sm);
+}
+
+.tl-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  padding: 2px 10px;
+}
+
+.tl-pill--success { background: #ecfdf5; color: var(--tl-success-600); }
+.tl-pill--warning { background: #fffbeb; color: var(--tl-warning-600); }
+.tl-pill--danger { background: #fef2f2; color: var(--tl-danger-600); }
+.tl-pill--info { background: #eff6ff; color: var(--tl-primary-600); }
