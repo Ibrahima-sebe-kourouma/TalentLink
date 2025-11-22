@@ -1,0 +1,15 @@
+{
+  "export_date": "2025-11-19T01:30:31.242364",
+  "source_db": "C:\\Users\\kibse\\OneDrive\\Documents\\Cours_documentation_technique\\Talenlink\\backend\\service_messaging\\database\\messaging.db",
+  "collections": {
+    "conversations": {
+      "file": "conversations.json",
+      "count": 4
+    },
+    "messages": {
+      "file": "messages.json",
+      "count": 10
+    }
+  },
+  "migration_status": "exported_ready_for_mongodb"
+}

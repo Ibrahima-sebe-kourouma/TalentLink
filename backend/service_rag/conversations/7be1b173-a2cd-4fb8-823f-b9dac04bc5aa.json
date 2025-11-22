@@ -1,0 +1,106 @@
+{
+  "conversation_id": "7be1b173-a2cd-4fb8-823f-b9dac04bc5aa",
+  "user_id": "38",
+  "title": "Comment postuler à une offre ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Comment postuler à une offre ?",
+      "timestamp": "2025-12-09T07:40:08.552202",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour postuler à une offre, vous devez suivre ces étapes :\n\n1. **Créer un compte** : Si vous n'avez pas encore de compte, commencez par en créer un sur la plateforme TalentLink.\n\n2. **Se connecter** : Une fois votre compte créé, connectez-vous à votre espace personnel.\n\n3. **Rechercher des offres** : Utilisez les filtres disponibles (domaine, localisation, mots-clés, type de contrat) pour trouver les offres qui vous intéressent.\n\n4. **Consulter les détails de l'offre** : Cliquez sur l'offre pour en voir les détails, y compris les exigences et les informations sur l'entreprise.\n\n5. **Postuler** : Si l'offre vous convient, vous pouvez postuler directement depuis la plateforme en cliquant sur le bouton de candidature.\n\n6. **Suivre l'état de votre candidature** : Après avoir postulé, vous pourrez suivre l'état de votre candidature (en attente, acceptée, refusée) dans votre tableau de bord.\n\nN'oubliez pas que vous pouvez également ajouter un message de motivation lors de votre candidature, si cela est requis ou recommandé.",
+      "timestamp": "2025-12-09T07:40:14.208870",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5886051976919572,
+          "text": "977933\r\nmessage_motivation: [Retrait candidat: non jhe n'ebn veux pas]\r\n[Retrait candidat: non jhe n'ebn veux pas]\r\nDernière modification: 2025-11-19 18:52:41.192645\r\n\r\n=== Candidature ===\r\n\r\nID: 10\r\noffre_id: 29\r\nauth_user_id: 15\r\ncandidat_id: 11\r\nstatut: INTERVIEW\r\ndate_candidature: 2025-11-17 18:...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.588212316745713,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.5732677088606983,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.563150671470252,
+          "text": "Cas d'utilisation 23 — Accéder au tableau de bord recruteur\n\nNom : Consultation du tableau de bord recruteur\nActeurs : Recruteur\nScénario principal :\n\nLe recruteur se connecte à son compte.\n\nLe système affiche automatiquement son tableau de bord.\n\nLe recruteur visualise ses offres actives, candidatu...",
+          "document_name": "Doc_Analyse_Besoins - Copie.docx",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.5563885123304197,
+          "text": "• Les offres expirées encombrent son tableau de bord. \n• Elle ne peut pas voir le portfolio des candidats facilement. \nParcours utilisateur \nStéphanie crée son compte → confirme par email → se connecte à son tableau \nde bord → publie une offre → consulte les candidatures reçues → filtre par \ncompéte...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Merci pour l'information !",
+      "timestamp": "2025-12-09T07:40:21.883482",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Je vous en prie ! Si vous avez d'autres questions ou si vous avez besoin d'aide pour postuler à une offre ou pour toute autre information, n'hésitez pas à demander. Je suis là pour vous aider !",
+      "timestamp": "2025-12-09T07:40:24.656502",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.40016241039665,
+          "text": "Maîtrise d'Excel, SQL et un outil de dataviz (Chart.js ou équivalent).\r\ntype_contrat: CDD\r\nlocalisation: Lyon, France\r\nentreprise: TalentLink\r\ndomaine: Data / RH\r\nmots_cles: sql,excel,dataviz,kpi\r\nsalaire_min: 30000\r\nsalaire_max: 38000\r\nexperience_requise: Stage/alternance ou 0-1 an d'expérience\r\ned...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.399885948981363,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.3954071675513288,
+          "text": "977933\r\nmessage_motivation: [Retrait candidat: non jhe n'ebn veux pas]\r\n[Retrait candidat: non jhe n'ebn veux pas]\r\nDernière modification: 2025-11-19 18:52:41.192645\r\n\r\n=== Candidature ===\r\n\r\nID: 10\r\noffre_id: 29\r\nauth_user_id: 15\r\ncandidat_id: 11\r\nstatut: INTERVIEW\r\ndate_candidature: 2025-11-17 18:...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.38816472415360803,
+          "text": "Prototypage, design system, tests utilisateurs, accessibilité.\",\r\n      \"type_contrat\": \"FREELANCE\",\r\n      \"localisation\": \"Remote\",\r\n      \"entreprise\": \"TalentLink\",\r\n      \"domaine\": \"Design / Produit\",\r\n      \"mots_cles\": \"figma,ui,ux,design-system\",\r\n      \"remote\": 1,\r\n      \"salaire_min\": 35...",
+          "document_name": "service_offers_offers.json",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.3862483365903817,
+          "text": "# BASE DE DONNÉES: APPOINTMENT_CANDIDATES\r\n# Extraction du: 2025-11-27T23:09:55.921921\r\n# Nombre d'enregistrements: 5\r\n\r\n================================================================================\r\n\r\n=== Participant au rendez-vous ===\r\n\r\nID: 1\r\nrecruiter_id: 14\r\nID candidat: 4\r\noffer_id: 24\r\nca...",
+          "document_name": "service_appointment_appointment_candidates.txt",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-09T07:40:08.544730",
+  "updated_at": "2025-12-09T07:40:24.656502",
+  "is_active": true
+}

@@ -1,0 +1,28 @@
+# Fichiers temporaires Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+
+# Environnements virtuels
+venv/
+env/
+ENV/
+
+# Rapports Locust
+reports/*.html
+reports/*.csv
+
+# Configuration locale
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log

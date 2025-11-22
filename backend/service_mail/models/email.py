@@ -17,3 +17,8 @@ class ApplicationNotificationPayload(BaseModel):
     offer_title: str
     company_name: str
     status: str  # submitted, in_review, interview, offered, rejected, withdrawn
+
+class AppointmentEmailPayload(BaseModel):
+    to_email: EmailStr
+    subject: str
+    body: str

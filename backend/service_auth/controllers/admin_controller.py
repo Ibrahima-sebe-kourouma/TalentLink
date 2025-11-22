@@ -267,23 +267,21 @@ def update_report(
 
 def get_platform_statistics(db: Session) -> Dict[str, Any]:
     """Récupérer les statistiques globales de la plateforme"""
-    # Compter les utilisateurs par rôle
-    user_stats = db.query(UserDB.role, func.count(UserDB.id)).group_by(UserDB.role).all()
-    users_by_role = {Role.ADMIN: 0, Role.CANDIDAT: 0}
-    for role, count in user_stats:
-        users_by_role[role] = count
+    import requests
+    from datetime import datetime, timedelta
     
-    # Compter les utilisateurs par statut
+    # Statistiques utilisateurs (depuis ce service)
     total_users = db.query(UserDB).count()
     active_users = db.query(UserDB).filter(UserDB.est_actif == True).count()
     suspended_users = db.query(UserStatusDB).filter(UserStatusDB.status == UserStatus.SUSPENDED).count()
     banned_users = db.query(UserStatusDB).filter(UserStatusDB.status == UserStatus.BANNED).count()
     
-    # Compter les signalements
-    total_reports = db.query(ReportDB).count()
-    pending_reports = db.query(ReportDB).filter(ReportDB.status == ReportStatus.PENDING).count()
+    # Compter par rôle
+    candidats = db.query(UserDB).filter(UserDB.role == "candidat").count()
+    recruteurs = db.query(UserDB).filter(UserDB.role == "recruteur").count()
+    admins = db.query(UserDB).filter(UserDB.role == "admin").count()
     
-    # Statistiques par période
+    # Nouveaux utilisateurs
     today = datetime.utcnow().date()
     last_week = today - timedelta(days=7)
     last_month = today - timedelta(days=30)
@@ -292,21 +290,60 @@ def get_platform_statistics(db: Session) -> Dict[str, Any]:
     new_users_week = db.query(UserDB).filter(func.date(UserDB.date_creation) >= last_week).count()
     new_users_month = db.query(UserDB).filter(func.date(UserDB.date_creation) >= last_month).count()
     
+    # Utilisateurs par jour (7 derniers jours)
+    users_per_day = []
+    for i in range(6, -1, -1):
+        day = today - timedelta(days=i)
+        count = db.query(UserDB).filter(func.date(UserDB.date_creation) == day).count()
+        users_per_day.append(count)
+    
+    # Statistiques des offres (appel au service_offers)
+    offers_stats = {"total": 0, "active": 0, "closed": 0}
+    try:
+        response = requests.get("http://localhost:8003/offers/stats", timeout=2)
+        if response.status_code == 200:
+            offers_stats = response.json()
+    except:
+        pass
+    
+    # Statistiques des signalements (appel au service_report)
+    reports_stats = {"total": 0, "pending": 0, "resolved": 0, "under_review": 0}
+    try:
+        response = requests.get("http://localhost:8007/reports/stats", timeout=5)
+        print(f"📊 Reports Stats Response: {response.status_code}")
+        if response.status_code == 200:
+            reports_stats = response.json()
+            print(f"📊 Reports Stats Data: {reports_stats}")
+    except Exception as e:
+        print(f"❌ Erreur reports stats: {e}")
+        pass
+    
+    # Statistiques des candidatures (appel au service_offers)
+    applications_stats = {"total": 0, "pending": 0, "accepted": 0, "rejected": 0}
+    try:
+        response = requests.get("http://localhost:8003/applications/stats", timeout=2)
+        if response.status_code == 200:
+            applications_stats = response.json()
+    except:
+        pass
+    
     return {
         "users": {
             "total": total_users,
             "active": active_users,
             "suspended": suspended_users,
             "banned": banned_users,
-            "by_role": users_by_role,
+            "candidats": candidats,
+            "recruteurs": recruteurs,
+            "admins": admins,
             "new_today": new_users_today,
             "new_this_week": new_users_week,
-            "new_this_month": new_users_month
+            "new_this_month": new_users_month,
+            "per_day": users_per_day  # Liste des 7 derniers jours
         },
-        "reports": {
-            "total": total_reports,
-            "pending": pending_reports
-        },
+        "offers": offers_stats,
+        "reports": reports_stats,
+        "applications": applications_stats,
         "platform": {
             "last_updated": datetime.utcnow().isoformat()
         }

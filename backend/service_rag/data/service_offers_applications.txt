@@ -1,0 +1,129 @@
+# BASE DE DONNÉES: APPLICATIONS
+# Extraction du: 2025-11-27T23:09:55.913406
+# Nombre d'enregistrements: 12
+
+================================================================================
+
+=== Candidature ===
+
+ID: 1
+offre_id: 23
+auth_user_id: 4
+candidat_id: 2
+statut: OFFERED
+date_candidature: 2025-11-02 00:31:31.173023
+Dernière modification: 2025-11-19 18:59:21.806184
+
+=== Candidature ===
+
+ID: 2
+offre_id: 24
+auth_user_id: 15
+candidat_id: 11
+statut: IN_REVIEW
+date_candidature: 2025-11-02 03:31:07.050387
+Dernière modification: 2025-11-02 03:32:51.078813
+
+=== Candidature ===
+
+ID: 3
+offre_id: 24
+auth_user_id: 4
+candidat_id: 2
+statut: IN_REVIEW
+date_candidature: 2025-11-02 06:36:13.964113
+message_motivation: [Retrait candidat: je me suis trompé ]
+Dernière modification: 2025-11-27 19:22:32.619081
+
+=== Candidature ===
+
+ID: 4
+offre_id: 26
+auth_user_id: 15
+candidat_id: 11
+statut: SUBMITTED
+date_candidature: 2025-11-02 08:29:04.653941
+Dernière modification: 2025-11-02 08:29:04.655452
+
+=== Candidature ===
+
+ID: 5
+offre_id: 24
+auth_user_id: 16
+candidat_id: 12
+statut: OFFERED
+date_candidature: 2025-11-02 17:45:53.628298
+Dernière modification: 2025-11-02 17:48:47.855774
+
+=== Candidature ===
+
+ID: 6
+offre_id: 27
+auth_user_id: 17
+candidat_id: 13
+statut: SUBMITTED
+date_candidature: 2025-11-03 18:51:19.363691
+Dernière modification: 2025-11-03 18:51:19.367738
+
+=== Candidature ===
+
+ID: 7
+offre_id: 24
+auth_user_id: 17
+candidat_id: 13
+statut: WITHDRAWN
+date_candidature: 2025-11-03 18:57:52.385115
+message_motivation: [Retrait candidat: je ne veux pas du poste]
+Dernière modification: 2025-11-03 19:00:11.913698
+
+=== Candidature ===
+
+ID: 8
+offre_id: 28
+auth_user_id: 4
+candidat_id: 2
+statut: WITHDRAWN
+date_candidature: 2025-11-13 07:05:53.771728
+Dernière modification: 2025-11-13 08:31:24.579696
+
+=== Candidature ===
+
+ID: 9
+offre_id: 29
+auth_user_id: 4
+candidat_id: 2
+statut: INTERVIEW
+date_candidature: 2025-11-17 18:46:34.977933
+message_motivation: [Retrait candidat: non jhe n'ebn veux pas]
+[Retrait candidat: non jhe n'ebn veux pas]
+Dernière modification: 2025-11-19 18:52:41.192645
+
+=== Candidature ===
+
+ID: 10
+offre_id: 29
+auth_user_id: 15
+candidat_id: 11
+statut: INTERVIEW
+date_candidature: 2025-11-17 18:54:42.387128
+Dernière modification: 2025-11-19 15:05:28.417501
+
+=== Candidature ===
+
+ID: 11
+offre_id: 29
+auth_user_id: 17
+candidat_id: 13
+statut: INTERVIEW
+date_candidature: 2025-11-18 17:21:47.220008
+Dernière modification: 2025-11-19 14:47:23.906461
+
+=== Candidature ===
+
+ID: 12
+offre_id: 27
+auth_user_id: 4
+candidat_id: 2
+statut: SUBMITTED
+date_candidature: 2025-11-22 21:23:55.489852
+Dernière modification: 2025-11-22 21:23:55.491368

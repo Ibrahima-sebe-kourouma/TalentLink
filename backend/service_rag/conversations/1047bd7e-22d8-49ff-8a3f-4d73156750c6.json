@@ -1,0 +1,58 @@
+{
+  "conversation_id": "1047bd7e-22d8-49ff-8a3f-4d73156750c6",
+  "user_id": "941",
+  "title": "Comment créer un profil ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Comment créer un profil ?",
+      "timestamp": "2025-12-08T22:38:20.286063",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour créer un profil sur la plateforme TalentLink, suivez ces étapes :\n\n1. **Accéder à la page d'inscription** : Rendez-vous sur la page dédiée à la création de compte.\n\n2. **Remplir le formulaire d'inscription** : Saisissez les informations requises, telles que votre nom, prénom, adresse email et mot de passe.\n\n3. **Confirmer votre inscription** : Après avoir soumis le formulaire, vous recevrez un email de confirmation. Cliquez sur le lien de validation dans cet email pour activer votre compte.\n\n4. **Se connecter à votre espace personnel** : Une fois votre compte activé, accédez à la page de connexion, entrez votre email et mot de passe, puis cliquez sur « Se connecter ».\n\n5. **Compléter votre profil** : Une fois connecté, allez dans la section « Mon profil » pour remplir les informations personnelles, compétences, formation et expériences. Assurez-vous de valider chaque section pour enregistrer vos informations.\n\nSi vous avez des questions supplémentaires ou si vous rencontrez des difficultés, n'hésitez pas à demander de l'aide.",
+      "timestamp": "2025-12-08T22:38:27.430831",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5311577338033137,
+          "text": "Cas d'utilisation 2 — Confirmer son inscription par email\n\nNom : Validation de l'inscription\nActeurs : Candidat\nScénario principal :\n\nLe candidat reçoit un email de confirmation.\n\nIl clique sur le lien de validation.\n\nLe système active son compte.\n\nUn message de confirmation s'affiche.\n\nAlternative ...",
+          "document_name": "Doc_Analyse_Besoins - Copie.docx",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.4880669773844248,
+          "text": "# BASE DE DONNÉES: CANDIDATS\r\n# Extraction du: 2025-11-27T23:09:55.915405\r\n# Nombre d'enregistrements: 13\r\n\r\n================================================================================\r\n\r\n=== Profil Candidat ===\r\n\r\nID: 1\r\nauth_user_id: 3\r\nNom: daouda\r\nPrénom: ben\r\nEmail: user3@gmail.com\r\nDate d...",
+          "document_name": "service_profile_candidats.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.47600543785300925,
+          "text": "Un bon résumé permet aux recruteurs de rapidement comprendre votre profil.\r\nDate de création: 2025-10-31 17:20:29.534999\r\ndate_modification: 2025-10-31 17:22:47.721197\r\nProgression du profil: 2\r\n\r\n=== Profil Candidat ===\r\n\r\nID: 7\r\nauth_user_id: 10\r\nNom: yop\r\nPrénom: kash\r\nEmail: olognykashifat@gmail...",
+          "document_name": "service_profile_candidats.txt",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.4737236319115205,
+          "text": "3. Périmètre du projet  \n \nInclus dans la V1 :  \n \n Le candidat peut créer un compte. \n Le candidat peut confirmer son inscription par email. \n Le candidat peut se connecter à son espace personnel. \n Le candidat peut récupérer son mot de passe en cas d’oubli. \n Le candidat peut accéder à son ta...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.47162828148053154,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-08T22:38:20.281536",
+  "updated_at": "2025-12-08T22:38:27.430831",
+  "is_active": true
+}

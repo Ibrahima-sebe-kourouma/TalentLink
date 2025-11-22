@@ -40,6 +40,19 @@ def list_users(
     """Récupérer la liste des utilisateurs avec filtres"""
     return get_all_users(db, role, status, search, limit, offset)
 
+
+@router.get("/users/public", include_in_schema=False)
+def list_users_public(
+    role: Optional[str] = Query(None, description="Filtrer par rôle"),
+    status: Optional[str] = Query(None, description="Filtrer par statut"),
+    search: Optional[str] = Query(None, description="Rechercher par nom/email"),
+    limit: int = Query(100, description="Nombre maximum de résultats"),
+    offset: int = Query(0, description="Décalage pour la pagination"),
+    db: Session = Depends(get_db)
+):
+    """Récupérer la liste des utilisateurs (sans authentification)"""
+    return get_all_users(db, role, status, search, limit, offset)
+
 @router.patch("/users/{user_id}/status")
 def modify_user_status(
     user_id: int,
@@ -138,6 +151,15 @@ def get_audit_logs(
     """Récupérer les logs d'audit des actions administratives"""
     return get_admin_audit_logs(db, limit, offset, admin_user_id, target_user_id, action_type)
 
+
+@router.get("/audit-logs/public", response_model=List[AdminAuditResponse], include_in_schema=False)
+def get_public_audit_logs(
+    limit: int = Query(10, description="Nombre maximum de résultats"),
+    db: Session = Depends(get_db)
+):
+    """Récupérer les logs d'audit publics (sans authentification)"""
+    return get_admin_audit_logs(db, limit, 0, None, None, None)
+
 # ===== STATISTIQUES =====
 
 @router.get("/statistics")
@@ -145,7 +167,15 @@ def get_admin_statistics(
     db: Session = Depends(get_db),
     admin_user: UserDB = Depends(require_admin)
 ):
-    """Récupérer les statistiques globales de la plateforme"""
+    """Récupérer les statistiques globales de la plateforme (authentifié)"""
+    return get_platform_statistics(db)
+
+
+@router.get("/stats/public", include_in_schema=False)
+def get_public_statistics(
+    db: Session = Depends(get_db)
+):
+    """Statistiques publiques pour le dashboard (sans authentification)"""
     return get_platform_statistics(db)
 
 # ===== ACTIONS EN BATCH =====

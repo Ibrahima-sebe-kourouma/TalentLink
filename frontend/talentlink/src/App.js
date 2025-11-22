@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -60,18 +62,31 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className="app-container">
       <CookieBanner />
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/login" element={<LoginPage setUser={saveUser} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-  <Route path="/profile" element={<ProfilePage user={user} onLogout={handleLogout} />} />
+        <Route path="/profile" element={<ProfilePage user={user} onLogout={handleLogout} />} />
+        
         {/* Entity workspaces */}
-  <Route path="/candidate/*" element={<CandidateApp user={user} onLogout={handleLogout} />} />
-  <Route path="/recruiter/*" element={<RecruiterApp user={user} onLogout={handleLogout} />} />
+        <Route path="/candidate/*" element={<CandidateApp user={user} onLogout={handleLogout} />} />
+        <Route path="/recruiter/*" element={<RecruiterApp user={user} onLogout={handleLogout} />} />
         <Route path="/admin/*" element={<AdminApp user={user} />} />
       </Routes>
     </div>

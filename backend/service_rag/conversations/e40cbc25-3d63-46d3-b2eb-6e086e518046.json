@@ -1,0 +1,44 @@
+{
+  "conversation_id": "e40cbc25-3d63-46d3-b2eb-6e086e518046",
+  "user_id": "58",
+  "title": "Quels sont les types de contrats disponibles ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quels sont les types de contrats disponibles ?",
+      "timestamp": "2025-12-08T22:35:51.182366",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Les types de contrats disponibles sont les suivants :\n\n1. **CDI (Contrat à Durée Indéterminée)** : Un contrat sans date de fin, offrant une stabilité à long terme.\n2. **CDD (Contrat à Durée Déterminée)** : Un contrat avec une date de fin précise, souvent utilisé pour des missions temporaires.\n3. **Freelance** : Un contrat pour des travailleurs indépendants, généralement pour des projets spécifiques.\n\nSi vous avez besoin de plus d'informations sur un type de contrat particulier ou sur des offres d'emploi spécifiques, n'hésitez pas à demander !",
+      "timestamp": "2025-12-08T22:35:56.902402",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.370687978699579,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.3659551111758506,
+          "text": "Prototypage, design system, tests utilisateurs, accessibilité.\",\r\n      \"type_contrat\": \"FREELANCE\",\r\n      \"localisation\": \"Remote\",\r\n      \"entreprise\": \"TalentLink\",\r\n      \"domaine\": \"Design / Produit\",\r\n      \"mots_cles\": \"figma,ui,ux,design-system\",\r\n      \"remote\": 1,\r\n      \"salaire_min\": 35...",
+          "document_name": "service_offers_offers.json",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.355350596281154,
+          "text": "Vous interviendrez à distance et sur site.\r\ntype_contrat: CDI\r\nlocalisation: Québec, QC\r\nentreprise: ITCare\r\ndomaine: Support technique\r\nmots_cles: Windows,Helpdesk,Support,Ticketing,AD\r\nsalaire_min: 45000\r\nsalaire_max: 60000\r\nexperience_requise: 1 à 2 ans d'expérience en support informatique\r\neduca...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-08T22:35:51.180365",
+  "updated_at": "2025-12-08T22:35:56.902402",
+  "is_active": true
+}

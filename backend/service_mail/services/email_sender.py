@@ -350,4 +350,49 @@ L'équipe TalentLink
         subject, html, text = self.render_application_notification(user_name, offer_title, company_name, status)
         return self._send(to_email, subject, html, text)
 
+    def send_generic_email(self, to_email: str, subject: str, body: str) -> bool:
+        """Envoie un email générique avec le contenu fourni"""
+        # Convertir les retours à la ligne en HTML
+        html_body = body.replace('\n', '<br>')
+        html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f7fb;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table role="presentation" style="width: 600px; border-collapse: collapse; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <tr>
+                        <td style="padding: 40px; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px 8px 0 0;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 24px;">📅 TalentLink</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 40px;">
+                            <div style="color: #4b5563; font-size: 16px; line-height: 1.6;">
+                                {html_body}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 30px 40px; background-color: #f9fafb; border-radius: 0 0 8px 8px; text-align: center;">
+                            <p style="margin: 0 0 10px; color: #6b7280; font-size: 14px;">
+                                Cordialement,<br>
+                                <strong>L'équipe TalentLink</strong>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+"""
+        return self._send(to_email, subject, html, body)
+
 email_sender = EmailSender()

@@ -1,0 +1,23 @@
+# BASE DE DONNÉES: RECRUTEURS
+# Extraction du: 2025-11-27T23:09:55.916410
+# Nombre d'enregistrements: 1
+
+================================================================================
+
+=== Profil Recruteur ===
+
+ID: 1
+ID utilisateur: 14
+name: jobgo
+prenom: jobgo
+email: jobgo@gmail.com
+Téléphone: 5145596868
+entreprise: jobgoMontreal
+role: doonner la chance a tous
+Adresse: 6529 rue cadina
+Code postal: H4T9Y8
+Site web: jobgo.com
+preferences_recrutement: {'notes': 'nous recrutons des travailleurs motives prêt a relever de nouveau challenge'}
+progression: 4
+Date de création: 2025-11-02 00:08:20.932089
+date_modification: 2025-11-19 18:56:59.942854

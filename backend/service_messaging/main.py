@@ -6,16 +6,24 @@ from dotenv import load_dotenv
 # Charger les variables d'environnement
 load_dotenv()
 
-from database.database import engine, Base
+# Configuration MongoDB
+from database.database import connect_to_mongodb
 
-# Import routes
+# Import routes MongoDB
 from routes.conversation_routes import router as conversation_router
 from routes.message_routes import router as message_router
 
-# Create tables
-Base.metadata.create_all(bind=engine)
+app = FastAPI(title="Service Messaging MongoDB", version="2.0")
 
-app = FastAPI(title="Service Messaging", version="1.0")
+# Connexion à MongoDB au démarrage
+@app.on_event("startup")
+async def startup_event():
+    """Connexion à MongoDB au démarrage du service."""
+    success = connect_to_mongodb()
+    if not success:
+        print("❌ Échec de la connexion MongoDB - Service peut être instable!")
+    else:
+        print("✅ Service Messaging connecté à MongoDB")
 
 app.include_router(conversation_router)
 app.include_router(message_router)
@@ -33,7 +41,25 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {"message": "Service Messaging: conversations and messages"}
+    return {
+        "message": "Service Messaging: conversations and messages", 
+        "database": "MongoDB",
+        "version": "2.0"
+    }
+
+@app.get("/health")
+def health_check():
+    return {
+        "status": "healthy",
+        "service": "messaging",
+        "database": "MongoDB",
+        "port": int(os.getenv("SERVICE_MESSAGING_PORT", "8004")),
+        "endpoints": [
+            "/conversations/",
+            "/messages/",
+            "/health"
+        ]
+    }
 
 # Point d'entrée pour le démarrage du service
 if __name__ == "__main__":
@@ -43,7 +69,8 @@ if __name__ == "__main__":
     port = int(os.getenv("SERVICE_MESSAGING_PORT", "8004"))
     debug = os.getenv("DEBUG", "false").lower() == "true"
     
-    print(f"🚀 Démarrage du service Messaging TalentLink...")
+    print(f"🚀 Démarrage du service Messaging MongoDB TalentLink...")
     print(f"📍 Service disponible sur: http://{host}:{port}")
+    print(f"🍃 Base de données: MongoDB")
     
     uvicorn.run(app, host=host, port=port, reload=debug)

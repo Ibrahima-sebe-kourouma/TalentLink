@@ -1,0 +1,182 @@
+{
+  "database_path": "C:\\Users\\kibse\\OneDrive\\Documents\\Cours_documentation_technique\\Talenlink\\backend\\service_messaging\\database\\messaging.db",
+  "timestamp": "2025-11-19T01:23:35.712850",
+  "tables": {
+    "conversations": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "candidate_user_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "recruiter_user_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "application_id",
+          "type": "INTEGER",
+          "nullable": true
+        },
+        {
+          "name": "offer_id",
+          "type": "INTEGER",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false
+        },
+        {
+          "name": "last_message_at",
+          "type": "DATETIME",
+          "nullable": false
+        },
+        {
+          "name": "is_archived",
+          "type": "BOOLEAN",
+          "nullable": true
+        }
+      ],
+      "row_count": 4
+    },
+    "messages": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "conversation_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "sender_user_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "content",
+          "type": "TEXT",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false
+        },
+        {
+          "name": "is_read",
+          "type": "BOOLEAN",
+          "nullable": true
+        },
+        {
+          "name": "read_at",
+          "type": "DATETIME",
+          "nullable": true
+        }
+      ],
+      "row_count": 10
+    }
+  },
+  "data_sample": {
+    "conversations": [
+      {
+        "id": 1,
+        "candidate_user_id": 4,
+        "recruiter_user_id": 14,
+        "application_id": 8,
+        "offer_id": 28,
+        "created_at": "2025-11-13 20:03:04.428662",
+        "last_message_at": "2025-11-18 17:25:25.329119",
+        "is_archived": 0
+      },
+      {
+        "id": 2,
+        "candidate_user_id": 16,
+        "recruiter_user_id": 14,
+        "application_id": 5,
+        "offer_id": 24,
+        "created_at": "2025-11-16 14:06:06.222380",
+        "last_message_at": "2025-11-16 14:09:42.042572",
+        "is_archived": 0
+      },
+      {
+        "id": 3,
+        "candidate_user_id": 17,
+        "recruiter_user_id": 14,
+        "application_id": 7,
+        "offer_id": 24,
+        "created_at": "2025-11-16 14:06:34.512632",
+        "last_message_at": "2025-11-16 14:06:34.512632",
+        "is_archived": 0
+      },
+      {
+        "id": 4,
+        "candidate_user_id": 15,
+        "recruiter_user_id": 14,
+        "application_id": 2,
+        "offer_id": 24,
+        "created_at": "2025-11-16 14:07:07.736245",
+        "last_message_at": "2025-11-16 14:07:07.736245",
+        "is_archived": 0
+      }
+    ],
+    "messages": [
+      {
+        "id": 1,
+        "conversation_id": 1,
+        "sender_user_id": 14,
+        "content": "bonjour, votre profil nous interesse beaucoup",
+        "created_at": "2025-11-16 14:05:26.704793",
+        "is_read": 1,
+        "read_at": "2025-11-16 14:07:20.379048"
+      },
+      {
+        "id": 2,
+        "conversation_id": 1,
+        "sender_user_id": 4,
+        "content": "ok parfait je suis aussi intéresse",
+        "created_at": "2025-11-16 14:08:03.478160",
+        "is_read": 1,
+        "read_at": "2025-11-16 14:08:03.730166"
+      },
+      {
+        "id": 3,
+        "conversation_id": 1,
+        "sender_user_id": 14,
+        "content": "d'accord rendez ce mardi alors",
+        "created_at": "2025-11-16 14:08:18.384946",
+        "is_read": 1,
+        "read_at": "2025-11-16 14:08:20.372558"
+      },
+      {
+        "id": 4,
+        "conversation_id": 1,
+        "sender_user_id": 4,
+        "content": "d'accord je suis disponible après midi",
+        "created_at": "2025-11-16 14:08:39.013480",
+        "is_read": 1,
+        "read_at": "2025-11-16 14:08:39.733499"
+      },
+      {
+        "id": 5,
+        "conversation_id": 1,
+        "sender_user_id": 14,
+        "content": "d'accord bonne journée a vous !",
+        "created_at": "2025-11-16 14:09:04.955514",
+        "is_read": 1,
+        "read_at": "2025-11-16 14:09:05.731525"
+      }
+    ]
+  }
+}

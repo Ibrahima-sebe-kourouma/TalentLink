@@ -1,0 +1,12 @@
+{
+  "migration_date": "2025-11-19T01:35:56.174688",
+  "conversation_mapping": {
+    "1": "691d654c8263d9aad5f4483a",
+    "2": "691d654c8263d9aad5f4483b",
+    "3": "691d654c8263d9aad5f4483c",
+    "4": "691d654c8263d9aad5f4483d"
+  },
+  "total_conversations": 4,
+  "total_messages": 10,
+  "status": "completed"
+}

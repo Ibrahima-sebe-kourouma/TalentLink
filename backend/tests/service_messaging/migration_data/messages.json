@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "conversation_id": 1,
+    "sender_user_id": 14,
+    "content": "bonjour, votre profil nous interesse beaucoup",
+    "created_at": "2025-11-16T14:05:26.704793",
+    "is_read": 1,
+    "read_at": "2025-11-16T14:07:20.379048"
+  },
+  {
+    "id": 2,
+    "conversation_id": 1,
+    "sender_user_id": 4,
+    "content": "ok parfait je suis aussi intéresse",
+    "created_at": "2025-11-16T14:08:03.478160",
+    "is_read": 1,
+    "read_at": "2025-11-16T14:08:03.730166"
+  },
+  {
+    "id": 3,
+    "conversation_id": 1,
+    "sender_user_id": 14,
+    "content": "d'accord rendez ce mardi alors",
+    "created_at": "2025-11-16T14:08:18.384946",
+    "is_read": 1,
+    "read_at": "2025-11-16T14:08:20.372558"
+  },
+  {
+    "id": 4,
+    "conversation_id": 1,
+    "sender_user_id": 4,
+    "content": "d'accord je suis disponible après midi",
+    "created_at": "2025-11-16T14:08:39.013480",
+    "is_read": 1,
+    "read_at": "2025-11-16T14:08:39.733499"
+  },
+  {
+    "id": 5,
+    "conversation_id": 1,
+    "sender_user_id": 14,
+    "content": "d'accord bonne journée a vous !",
+    "created_at": "2025-11-16T14:09:04.955514",
+    "is_read": 1,
+    "read_at": "2025-11-16T14:09:05.731525"
+  },
+  {
+    "id": 6,
+    "conversation_id": 1,
+    "sender_user_id": 4,
+    "content": "merci vous de même",
+    "created_at": "2025-11-16T14:09:21.344031",
+    "is_read": 1,
+    "read_at": "2025-11-16T14:09:21.726578"
+  },
+  {
+    "id": 8,
+    "conversation_id": 1,
+    "sender_user_id": 14,
+    "content": "Bonjour c'est a propos du poste de cuisinier",
+    "created_at": "2025-11-17T18:48:53.744201",
+    "is_read": 1,
+    "read_at": "2025-11-17T18:49:03.147365"
+  },
+  {
+    "id": 9,
+    "conversation_id": 1,
+    "sender_user_id": 4,
+    "content": "non cela ne m'interesse pas",
+    "created_at": "2025-11-17T18:49:19.845686",
+    "is_read": 1,
+    "read_at": "2025-11-17T18:49:21.735783"
+  },
+  {
+    "id": 10,
+    "conversation_id": 1,
+    "sender_user_id": 14,
+    "content": "salut",
+    "created_at": "2025-11-18T17:25:25.328313",
+    "is_read": 1,
+    "read_at": "2025-11-18T17:25:29.904585"
+  },
+  {
+    "id": 7,
+    "conversation_id": 2,
+    "sender_user_id": 14,
+    "content": "Bonjour",
+    "created_at": "2025-11-16T14:09:42.042572",
+    "is_read": 0,
+    "read_at": null
+  }
+]

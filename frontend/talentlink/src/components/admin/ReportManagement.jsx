@@ -1,180 +1,124 @@
-import React, { useEffect, useState } from "react";
-import { API_AUTH_URL } from "../../constants/api";
-import "../../styles/dashboard.css";
+import React, { useState, useEffect } from 'react';
+import './AdminReportManagement.css';
+
+const API_REPORT = 'http://localhost:8007';
 
 export default function ReportManagement({ user }) {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState({
-    type: '',
-    status: '',
-    search: ''
-  });
+  const [error, setError] = useState(null);
+  const [filter, setFilter] = useState('all');
   const [selectedReport, setSelectedReport] = useState(null);
-  const [showDetailModal, setShowDetailModal] = useState(false);
-  const [resolution, setResolution] = useState("");
+  const [processingReport, setProcessingReport] = useState(null);
 
-  // Charger tous les signalements
-  const fetchReports = async () => {
+  useEffect(() => {
+    loadReports();
+  }, [filter]);
+
+  const loadReports = async () => {
     try {
       setLoading(true);
-      const token = user?.access_token;
-      if (!token) {
-        throw new Error("Token d'authentification manquant");
+      setError(null);
+
+      const statusParam = filter !== 'all' ? `&status=${filter}` : '';
+      const url = `${API_REPORT}/reports/admin/all?admin_user_id=${user?.id || 1}${statusParam}`;
+      
+      console.log('📡 Fetching reports from:', url);
+      
+      const response = await fetch(url);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
       
-      const params = new URLSearchParams();
-      if (filters.type) params.append('type', filters.type);
-      if (filters.status) params.append('status', filters.status);
-      if (filters.search) params.append('search', filters.search);
+      const data = await response.json();
+      console.log('✅ Reports loaded:', data);
       
-      const res = await fetch(`${API_AUTH_URL}/admin/reports?${params}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      
-      if (!res.ok) {
-        throw new Error("Erreur lors du chargement des signalements");
-      }
-      
-      const data = await res.json();
-      setReports(data);
-    } catch (e) {
-      console.error("Erreur chargement signalements:", e.message);
+      setReports(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error('❌ Error loading reports:', err);
+      setError(err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  // Résoudre un signalement
-  const resolveReport = async (reportId, resolution) => {
+  const handleProcess = async (reportId, verdict) => {
     try {
-      const token = user?.access_token;
-      if (!token) return;
-      const res = await fetch(`${API_AUTH_URL}/admin/reports/${reportId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ status: 'resolved', admin_notes: resolution })
-      });
-      
-      if (!res.ok) {
-        throw new Error("Erreur lors de la résolution");
+      const status = verdict === 'valid' ? 'resolved' : 'rejected';
+      const adminNote = verdict === 'valid' 
+        ? 'Signalement validé - Actions appropriées prises'
+        : 'Signalement rejeté - Contenu conforme aux règles';
+
+      const response = await fetch(
+        `${API_REPORT}/reports/admin/${reportId}/process?admin_user_id=${user?.id || 1}`,
+        {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ verdict, status, admin_note: adminNote })
+        }
+      );
+
+      if (response.ok) {
+        alert('✅ Signalement traité avec succès');
+        setProcessingReport(null);
+        setSelectedReport(null);
+        loadReports();
+      } else {
+        const error = await response.json();
+        alert(`❌ Erreur: ${JSON.stringify(error.detail)}`);
       }
-      
-      setShowDetailModal(false);
-      setSelectedReport(null);
-      setResolution("");
-      fetchReports();
-    } catch (e) {
-      alert("Erreur: " + e.message);
+    } catch (err) {
+      alert(`❌ Erreur: ${err.message}`);
     }
   };
 
-  // Rejeter un signalement
-  const rejectReport = async (reportId) => {
-    if (!window.confirm("Êtes-vous sûr de vouloir rejeter ce signalement ?")) {
-      return;
-    }
-    
-    try {
-      const token = user?.access_token;
-      if (!token) return;
-      const res = await fetch(`${API_AUTH_URL}/admin/reports/${reportId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ status: 'dismissed', admin_notes: 'Signalement rejeté' })
-      });
-      
-      if (!res.ok) {
-        throw new Error("Erreur lors du rejet");
-      }
-      
-      fetchReports();
-    } catch (e) {
-      alert("Erreur: " + e.message);
-    }
+  const getTypeIcon = (type) => {
+    const icons = { offer: '💼', profile: '👤', message: '💬' };
+    return icons[type] || '📄';
   };
 
-  useEffect(() => {
-    fetchReports();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters]);
-
-  const handleSearch = (e) => {
-    setFilters({ ...filters, search: e.target.value });
-  };
-
-  const handleFilterChange = (key, value) => {
-    setFilters({ ...filters, [key]: value });
+  const getTypeLabel = (type) => {
+    const labels = { offer: 'Offre', profile: 'Profil', message: 'Message' };
+    return labels[type] || type;
   };
 
   const getStatusBadge = (status) => {
     const styles = {
-      pending: { background: '#fef3c7', color: '#92400e' },
-      resolved: { background: '#d1fae5', color: '#065f46' },
-      rejected: { background: '#fee2e2', color: '#991b1b' }
+      pending: { bg: '#fef3c7', color: '#92400e', label: '⏳ En attente' },
+      under_review: { bg: '#dbeafe', color: '#1e40af', label: '👀 En examen' },
+      resolved: { bg: '#d1fae5', color: '#065f46', label: '✅ Résolu' },
+      rejected: { bg: '#fee2e2', color: '#991b1b', label: '❌ Rejeté' }
     };
-    
-    const labels = {
-      pending: 'En attente',
-      resolved: 'Résolu',
-      rejected: 'Rejeté'
-    };
-    
+    const style = styles[status] || styles.pending;
     return (
       <span style={{
+        background: style.bg,
+        color: style.color,
         padding: '4px 12px',
-        borderRadius: 12,
-        fontSize: 12,
-        fontWeight: 600,
-        ...styles[status]
+        borderRadius: '12px',
+        fontSize: '13px',
+        fontWeight: 600
       }}>
-        {labels[status] || status}
+        {style.label}
       </span>
     );
   };
 
-  const getTypeBadge = (type) => {
-    const styles = {
-      offer: { background: '#dbeafe', color: '#1e40af' },
-      profile: { background: '#dcfce7', color: '#166534' },
-      message: { background: '#fef3c7', color: '#92400e' },
-      other: { background: '#f3f4f6', color: '#374151' }
-    };
-    
-    const labels = {
-      offer: 'Offre',
-      profile: 'Profil',
-      message: 'Message',
-      other: 'Autre'
-    };
-    
+  const getSeverityBadge = (severity) => {
+    const colors = { critical: '#dc2626', medium: '#f59e0b', low: '#10b981' };
     return (
       <span style={{
+        background: colors[severity] || '#6b7280',
+        color: 'white',
         padding: '4px 12px',
-        borderRadius: 12,
-        fontSize: 12,
-        fontWeight: 600,
-        ...styles[type]
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 700
       }}>
-        {labels[type] || type}
+        {severity?.toUpperCase()}
       </span>
     );
-  };
-
-  const getPriorityColor = (priority) => {
-    const colors = {
-      low: '#10b981',
-      medium: '#f59e0b',
-      high: '#dc2626',
-      critical: '#7c2d12'
-    };
-    return colors[priority] || '#6b7280';
   };
 
   const formatDate = (dateString) => {
@@ -187,389 +131,491 @@ export default function ReportManagement({ user }) {
     });
   };
 
-  const getTimeAgo = (dateString) => {
-    const diff = Date.now() - new Date(dateString).getTime();
-    const minutes = Math.floor(diff / 60000);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
-    
-    if (days > 0) return `il y a ${days}j`;
-    if (hours > 0) return `il y a ${hours}h`;
-    if (minutes > 0) return `il y a ${minutes}min`;
-    return 'À l\'instant';
-  };
-
   if (loading) {
     return (
-      <div style={{ padding: 20, textAlign: 'center' }}>
-        <h2>Gestion des signalements</h2>
-        <div>Chargement...</div>
+      <div style={{ padding: '40px', textAlign: 'center' }}>
+        <div style={{ fontSize: '48px', marginBottom: '16px' }}>⏳</div>
+        <h3>Chargement des signalements...</h3>
       </div>
     );
   }
 
-  const pendingCount = reports.filter(r => r.status === 'pending').length;
+  if (error) {
+    return (
+      <div style={{ padding: '40px', textAlign: 'center' }}>
+        <div style={{ fontSize: '48px', marginBottom: '16px' }}>❌</div>
+        <h3>Erreur de chargement</h3>
+        <p style={{ color: '#dc2626', marginBottom: '16px' }}>{error}</p>
+        <button 
+          onClick={loadReports}
+          style={{
+            padding: '10px 20px',
+            background: '#2563eb',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontSize: '14px',
+            fontWeight: 600
+          }}
+        >
+          🔄 Réessayer
+        </button>
+      </div>
+    );
+  }
+
+  const stats = {
+    total: reports.length,
+    pending: reports.filter(r => r.status === 'pending').length,
+    critical: reports.filter(r => r.severity === 'critical').length,
+    resolved: reports.filter(r => r.status === 'resolved').length
+  };
 
   return (
-    <div style={{ padding: 0 }}>
+    <div>
       {/* Header */}
-      <div style={{ marginBottom: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <h2 style={{ margin: 0, marginBottom: 4 }}>Gestion des signalements</h2>
-          <p style={{ color: 'var(--tl-text-secondary)', margin: 0 }}>
-            {reports.length} signalement(s) • {pendingCount} en attente
-          </p>
+      <div style={{ marginBottom: 24 }}>
+        <h1 style={{ margin: 0, marginBottom: 8, fontSize: '28px', fontWeight: 700 }}>
+          🛡️ Gestion des Signalements
+        </h1>
+        <p style={{ color: '#6b7280', margin: 0 }}>
+          Modération et traitement des signalements utilisateurs
+        </p>
+      </div>
+
+      {/* Stats Cards */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+        gap: 16, 
+        marginBottom: 24 
+      }}>
+        <div style={{ 
+          padding: 20, 
+          background: '#fff', 
+          borderRadius: 12, 
+          border: '1px solid #e5e7eb',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+        }}>
+          <div style={{ fontSize: 14, color: '#6b7280', marginBottom: 8 }}>Total</div>
+          <div style={{ fontSize: 32, fontWeight: 700, color: '#111827' }}>{stats.total}</div>
         </div>
-        
-        {pendingCount > 0 && (
-          <div style={{ 
-            background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-            color: 'white',
+
+        <div style={{ 
+          padding: 20, 
+          background: '#fff', 
+          borderRadius: 12, 
+          border: '1px solid #e5e7eb',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+        }}>
+          <div style={{ fontSize: 14, color: '#6b7280', marginBottom: 8 }}>En attente</div>
+          <div style={{ fontSize: 32, fontWeight: 700, color: '#f59e0b' }}>{stats.pending}</div>
+        </div>
+
+        <div style={{ 
+          padding: 20, 
+          background: '#fff', 
+          borderRadius: 12, 
+          border: '1px solid #e5e7eb',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+        }}>
+          <div style={{ fontSize: 14, color: '#6b7280', marginBottom: 8 }}>Critiques</div>
+          <div style={{ fontSize: 32, fontWeight: 700, color: '#dc2626' }}>{stats.critical}</div>
+        </div>
+
+        <div style={{ 
+          padding: 20, 
+          background: '#fff', 
+          borderRadius: 12, 
+          border: '1px solid #e5e7eb',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+        }}>
+          <div style={{ fontSize: 14, color: '#6b7280', marginBottom: 8 }}>Résolus</div>
+          <div style={{ fontSize: 32, fontWeight: 700, color: '#10b981' }}>{stats.resolved}</div>
+        </div>
+      </div>
+
+      {/* Filters */}
+      <div style={{ 
+        marginBottom: 24, 
+        display: 'flex', 
+        gap: 12,
+        background: '#fff',
+        padding: 16,
+        borderRadius: 12,
+        border: '1px solid #e5e7eb'
+      }}>
+        <button
+          onClick={() => setFilter('all')}
+          style={{
             padding: '8px 16px',
-            borderRadius: 20,
-            fontSize: 14,
-            fontWeight: 600
-          }}>
-            🚨 {pendingCount} à traiter
-          </div>
-        )}
+            border: filter === 'all' ? '2px solid #2563eb' : '1px solid #e5e7eb',
+            borderRadius: '8px',
+            background: filter === 'all' ? 'rgba(37, 99, 235, 0.1)' : 'white',
+            color: filter === 'all' ? '#2563eb' : '#374151',
+            cursor: 'pointer',
+            fontSize: '14px',
+            fontWeight: filter === 'all' ? 600 : 400
+          }}
+        >
+          Tous ({reports.length})
+        </button>
+        <button
+          onClick={() => setFilter('pending')}
+          style={{
+            padding: '8px 16px',
+            border: filter === 'pending' ? '2px solid #f59e0b' : '1px solid #e5e7eb',
+            borderRadius: '8px',
+            background: filter === 'pending' ? 'rgba(245, 158, 11, 0.1)' : 'white',
+            color: filter === 'pending' ? '#f59e0b' : '#374151',
+            cursor: 'pointer',
+            fontSize: '14px',
+            fontWeight: filter === 'pending' ? 600 : 400
+          }}
+        >
+          ⏳ En attente ({stats.pending})
+        </button>
+        <button
+          onClick={() => setFilter('resolved')}
+          style={{
+            padding: '8px 16px',
+            border: filter === 'resolved' ? '2px solid #10b981' : '1px solid #e5e7eb',
+            borderRadius: '8px',
+            background: filter === 'resolved' ? 'rgba(16, 185, 129, 0.1)' : 'white',
+            color: filter === 'resolved' ? '#10b981' : '#374151',
+            cursor: 'pointer',
+            fontSize: '14px',
+            fontWeight: filter === 'resolved' ? 600 : 400
+          }}
+        >
+          ✅ Résolus ({stats.resolved})
+        </button>
       </div>
 
-      {/* Filtres et recherche */}
-      <div className="tl-card" style={{ padding: 20, marginBottom: 16 }}>
-        <div style={{ display: 'flex', gap: 16, marginBottom: 16 }}>
-          <input
-            type="text"
-            placeholder="Rechercher dans les signalements..."
-            value={filters.search}
-            onChange={handleSearch}
-            style={{
-              flex: 1,
-              padding: 12,
-              border: '1px solid #d1d5db',
-              borderRadius: 8,
-              fontSize: 14
-            }}
-          />
-          
-          <select
-            value={filters.type}
-            onChange={(e) => handleFilterChange('type', e.target.value)}
-            style={{
-              padding: 12,
-              border: '1px solid #d1d5db',
-              borderRadius: 8,
-              fontSize: 14,
-              minWidth: 120
-            }}
-          >
-            <option value="">Tous les types</option>
-            <option value="offer">Offre</option>
-            <option value="profile">Profil</option>
-            <option value="message">Message</option>
-            <option value="other">Autre</option>
-          </select>
-          
-          <select
-            value={filters.status}
-            onChange={(e) => handleFilterChange('status', e.target.value)}
-            style={{
-              padding: 12,
-              border: '1px solid #d1d5db',
-              borderRadius: 8,
-              fontSize: 14,
-              minWidth: 120
-            }}
-          >
-            <option value="">Tous les statuts</option>
-            <option value="pending">En attente</option>
-            <option value="resolved">Résolu</option>
-            <option value="rejected">Rejeté</option>
-          </select>
-        </div>
-      </div>
-
-      {/* Liste des signalements */}
-      <div style={{ display: 'grid', gap: 16 }}>
-        {reports.map((report) => (
-          <div 
-            key={report.id} 
-            className="tl-card" 
-            style={{ 
-              padding: 20,
-              borderLeft: `4px solid ${getPriorityColor(report.priority || 'medium')}`,
-              cursor: 'pointer',
-              transition: 'transform 0.2s, box-shadow 0.2s'
-            }}
-            onClick={() => {
-              setSelectedReport(report);
-              setShowDetailModal(true);
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
-              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                {getTypeBadge(report.report_type)}
-                {getStatusBadge(report.status)}
-                <span style={{ 
-                  fontSize: 12, 
-                  color: getPriorityColor(report.priority || 'medium'),
-                  fontWeight: 600
-                }}>
-                  {report.priority?.toUpperCase() || 'MEDIUM'}
-                </span>
-              </div>
-              <span style={{ fontSize: 12, color: '#9ca3af' }}>
-                {getTimeAgo(report.created_at)}
-              </span>
-            </div>
-            
-            <h4 style={{ margin: '0 0 8px 0', fontSize: 16, fontWeight: 600 }}>
-              {report.reason}
-            </h4>
-            
-            {report.description && (
-              <p style={{ 
-                margin: '0 0 12px 0', 
-                fontSize: 14, 
-                color: '#6b7280',
-                lineHeight: '1.5',
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden'
-              }}>
-                {report.description}
-              </p>
-            )}
-            
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 12, color: '#9ca3af' }}>
-              <div>
-                <span>Signalé par: Utilisateur #{report.reporter_user_id}</span>
-                {report.reported_entity_id && (
-                  <span> • Concernant: {report.report_type} #{report.reported_entity_id}</span>
-                )}
-              </div>
-              <div>
-                {formatDate(report.created_at)}
-              </div>
-            </div>
-            
-            {report.status === 'pending' && (
-              <div style={{ 
-                marginTop: 12, 
-                paddingTop: 12, 
-                borderTop: '1px solid #e5e7eb',
-                display: 'flex',
-                gap: 8
-              }}>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedReport(report);
-                    setShowDetailModal(true);
-                  }}
-                  style={{
-                    padding: '6px 12px',
-                    background: '#3b82f6',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: 6,
-                    cursor: 'pointer',
-                    fontSize: 12
-                  }}
-                >
-                  Examiner
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    rejectReport(report.id);
-                  }}
-                  style={{
-                    padding: '6px 12px',
-                    background: '#6b7280',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: 6,
-                    cursor: 'pointer',
-                    fontSize: 12
-                  }}
-                >
-                  Rejeter
-                </button>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-      
-      {reports.length === 0 && (
-        <div className="tl-card" style={{ padding: 40, textAlign: 'center' }}>
+      {/* Reports Table */}
+      {reports.length === 0 ? (
+        <div style={{ 
+          padding: 40, 
+          background: '#fff', 
+          borderRadius: 12, 
+          border: '1px solid #e5e7eb',
+          textAlign: 'center'
+        }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>📋</div>
-          <h3 style={{ margin: 0, marginBottom: 8, color: '#6b7280' }}>
-            Aucun signalement trouvé
-          </h3>
-          <p style={{ margin: 0, color: '#9ca3af' }}>
-            Les signalements des utilisateurs apparaîtront ici
-          </p>
+          <h3>Aucun signalement trouvé</h3>
+          <p style={{ color: '#6b7280' }}>Les signalements apparaîtront ici</p>
+        </div>
+      ) : (
+        <div style={{ 
+          background: '#fff', 
+          borderRadius: 12, 
+          border: '1px solid #e5e7eb',
+          overflow: 'hidden'
+        }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr style={{ background: '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
+                <th style={{ padding: '12px', textAlign: 'left', fontWeight: 600, fontSize: '13px', color: '#374151' }}>ID</th>
+                <th style={{ padding: '12px', textAlign: 'left', fontWeight: 600, fontSize: '13px', color: '#374151' }}>Type</th>
+                <th style={{ padding: '12px', textAlign: 'left', fontWeight: 600, fontSize: '13px', color: '#374151' }}>Raison</th>
+                <th style={{ padding: '12px', textAlign: 'left', fontWeight: 600, fontSize: '13px', color: '#374151' }}>Sévérité</th>
+                <th style={{ padding: '12px', textAlign: 'left', fontWeight: 600, fontSize: '13px', color: '#374151' }}>Statut</th>
+                <th style={{ padding: '12px', textAlign: 'left', fontWeight: 600, fontSize: '13px', color: '#374151' }}>Reporter</th>
+                <th style={{ padding: '12px', textAlign: 'left', fontWeight: 600, fontSize: '13px', color: '#374151' }}>Date</th>
+                <th style={{ padding: '12px', textAlign: 'center', fontWeight: 600, fontSize: '13px', color: '#374151' }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reports.map((report, index) => (
+                <tr 
+                  key={report.id}
+                  style={{ 
+                    borderBottom: index < reports.length - 1 ? '1px solid #f3f4f6' : 'none',
+                    transition: 'background 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#f9fafb'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = 'white'}
+                >
+                  <td style={{ padding: '12px', fontSize: '14px', fontWeight: 600 }}>#{report.id}</td>
+                  <td style={{ padding: '12px', fontSize: '14px' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span style={{ fontSize: '16px' }}>{getTypeIcon(report.reported_type)}</span>
+                      <span>{getTypeLabel(report.reported_type)}</span>
+                    </span>
+                  </td>
+                  <td style={{ padding: '12px', fontSize: '14px', color: '#374151', maxWidth: '200px' }}>
+                    {report.reason}
+                  </td>
+                  <td style={{ padding: '12px' }}>{getSeverityBadge(report.severity)}</td>
+                  <td style={{ padding: '12px' }}>{getStatusBadge(report.status)}</td>
+                  <td style={{ padding: '12px', fontSize: '14px', color: '#6b7280' }}>
+                    Candidat #{report.reporter_user_id}
+                  </td>
+                  <td style={{ padding: '12px', fontSize: '13px', color: '#9ca3af' }}>
+                    {formatDate(report.created_at)}
+                  </td>
+                  <td style={{ padding: '12px', textAlign: 'center' }}>
+                    <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                      <button
+                        onClick={() => setSelectedReport(report)}
+                        style={{
+                          padding: '6px 12px',
+                          background: '#2563eb',
+                          color: 'white',
+                          border: 'none',
+                          borderRadius: '6px',
+                          cursor: 'pointer',
+                          fontSize: '13px',
+                          fontWeight: 500
+                        }}
+                      >
+                        👁️ Voir
+                      </button>
+                      {(report.status === 'pending' || report.status === 'under_review') && (
+                        <button
+                          onClick={() => setProcessingReport(report)}
+                          style={{
+                            padding: '6px 12px',
+                            background: '#10b981',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            fontSize: '13px',
+                            fontWeight: 500
+                          }}
+                        >
+                          ⚖️ Traiter
+                        </button>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
 
-      {/* Modal de détail */}
-      {showDetailModal && selectedReport && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0,0,0,0.5)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          padding: 20
-        }}>
-          <div style={{
-            background: 'white',
-            borderRadius: 12,
-            width: '100%',
-            maxWidth: 600,
-            maxHeight: '90vh',
-            overflow: 'auto'
-          }}>
-            <div style={{ padding: 24, borderBottom: '1px solid #e5e7eb' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
-                <h3 style={{ margin: 0 }}>Détail du signalement #{selectedReport.id}</h3>
-                <button
-                  onClick={() => setShowDetailModal(false)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    fontSize: 20,
-                    cursor: 'pointer',
-                    color: '#6b7280'
-                  }}
-                >
-                  ×
-                </button>
+      {/* Modal Détails */}
+      {selectedReport && (
+        <div 
+          onClick={() => setSelectedReport(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000
+          }}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: 'white',
+              borderRadius: '12px',
+              padding: '24px',
+              maxWidth: '600px',
+              width: '90%',
+              maxHeight: '80vh',
+              overflow: 'auto'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+              <h2 style={{ margin: 0, fontSize: '20px' }}>
+                {getTypeIcon(selectedReport.reported_type)} Signalement #{selectedReport.id}
+              </h2>
+              <button 
+                onClick={() => setSelectedReport(null)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  fontSize: '24px',
+                  cursor: 'pointer',
+                  color: '#6b7280'
+                }}
+              >
+                ×
+              </button>
+            </div>
+
+            <div style={{ display: 'grid', gap: 16 }}>
+              <div>
+                <strong style={{ color: '#6b7280', fontSize: '13px' }}>Type:</strong>
+                <div style={{ marginTop: 4 }}>{getTypeLabel(selectedReport.reported_type)}</div>
               </div>
               
-              <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-                {getTypeBadge(selectedReport.report_type)}
-                {getStatusBadge(selectedReport.status)}
-                <span style={{ 
-                  padding: '4px 12px',
-                  borderRadius: 12,
-                  fontSize: 12,
-                  fontWeight: 600,
-                  background: '#f3f4f6',
-                  color: getPriorityColor(selectedReport.priority || 'medium')
-                }}>
-                  Priorité: {selectedReport.priority?.toUpperCase() || 'MEDIUM'}
-                </span>
+              <div>
+                <strong style={{ color: '#6b7280', fontSize: '13px' }}>Raison:</strong>
+                <div style={{ marginTop: 4 }}>{selectedReport.reason}</div>
+              </div>
+
+              {selectedReport.description && (
+                <div>
+                  <strong style={{ color: '#6b7280', fontSize: '13px' }}>Description:</strong>
+                  <div style={{ marginTop: 4 }}>{selectedReport.description}</div>
+                </div>
+              )}
+
+              <div>
+                <strong style={{ color: '#6b7280', fontSize: '13px' }}>Statut:</strong>
+                <div style={{ marginTop: 4 }}>{getStatusBadge(selectedReport.status)}</div>
+              </div>
+
+              <div>
+                <strong style={{ color: '#6b7280', fontSize: '13px' }}>Sévérité:</strong>
+                <div style={{ marginTop: 4 }}>{getSeverityBadge(selectedReport.severity)}</div>
+              </div>
+
+              <div>
+                <strong style={{ color: '#6b7280', fontSize: '13px' }}>Reporter:</strong>
+                <div style={{ marginTop: 4 }}>Candidat #{selectedReport.reporter_user_id}</div>
+              </div>
+
+              <div>
+                <strong style={{ color: '#6b7280', fontSize: '13px' }}>Date:</strong>
+                <div style={{ marginTop: 4 }}>{formatDate(selectedReport.created_at)}</div>
+              </div>
+
+              {selectedReport.admin_note && (
+                <div style={{ padding: 12, background: '#f3f4f6', borderRadius: 8 }}>
+                  <strong style={{ color: '#6b7280', fontSize: '13px' }}>📝 Note admin:</strong>
+                  <div style={{ marginTop: 4 }}>{selectedReport.admin_note}</div>
+                </div>
+              )}
+            </div>
+
+            {(selectedReport.status === 'pending' || selectedReport.status === 'under_review') && (
+              <div style={{ marginTop: 20, display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
+                <button
+                  onClick={() => {
+                    setSelectedReport(null);
+                    setProcessingReport(selectedReport);
+                  }}
+                  style={{
+                    padding: '10px 20px',
+                    background: '#10b981',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    fontWeight: 600
+                  }}
+                >
+                  ⚖️ Traiter ce signalement
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Modal Traitement */}
+      {processingReport && (
+        <div 
+          onClick={() => setProcessingReport(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000
+          }}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: 'white',
+              borderRadius: '12px',
+              padding: '24px',
+              maxWidth: '500px',
+              width: '90%'
+            }}
+          >
+            <h2 style={{ margin: '0 0 20px 0', fontSize: '20px' }}>
+              ⚖️ Traiter le signalement #{processingReport.id}
+            </h2>
+
+            <div style={{ 
+              padding: 16, 
+              background: '#f9fafb', 
+              borderRadius: 8, 
+              marginBottom: 20 
+            }}>
+              <div style={{ marginBottom: 8 }}>
+                <strong>Type:</strong> {getTypeLabel(processingReport.reported_type)}
+              </div>
+              <div style={{ marginBottom: 8 }}>
+                <strong>Raison:</strong> {processingReport.reason}
+              </div>
+              <div>
+                <strong>Sévérité:</strong> {getSeverityBadge(processingReport.severity)}
               </div>
             </div>
 
-            <div style={{ padding: 24 }}>
-              <div style={{ marginBottom: 20 }}>
-                <h4 style={{ margin: '0 0 8px 0', fontSize: 16 }}>Raison</h4>
-                <p style={{ margin: 0, fontSize: 14, color: '#374151' }}>
-                  {selectedReport.reason}
-                </p>
+            <div style={{ marginBottom: 20 }}>
+              <p style={{ fontWeight: 600, marginBottom: 12 }}>Choisissez un verdict:</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <button
+                  onClick={() => handleProcess(processingReport.id, 'valid')}
+                  style={{
+                    padding: '12px 20px',
+                    background: '#10b981',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    textAlign: 'left'
+                  }}
+                >
+                  ✅ Signalement justifié - Actions prises
+                </button>
+                <button
+                  onClick={() => handleProcess(processingReport.id, 'invalid')}
+                  style={{
+                    padding: '12px 20px',
+                    background: '#dc2626',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    textAlign: 'left'
+                  }}
+                >
+                  ❌ Signalement non justifié - Contenu conforme
+                </button>
+                <button
+                  onClick={() => setProcessingReport(null)}
+                  style={{
+                    padding: '12px 20px',
+                    background: '#f3f4f6',
+                    color: '#374151',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    fontWeight: 600
+                  }}
+                >
+                  Annuler
+                </button>
               </div>
-              
-              {selectedReport.description && (
-                <div style={{ marginBottom: 20 }}>
-                  <h4 style={{ margin: '0 0 8px 0', fontSize: 16 }}>Description</h4>
-                  <p style={{ margin: 0, fontSize: 14, color: '#374151', lineHeight: '1.5' }}>
-                    {selectedReport.description}
-                  </p>
-                </div>
-              )}
-              
-              <div style={{ marginBottom: 20 }}>
-                <h4 style={{ margin: '0 0 8px 0', fontSize: 16 }}>Informations</h4>
-                <div style={{ fontSize: 14, color: '#6b7280' }}>
-                  <div>Signalé par: Utilisateur #{selectedReport.reporter_user_id}</div>
-                  {selectedReport.reported_entity_id && (
-                    <div>Concernant: {selectedReport.report_type} #{selectedReport.reported_entity_id}</div>
-                  )}
-                  <div>Date: {formatDate(selectedReport.created_at)}</div>
-                </div>
-              </div>
-              
-              {selectedReport.resolution && (
-                <div style={{ marginBottom: 20 }}>
-                  <h4 style={{ margin: '0 0 8px 0', fontSize: 16 }}>Résolution</h4>
-                  <p style={{ margin: 0, fontSize: 14, color: '#374151', background: '#f9fafb', padding: 12, borderRadius: 8 }}>
-                    {selectedReport.resolution}
-                  </p>
-                </div>
-              )}
-              
-              {selectedReport.status === 'pending' && (
-                <div>
-                  <h4 style={{ margin: '0 0 8px 0', fontSize: 16 }}>Actions</h4>
-                  <div style={{ marginBottom: 16 }}>
-                    <label style={{ display: 'block', marginBottom: 8, fontSize: 14, fontWeight: 600 }}>
-                      Notes de résolution
-                    </label>
-                    <textarea
-                      value={resolution}
-                      onChange={(e) => setResolution(e.target.value)}
-                      placeholder="Indiquez les actions prises pour résoudre ce signalement..."
-                      style={{
-                        width: '100%',
-                        minHeight: 80,
-                        padding: 12,
-                        border: '1px solid #d1d5db',
-                        borderRadius: 8,
-                        fontSize: 14,
-                        resize: 'vertical'
-                      }}
-                    />
-                  </div>
-                  
-                  <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
-                    <button
-                      onClick={() => rejectReport(selectedReport.id)}
-                      style={{
-                        padding: '8px 16px',
-                        background: '#6b7280',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: 6,
-                        cursor: 'pointer'
-                      }}
-                    >
-                      Rejeter
-                    </button>
-                    <button
-                      onClick={() => resolveReport(selectedReport.id, resolution)}
-                      style={{
-                        padding: '8px 16px',
-                        background: '#16a34a',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: 6,
-                        cursor: 'pointer'
-                      }}
-                      disabled={!resolution.trim()}
-                    >
-                      Résoudre
-                    </button>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>

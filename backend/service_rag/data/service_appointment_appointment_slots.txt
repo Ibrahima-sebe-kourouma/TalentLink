@@ -1,0 +1,97 @@
+# BASE DE DONNÉES: APPOINTMENT_SLOTS
+# Extraction du: 2025-11-27T23:09:55.922921
+# Nombre d'enregistrements: 15
+
+================================================================================
+
+=== Créneau de rendez-vous ===
+
+ID: 1
+ID rendez-vous: 1
+proposed_datetime: 2025-11-19 10:06:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 2
+ID rendez-vous: 1
+proposed_datetime: 2025-11-20 13:08:00.000000
+is_chosen: 1
+
+=== Créneau de rendez-vous ===
+
+ID: 3
+ID rendez-vous: 1
+proposed_datetime: 2025-11-21 12:08:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 4
+ID rendez-vous: 2
+proposed_datetime: 2025-11-28 14:12:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 5
+ID rendez-vous: 2
+proposed_datetime: 2025-11-30 11:10:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 6
+ID rendez-vous: 2
+proposed_datetime: 2025-11-24 12:30:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 7
+ID rendez-vous: 3
+proposed_datetime: 2025-12-20 10:14:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 8
+ID rendez-vous: 3
+proposed_datetime: 2025-11-22 13:11:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 9
+ID rendez-vous: 3
+proposed_datetime: 2025-11-28 12:11:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 10
+ID rendez-vous: 4
+proposed_datetime: 2025-11-25 10:00:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 11
+ID rendez-vous: 4
+proposed_datetime: 2025-11-25 14:00:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 12
+ID rendez-vous: 4
+proposed_datetime: 2025-11-26 09:00:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 13
+ID rendez-vous: 5
+proposed_datetime: 2025-11-28 13:57:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 14
+ID rendez-vous: 5
+proposed_datetime: 2025-11-20 13:57:00.000000
+
+=== Créneau de rendez-vous ===
+
+ID: 15
+ID rendez-vous: 5
+proposed_datetime: 2025-11-28 16:54:00.000000
+is_chosen: 1

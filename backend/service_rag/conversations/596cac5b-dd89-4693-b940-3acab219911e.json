@@ -1,0 +1,78 @@
+{
+  "conversation_id": "596cac5b-dd89-4693-b940-3acab219911e",
+  "user_id": "43",
+  "title": "Comment postuler à une offre ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Comment postuler à une offre ?",
+      "timestamp": "2025-12-09T07:54:14.346284",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour postuler à une offre sur la plateforme TalentLink, suivez ces étapes :\n\n1. **Recherche d'offres** : Utilisez les filtres disponibles (domaine, localisation, mots-clés, type de contrat) pour trouver les offres qui vous intéressent.\n\n2. **Consultation des détails** : Cliquez sur l'offre d'emploi pour consulter les détails, y compris les exigences et les responsabilités.\n\n3. **Postuler** : Si l'offre vous convient, vous pouvez postuler directement depuis la plateforme en cliquant sur le bouton de candidature.\n\n4. **Suivi de votre candidature** : Une fois votre candidature soumise, vous pourrez suivre son état (en attente, acceptée, refusée) depuis votre tableau de bord.\n\nN'oubliez pas que vous pouvez également ajouter un message de motivation lors de votre candidature, si cela est requis ou souhaité. Si vous avez d'autres questions ou besoin d'assistance, n'hésitez pas à demander !",
+      "timestamp": "2025-12-09T07:54:20.867637",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5886608492629833,
+          "text": "977933\r\nmessage_motivation: [Retrait candidat: non jhe n'ebn veux pas]\r\n[Retrait candidat: non jhe n'ebn veux pas]\r\nDernière modification: 2025-11-19 18:52:41.192645\r\n\r\n=== Candidature ===\r\n\r\nID: 10\r\noffre_id: 29\r\nauth_user_id: 15\r\ncandidat_id: 11\r\nstatut: INTERVIEW\r\ndate_candidature: 2025-11-17 18:...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.5882683080705349,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.573329179910128,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Quelles sont les fonctionnalités pour les recruteurs ?",
+      "timestamp": "2025-12-09T07:54:42.383252",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Les recruteurs sur la plateforme TalentLink disposent de plusieurs fonctionnalités pour faciliter leur processus de recrutement. Voici un aperçu des principales fonctionnalités :\n\n1. **Création et gestion de compte** :\n   - Les recruteurs peuvent créer un compte et confirmer leur inscription par email.\n   - Ils peuvent se connecter à leur espace professionnel et accéder à leur tableau de bord.\n\n2. **Publication d'offres** :\n   - Les recruteurs peuvent publier des offres d'emploi, de stage ou d'alternance.\n   - Ils ont la possibilité de modifier ou de supprimer une offre publiée.\n   - Ils peuvent également désactiver temporairement une offre sans la supprimer ou archiver une offre expirée.\n\n3. **Gestion des candidatures** :\n   - Les recruteurs peuvent consulter la liste des candidatures reçues.\n   - Ils peuvent trier et filtrer les candidatures selon divers critères (date, statut, profil du candidat).\n   - Ils ont accès au profil détaillé et au portfolio des candidats.\n\n4. **Réponses aux candidatures** :\n   - Les recruteurs peuvent répondre à une candidature en l'acceptant, la refusant ou en demandant un entretien.\n\n5. **Notifications** :\n   - Ils reçoivent des notifications lors de nouvelles candidatures.\n\n6. **Messagerie interne** :\n   - Une messagerie interne permet la communication entre recruteurs et candidats, avec la possibilité de consulter l'historique des messages échangés et de supprimer une conversation.\n\nCes fonctionnalités visent à rendre le processus de recrutement plus efficace et organisé pour les recruteurs. Si vous avez d'autres questions ou besoin de précisions, n'hésitez pas à demander !",
+      "timestamp": "2025-12-09T07:54:49.949753",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.7311760172928247,
+          "text": "➢ Le recruteur peut consulter le profil détaillé d’un candidat.  \n➢ Le recruteur peut consulter le portfolio d’un candidat.  \n➢ Le recruteur peut répondre à une candidature (accepter, refuser, \ndemander un entretien).  \n➢ Le recruteur reçoit une notification lors de nouvelles candidatures.  \n \nExclu...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.7234980532663677,
+          "text": " Le candidat peut supprimer une candidature. \n Le tableau de bord candidat affiche : nombre de vues du profil, \ncandidatures envoyées, candidatures acceptées/refusées. \n Le recruteur peut créer un compte. \n Le recruteur peut confirmer son inscription par email. \n Le recruteur peut se connecter ...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.7142224391712784,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-09T07:54:14.327551",
+  "updated_at": "2025-12-09T07:54:49.949753",
+  "is_active": true
+}

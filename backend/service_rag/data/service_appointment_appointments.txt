@@ -1,0 +1,72 @@
+# BASE DE DONNÉES: APPOINTMENTS
+# Extraction du: 2025-11-27T23:09:55.920921
+# Nombre d'enregistrements: 5
+
+================================================================================
+
+=== Rendez-vous ===
+
+ID: 1
+ID recruteur: 14
+candidate_id: 4
+offer_id: 24
+position_title: plombier
+company_name: jobgoMontreal
+Statut: COMPLETED
+Créé le: 2025-11-19 15:04:54.316078
+updated_at: 2025-11-19 15:07:52.792721
+chosen_datetime: 2025-11-20 13:08:00.000000
+mode: ONLINE
+location_details: https:meet/appels
+additional_notes: merci
+
+=== Rendez-vous ===
+
+ID: 2
+ID recruteur: 14
+candidate_id: 15
+offer_id: 29
+position_title: cuisinier
+company_name: jobgoMontreal
+Statut: REFUSED
+Créé le: 2025-11-19 15:08:50.635850
+updated_at: 2025-11-19 15:27:25.471714
+
+=== Rendez-vous ===
+
+ID: 3
+ID recruteur: 14
+candidate_id: 15
+offer_id: 29
+position_title: cuisinier
+company_name: jobgoMontreal
+Statut: REFUSED
+Créé le: 2025-11-19 15:11:06.377477
+updated_at: 2025-11-19 15:18:45.087819
+
+=== Rendez-vous ===
+
+ID: 4
+ID recruteur: 14
+candidate_id: 2
+offer_id: 24
+position_title: Plombier
+company_name: Test Company
+Statut: REFUSED
+Créé le: 2025-11-19 15:25:12.925412
+updated_at: 2025-11-19 15:25:24.288084
+
+=== Rendez-vous ===
+
+ID: 5
+ID recruteur: 14
+candidate_id: 4
+offer_id: 29
+position_title: cuisinier
+company_name: jobgoMontreal
+Statut: COMPLETED
+Créé le: 2025-11-19 18:54:40.957686
+updated_at: 2025-11-19 18:56:08.599680
+chosen_datetime: 2025-11-28 16:54:00.000000
+mode: ONLINE
+location_details: htttp

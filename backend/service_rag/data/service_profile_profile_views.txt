@@ -1,0 +1,285 @@
+# BASE DE DONNÉES: PROFILE_VIEWS
+# Extraction du: 2025-11-27T23:09:55.918924
+# Nombre d'enregistrements: 40
+
+================================================================================
+
+=== Vue de profil ===
+
+ID: 1
+candidate_id: 12
+recruiter_auth_user_id: 14
+Vu le: 2025-11-02 21:31:09.797962
+
+=== Vue de profil ===
+
+ID: 2
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-02 21:32:05.462796
+
+=== Vue de profil ===
+
+ID: 3
+candidate_id: 12
+recruiter_auth_user_id: 14
+Vu le: 2025-11-02 21:34:29.635091
+
+=== Vue de profil ===
+
+ID: 4
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-02 21:43:49.768142
+
+=== Vue de profil ===
+
+ID: 5
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-02 21:43:53.798708
+
+=== Vue de profil ===
+
+ID: 6
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-02 21:47:44.370083
+
+=== Vue de profil ===
+
+ID: 7
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-02 21:54:04.398522
+
+=== Vue de profil ===
+
+ID: 8
+candidate_id: 11
+recruiter_auth_user_id: 14
+Vu le: 2025-11-02 22:02:35.143386
+
+=== Vue de profil ===
+
+ID: 9
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-03 12:35:13.973830
+
+=== Vue de profil ===
+
+ID: 10
+candidate_id: 12
+recruiter_auth_user_id: 14
+Vu le: 2025-11-03 13:00:08.839729
+
+=== Vue de profil ===
+
+ID: 11
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-03 13:00:12.925212
+
+=== Vue de profil ===
+
+ID: 12
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-03 13:03:20.917153
+
+=== Vue de profil ===
+
+ID: 13
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-03 13:09:03.376042
+
+=== Vue de profil ===
+
+ID: 14
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-03 13:11:00.839785
+
+=== Vue de profil ===
+
+ID: 15
+candidate_id: 13
+recruiter_auth_user_id: 14
+Vu le: 2025-11-03 18:58:08.138592
+
+=== Vue de profil ===
+
+ID: 16
+candidate_id: 13
+recruiter_auth_user_id: 14
+Vu le: 2025-11-03 18:58:11.759623
+
+=== Vue de profil ===
+
+ID: 17
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-13 07:06:52.972277
+
+=== Vue de profil ===
+
+ID: 18
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-13 07:09:15.512508
+
+=== Vue de profil ===
+
+ID: 19
+candidate_id: 11
+recruiter_auth_user_id: 14
+Vu le: 2025-11-13 09:41:42.905899
+
+=== Vue de profil ===
+
+ID: 20
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-13 20:01:52.795135
+
+=== Vue de profil ===
+
+ID: 21
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-13 20:03:01.795418
+
+=== Vue de profil ===
+
+ID: 22
+candidate_id: 13
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 13:56:24.799495
+
+=== Vue de profil ===
+
+ID: 23
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 13:56:31.175043
+
+=== Vue de profil ===
+
+ID: 24
+candidate_id: 13
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:00:19.864853
+
+=== Vue de profil ===
+
+ID: 25
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:04:29.576342
+
+=== Vue de profil ===
+
+ID: 26
+candidate_id: 12
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:06:04.262786
+
+=== Vue de profil ===
+
+ID: 27
+candidate_id: 13
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:06:33.142150
+
+=== Vue de profil ===
+
+ID: 28
+candidate_id: 13
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:06:58.543923
+
+=== Vue de profil ===
+
+ID: 29
+candidate_id: 11
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:07:03.611733
+
+=== Vue de profil ===
+
+ID: 30
+candidate_id: 12
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:10:23.761895
+
+=== Vue de profil ===
+
+ID: 31
+candidate_id: 13
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:12:00.211033
+
+=== Vue de profil ===
+
+ID: 32
+candidate_id: 11
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:12:39.245857
+
+=== Vue de profil ===
+
+ID: 33
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:12:43.744754
+
+=== Vue de profil ===
+
+ID: 34
+candidate_id: 13
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:16:07.887159
+
+=== Vue de profil ===
+
+ID: 35
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-16 14:17:04.680341
+
+=== Vue de profil ===
+
+ID: 36
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-17 18:47:47.151480
+
+=== Vue de profil ===
+
+ID: 37
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-18 17:24:26.226765
+
+=== Vue de profil ===
+
+ID: 38
+candidate_id: 13
+recruiter_auth_user_id: 14
+Vu le: 2025-11-19 05:33:06.746900
+
+=== Vue de profil ===
+
+ID: 39
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-19 18:52:15.627844
+
+=== Vue de profil ===
+
+ID: 40
+candidate_id: 2
+recruiter_auth_user_id: 14
+Vu le: 2025-11-19 18:53:54.870126

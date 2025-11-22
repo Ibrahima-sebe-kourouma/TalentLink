@@ -208,18 +208,6 @@ export default function CandidateDashboard({ user }) {
     }
   };
 
-  const getStatusColor = (status) => {
-    const colors = {
-      submitted: '#3b82f6',
-      in_review: '#3b82f6',
-      interview: '#eab308',
-      offered: '#22c55e',
-      rejected: '#ef4444',
-      withdrawn: '#6b7280'
-    };
-    return colors[status] || '#6b7280';
-  };
-
   const getStatusLabel = (status) => {
     const labels = {
       submitted: 'Soumise',

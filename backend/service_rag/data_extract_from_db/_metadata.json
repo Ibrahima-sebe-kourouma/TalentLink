@@ -1,0 +1,34 @@
+{
+  "extraction_date": "2025-11-27T23:09:55.924923",
+  "services": [
+    "service_offers",
+    "service_profile",
+    "service_appointment"
+  ],
+  "total_tables": 8,
+  "config": {
+    "service_offers": {
+      "db_path": "../service_offers/database/database.db",
+      "tables": [
+        "offers",
+        "applications"
+      ]
+    },
+    "service_profile": {
+      "db_path": "../service_profile/database/database.db",
+      "tables": [
+        "candidats",
+        "recruteurs",
+        "profile_views"
+      ]
+    },
+    "service_appointment": {
+      "db_path": "../service_appointment/database/appointments.db",
+      "tables": [
+        "appointments",
+        "appointment_candidates",
+        "appointment_slots"
+      ]
+    }
+  }
+}

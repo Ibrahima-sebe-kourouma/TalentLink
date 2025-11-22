@@ -50,3 +50,27 @@ def delete_application_endpoint(app_id: int, user_id: int, db: Session = Depends
 @router.get("/stats/by-user")
 def stats_by_user_endpoint(user_id: int, db: Session = Depends(get_db)):
     return stats_for_user(db, user_id)
+
+
+@router.get("/stats", include_in_schema=False)
+def get_applications_stats(db: Session = Depends(get_db)):
+    """Statistiques des candidatures pour le dashboard admin"""
+    from models.application import ApplicationDB
+    
+    total = db.query(ApplicationDB).count()
+    submitted = db.query(ApplicationDB).filter(ApplicationDB.statut == "submitted").count()
+    in_review = db.query(ApplicationDB).filter(ApplicationDB.statut == "in_review").count()
+    interview = db.query(ApplicationDB).filter(ApplicationDB.statut == "interview").count()
+    offered = db.query(ApplicationDB).filter(ApplicationDB.statut == "offered").count()
+    rejected = db.query(ApplicationDB).filter(ApplicationDB.statut == "rejected").count()
+    withdrawn = db.query(ApplicationDB).filter(ApplicationDB.statut == "withdrawn").count()
+    
+    return {
+        "total": total,
+        "submitted": submitted,
+        "in_review": in_review,
+        "interview": interview,
+        "offered": offered,
+        "rejected": rejected,
+        "withdrawn": withdrawn
+    }

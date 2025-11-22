@@ -1,0 +1,58 @@
+{
+  "conversation_id": "ea13087e-2309-41d6-b688-c7fbe6f28156",
+  "user_id": "913",
+  "title": "Qu'est-ce que TalentLink ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Qu'est-ce que TalentLink ?",
+      "timestamp": "2025-12-09T07:54:49.963382",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "TalentLink est une plateforme web intuitive conçue pour aider les candidats à gérer efficacement leur recherche d'emploi. Son objectif principal est de simplifier et centraliser le processus de recherche d'emploi en offrant une interface moderne et ergonomique. Les fonctionnalités clés de TalentLink incluent :\n\n- La création et la gestion d'un compte personnel sécurisé.\n- La construction d'un profil professionnel complet, incluant compétences, formations, expériences et portfolio.\n- La recherche et la candidature à des offres d'emploi pertinentes.\n- Le suivi en temps réel de l'évolution des candidatures.\n\nTalentLink vise à répondre aux défis rencontrés par les candidats, tels que la multiplicité des plateformes, la difficulté à suivre l'état des candidatures, et le manque d'interaction fluide entre les profils et les offres disponibles. La plateforme s'adresse principalement aux étudiants à la recherche de stages ou d'alternances, aux jeunes diplômés, ainsi qu'aux candidats expérimentés souhaitant gérer leurs candidatures de manière organisée.",
+      "timestamp": "2025-12-09T07:54:56.501724",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5805339557737069,
+          "text": "2. Objectifs du projet  \n \nL’objectif de la version 1 de notre projet TalentLink est de concevoir et \ndévelopper une plateforme web intuitive permettant aux candidats de gérer \nefficacement leur recherche d’emploi. \nLe système doit offrir une expérience fluide pour : \n Créer et gérer un compte pers...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.5277619459937795,
+          "text": "Document de Conception - Application de \nrecherche d’emploi/mise en relation \n1. Page de garde   \n    \nTitre du projet : TalentLink  \n  \nÉquipe : InnovLife (Nanouga Daouda Yeo, Ibrahima Sebe \nKourouma)  \n  \nDate : 15 novembre 2025   \n  \n➢ Cours : Documentation technique   \n  \n➢ Frontend : Nanouga Da...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.4900619420154584,
+          "text": "Stack: React, Chart.js, FastAPI, SQLAlchemy, SQLite/PostgreSQL. Vous travaillerez sur le produit TalentLink et contribuerez aux nouvelles fonctionnalités.\",\r\n      \"type_contrat\": \"CDI\",\r\n      \"localisation\": \"Paris, France\",\r\n      \"entreprise\": \"TalentLink\",\r\n      \"domaine\": \"Informatique / SaaS...",
+          "document_name": "service_offers_offers.json",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.4718446572189728,
+          "text": "Document d’analyse des besoins\n\n\n\nTitre du projet : TalentLink\n\nÉquipe : InnovLife (Nanouga Daouda Yeo, Ibrahima Sebe Kourouma)\n\nDate : 06 octobre 2025 \n\nCours : Documentation technique \n\nEnseignant : Safouen Bani \n\n \n\n \n\n1. Introduction \n\nObjectif du document : Définir les besoins fonctionnels et n...",
+          "document_name": "Doc_Analyse_Besoins - Copie.docx",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.4661172169642926,
+          "text": "Ce sprint inclut principalement : \n• Des actions supplémentaires pour le candidat (suppression candidature, \nsuppression compte, statistiques avancées). \n• L’intégration complète du rôle Recruteur (création de compte, offres \nd’emploi, gestion des candidatures). \n• Ajout des premières interactions e...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-09T07:54:49.956354",
+  "updated_at": "2025-12-09T07:54:56.501724",
+  "is_active": true
+}

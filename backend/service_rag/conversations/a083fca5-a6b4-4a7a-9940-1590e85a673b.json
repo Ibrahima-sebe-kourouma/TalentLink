@@ -1,0 +1,250 @@
+{
+  "conversation_id": "a083fca5-a6b4-4a7a-9940-1590e85a673b",
+  "user_id": "4",
+  "title": "bonjour ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "bonjour ?",
+      "timestamp": "2025-12-08T21:50:03.436489",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Bonjour ! Comment puis-je vous aider aujourd'hui ? Si vous avez des questions sur les offres d'emploi ou les candidatures, n'hésitez pas à me le faire savoir.",
+      "timestamp": "2025-12-08T21:50:07.215656",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.37278228202083613,
+          "text": "Prototypage, design system, tests utilisateurs, accessibilité.\",\r\n      \"type_contrat\": \"FREELANCE\",\r\n      \"localisation\": \"Remote\",\r\n      \"entreprise\": \"TalentLink\",\r\n      \"domaine\": \"Design / Produit\",\r\n      \"mots_cles\": \"figma,ui,ux,design-system\",\r\n      \"remote\": 1,\r\n      \"salaire_min\": 35...",
+          "document_name": "service_offers_offers.json",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.3703510640193877,
+          "text": "977933\r\nmessage_motivation: [Retrait candidat: non jhe n'ebn veux pas]\r\n[Retrait candidat: non jhe n'ebn veux pas]\r\nDernière modification: 2025-11-19 18:52:41.192645\r\n\r\n=== Candidature ===\r\n\r\nID: 10\r\noffre_id: 29\r\nauth_user_id: 15\r\ncandidat_id: 11\r\nstatut: INTERVIEW\r\ndate_candidature: 2025-11-17 18:...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.36715269945401874,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.3643176006733815,
+          "text": "Maîtrise d'Excel, SQL et un outil de dataviz (Chart.js ou équivalent).\r\ntype_contrat: CDD\r\nlocalisation: Lyon, France\r\nentreprise: TalentLink\r\ndomaine: Data / RH\r\nmots_cles: sql,excel,dataviz,kpi\r\nsalaire_min: 30000\r\nsalaire_max: 38000\r\nexperience_requise: Stage/alternance ou 0-1 an d'expérience\r\ned...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.36006377520335875,
+          "text": "Vous travaillerez avec les équipes commerciales pour accroître la visibilité de la marque.\r\ntype_contrat: CDI\r\nlocalisation: Montréal, QC\r\nentreprise: MarketBoost Agency\r\ndomaine: Marketing\r\nmots_cles: SEO,Google Ads,Facebook Ads,Analytics,Content\r\nremote: 1\r\nsalaire_min: 55000\r\nsalaire_max: 75000\r\n...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "c'est quoi talenLink ?",
+      "timestamp": "2025-12-08T21:50:37.513144",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "TalentLink est une plateforme web conçue pour aider les candidats à gérer efficacement leur recherche d'emploi. Son objectif principal est de simplifier et centraliser le processus de recherche d'emploi en offrant une interface moderne et ergonomique. Les utilisateurs peuvent créer et gérer un compte personnel sécurisé, construire un profil professionnel complet, rechercher et postuler à des offres d'emploi pertinentes, et suivre en temps réel l'évolution de leurs candidatures.\n\nTalentLink s'adresse principalement aux étudiants à la recherche de stages ou d'alternances, aux jeunes diplômés en quête de leur premier emploi, ainsi qu'aux candidats expérimentés souhaitant organiser leurs candidatures. La plateforme vise à résoudre les problèmes courants rencontrés par les candidats, tels que la multiplicité des plateformes, la difficulté à suivre l'état de leurs candidatures, et le manque d'interaction fluide entre leur profil et les offres disponibles.",
+      "timestamp": "2025-12-08T21:50:42.866788",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.4769315196098585,
+          "text": "2. Objectifs du projet  \n \nL’objectif de la version 1 de notre projet TalentLink est de concevoir et \ndévelopper une plateforme web intuitive permettant aux candidats de gérer \nefficacement leur recherche d’emploi. \nLe système doit offrir une expérience fluide pour : \n Créer et gérer un compte pers...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.468290570383003,
+          "text": "Document de Conception - Application de \nrecherche d’emploi/mise en relation \n1. Page de garde   \n    \nTitre du projet : TalentLink  \n  \nÉquipe : InnovLife (Nanouga Daouda Yeo, Ibrahima Sebe \nKourouma)  \n  \nDate : 15 novembre 2025   \n  \n➢ Cours : Documentation technique   \n  \n➢ Frontend : Nanouga Da...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.4423266089126719,
+          "text": "Document de Conception - Application gestion \ndes taches  \n1. Page de garde  \n \n  \nTitre du projet : TalentLink \n \nÉquipe : InnovLife (Nanouga Daouda Yeo, Ibrahima \nSebe Kourouma) \n \nDate : 20 octobre 2025  \n \n Cours : Documentation technique  \n \n Frontend : Nanouga Daouda Yeo \n \n Backend : Ibrah...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.40209570170275705,
+          "text": "Stack: React, Chart.js, FastAPI, SQLAlchemy, SQLite/PostgreSQL. Vous travaillerez sur le produit TalentLink et contribuerez aux nouvelles fonctionnalités.\",\r\n      \"type_contrat\": \"CDI\",\r\n      \"localisation\": \"Paris, France\",\r\n      \"entreprise\": \"TalentLink\",\r\n      \"domaine\": \"Informatique / SaaS...",
+          "document_name": "service_offers_offers.json",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.3972290461974935,
+          "text": "Maîtrise d'Excel, SQL et un outil de dataviz (Chart.js ou équivalent).\r\ntype_contrat: CDD\r\nlocalisation: Lyon, France\r\nentreprise: TalentLink\r\ndomaine: Data / RH\r\nmots_cles: sql,excel,dataviz,kpi\r\nsalaire_min: 30000\r\nsalaire_max: 38000\r\nexperience_requise: Stage/alternance ou 0-1 an d'expérience\r\ned...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "donne moi la liste des candidat ?",
+      "timestamp": "2025-12-08T21:51:01.866697",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Voici la liste des candidats qui ont participé à des rendez-vous :\n\n1. **Ibrahima sebe Kourouma**\n   - ID candidat : 4\n   - Email : Kibse03@gmail.com\n   - Poste : Plombier\n   - Entreprise : jobgoMontreal\n   - Statut de la candidature : Interview\n   - Date ajoutée : 2025-11-19\n\n2. **Nanouga Daouda**\n   - ID candidat : 15\n   - Email : nanougadaouda@gmail.com\n   - Poste : Cuisinier\n   - Entreprise : jobgoMontreal\n   - Statut de la candidature : Interview\n   - Date ajoutée : 2025-11-19\n\n3. **Candidat Test**\n   - ID candidat : 2\n   - Email : candidat@test.com\n   - Poste : Plombier\n   - Entreprise : Test Company\n   - Statut de la candidature : Interview\n   - Date ajoutée : 2025-11-19\n\n4. **Ibrahima sebe Kourouma** (candidature pour un autre poste)\n   - ID candidat : 4\n   - Email : Kibse03@gmail.com\n   - Poste : Cuisinier\n   - Entreprise : jobgoMontreal\n   - Statut de la candidature : Interview\n   - Date ajoutée : 2025-11-19\n\n5. **Ibrahima sebe Kourouma** (candidature pour un autre poste)\n   - ID candidat : 4\n   - Email : Kibse03@gmail.com\n   - Poste : Caissier\n   - Entreprise : jobgoMontreal\n   - Statut de la candidature : Offered\n   - Date ajoutée : 2025-11-19\n\nSi vous avez besoin de plus d'informations sur un candidat spécifique ou d'autres détails, n'hésitez pas à demander !",
+      "timestamp": "2025-12-08T21:51:10.458936",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.469442214946468,
+          "text": "# BASE DE DONNÉES: APPOINTMENT_CANDIDATES\r\n# Extraction du: 2025-11-27T23:09:55.921921\r\n# Nombre d'enregistrements: 5\r\n\r\n================================================================================\r\n\r\n=== Participant au rendez-vous ===\r\n\r\nID: 1\r\nrecruiter_id: 14\r\nID candidat: 4\r\noffer_id: 24\r\nca...",
+          "document_name": "service_appointment_appointment_candidates.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.46756230353916584,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.45792187147785385,
+          "text": "# BASE DE DONNÉES: CANDIDATS\r\n# Extraction du: 2025-11-27T23:09:55.915405\r\n# Nombre d'enregistrements: 13\r\n\r\n================================================================================\r\n\r\n=== Profil Candidat ===\r\n\r\nID: 1\r\nauth_user_id: 3\r\nNom: daouda\r\nPrénom: ben\r\nEmail: user3@gmail.com\r\nDate d...",
+          "document_name": "service_profile_candidats.txt",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.4553380159913066,
+          "text": "977933\r\nmessage_motivation: [Retrait candidat: non jhe n'ebn veux pas]\r\n[Retrait candidat: non jhe n'ebn veux pas]\r\nDernière modification: 2025-11-19 18:52:41.192645\r\n\r\n=== Candidature ===\r\n\r\nID: 10\r\noffre_id: 29\r\nauth_user_id: 15\r\ncandidat_id: 11\r\nstatut: INTERVIEW\r\ndate_candidature: 2025-11-17 18:...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.42219465573244824,
+          "text": " 7.3 Diagramme de séquence :   \n \n7.3.1 Séquence : Candidat supprime une candidature \n \n \n \n  \n \n \n \n \n7.3.2 Séquence : Recruteur publie une offre",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "donne moi la liste des rendez vous ?",
+      "timestamp": "2025-12-08T21:51:32.370888",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Voici la liste des rendez-vous :\n\n1. **Rendez-vous ID : 1**\n   - **Candidat :** Ibrahima sebe Kourouma\n   - **Poste :** Plombier\n   - **Entreprise :** jobgoMontreal\n   - **Statut :** COMPLETED\n   - **Date de création :** 2025-11-19\n   - **Date choisie :** 2025-11-20 à 13:08\n   - **Mode :** ONLINE\n   - **Détails de localisation :** [Lien de la réunion](https://meet/appels)\n   - **Notes supplémentaires :** merci\n\n2. **Rendez-vous ID : 2**\n   - **Candidat :** Nanouga Daouda\n   - **Poste :** Cuisinier\n   - **Entreprise :** jobgoMontreal\n   - **Statut :** REFUSED\n   - **Date de création :** 2025-11-19\n\n3. **Rendez-vous ID : 3**\n   - **Candidat :** Nanouga Daouda\n   - **Poste :** Cuisinier\n   - **Entreprise :** jobgoMontreal\n   - **Statut :** REFUSED\n   - **Date de création :** 2025-11-19\n\n4. **Rendez-vous ID : 4**\n   - **Candidat :** Candidat Test\n   - **Poste :** Plombier\n   - **Entreprise :** Test Company\n   - **Statut :** REFUSED\n   - **Date de création :** 2025-11-19\n\n5. **Rendez-vous ID : 5**\n   - **Candidat :** Ibrahima sebe Kourouma\n   - **Poste :** Cuisinier\n   - **Entreprise :** jobgoMontreal\n   - **Statut :** COMPLETED\n   - **Date de création :** 2025-11-19\n   - **Date choisie :** 2025-11-28 à 16:54\n   - **Mode :** ONLINE\n   - **Détails de localisation :** htttp\n\nSi vous avez besoin de plus d'informations sur un rendez-vous spécifique, n'hésitez pas à demander !",
+      "timestamp": "2025-12-08T21:51:44.447534",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.4879531077852731,
+          "text": "# BASE DE DONNÉES: APPOINTMENTS\r\n# Extraction du: 2025-11-27T23:09:55.920921\r\n# Nombre d'enregistrements: 5\r\n\r\n================================================================================\r\n\r\n=== Rendez-vous ===\r\n\r\nID: 1\r\nID recruteur: 14\r\ncandidate_id: 4\r\noffer_id: 24\r\nposition_title: plombier\r\n...",
+          "document_name": "service_appointment_appointments.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.4800982653206887,
+          "text": "# BASE DE DONNÉES: APPOINTMENT_SLOTS\r\n# Extraction du: 2025-11-27T23:09:55.922921\r\n# Nombre d'enregistrements: 15\r\n\r\n================================================================================\r\n\r\n=== Créneau de rendez-vous ===\r\n\r\nID: 1\r\nID rendez-vous: 1\r\nproposed_datetime: 2025-11-19 10:06:00....",
+          "document_name": "service_appointment_appointment_slots.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.4387114741804325,
+          "text": "# BASE DE DONNÉES: APPOINTMENT_CANDIDATES\r\n# Extraction du: 2025-11-27T23:09:55.921921\r\n# Nombre d'enregistrements: 5\r\n\r\n================================================================================\r\n\r\n=== Participant au rendez-vous ===\r\n\r\nID: 1\r\nrecruiter_id: 14\r\nID candidat: 4\r\noffer_id: 24\r\nca...",
+          "document_name": "service_appointment_appointment_candidates.txt",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.3752267743678429,
+          "text": "{\r\n  \"table_name\": \"appointments\",\r\n  \"columns\": [\r\n    \"id\",\r\n    \"recruiter_id\",\r\n    \"candidate_id\",\r\n    \"offer_id\",\r\n    \"position_title\",\r\n    \"company_name\",\r\n    \"status\",\r\n    \"created_at\",\r\n    \"updated_at\",\r\n    \"chosen_datetime\",\r\n    \"mode\",\r\n    \"location_details\",\r\n    \"additional_not...",
+          "document_name": "service_appointment_appointments.json",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.3736684014494074,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "d'accord donne moi le nom des recruteur ?",
+      "timestamp": "2025-12-08T21:53:03.551997",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Le recruteur est **jobgo**, qui travaille pour l'entreprise **jobgoMontreal**. Voici les détails supplémentaires :\n\n- **Email :** jobgo@gmail.com\n- **Téléphone :** 5145596868\n- **Adresse :** 6529 rue cadina, H4T9Y8\n- **Site web :** [jobgo.com](http://jobgo.com)\n- **Rôle :** Donner la chance à tous\n- **Préférences de recrutement :** Nous recrutons des travailleurs motivés prêts à relever de nouveaux défis.\n\nSi vous avez besoin de plus d'informations, n'hésitez pas à demander !",
+      "timestamp": "2025-12-08T21:53:08.459383",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5964801089464499,
+          "text": "# BASE DE DONNÉES: RECRUTEURS\r\n# Extraction du: 2025-11-27T23:09:55.916410\r\n# Nombre d'enregistrements: 1\r\n\r\n================================================================================\r\n\r\n=== Profil Recruteur ===\r\n\r\nID: 1\r\nID utilisateur: 14\r\nname: jobgo\r\nprenom: jobgo\r\nemail: jobgo@gmail.com\r\n...",
+          "document_name": "service_profile_recruteurs.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.5384202861858429,
+          "text": "# BASE DE DONNÉES: APPOINTMENT_CANDIDATES\r\n# Extraction du: 2025-11-27T23:09:55.921921\r\n# Nombre d'enregistrements: 5\r\n\r\n================================================================================\r\n\r\n=== Participant au rendez-vous ===\r\n\r\nID: 1\r\nrecruiter_id: 14\r\nID candidat: 4\r\noffer_id: 24\r\nca...",
+          "document_name": "service_appointment_appointment_candidates.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.5317127408124173,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.5298122838307631,
+          "text": "# BASE DE DONNÉES: APPOINTMENTS\r\n# Extraction du: 2025-11-27T23:09:55.920921\r\n# Nombre d'enregistrements: 5\r\n\r\n================================================================================\r\n\r\n=== Rendez-vous ===\r\n\r\nID: 1\r\nID recruteur: 14\r\ncandidate_id: 4\r\noffer_id: 24\r\nposition_title: plombier\r\n...",
+          "document_name": "service_appointment_appointments.txt",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.5248231731395319,
+          "text": "7.3.3 Séquence : Recruteur consulte candidatures",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-08T21:50:03.431319",
+  "updated_at": "2025-12-08T21:53:08.459383",
+  "is_active": true
+}

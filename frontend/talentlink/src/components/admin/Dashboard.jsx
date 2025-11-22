@@ -16,6 +16,8 @@ import { Line, Pie } from 'react-chartjs-2';
 import { API_AUTH_URL } from "../../constants/api";
 import "../../styles/dashboard.css";
 
+const API_REPORT = 'http://localhost:8007';
+
 // Register Chart.js components
 ChartJS.register(
   CategoryScale,
@@ -65,18 +67,34 @@ export default function AdminDashboard({ user }) {
   // Charger les rapports récents
   const fetchRecentReports = async () => {
     try {
-      const token = user?.access_token;
-      if (!token) return;
-      const res = await fetch(`${API_AUTH_URL}/admin/reports?limit=5`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      if (!user?.id) return;
+      
+      console.log('📊 Dashboard - Fetching recent reports...');
+      const res = await fetch(`${API_REPORT}/reports/admin/all?admin_user_id=${user.id}`);
       
       if (res.ok) {
         const data = await res.json();
-        setRecentReports(data);
+        console.log('📊 Dashboard - Reports loaded:', data);
+        // Prendre seulement les 5 plus récents
+        setRecentReports(Array.isArray(data) ? data.slice(0, 5) : []);
+        
+        // Mettre à jour les stats de signalements
+        if (Array.isArray(data)) {
+          const pendingCount = data.filter(r => r.status === 'pending').length;
+          setStats(prev => ({
+            ...prev,
+            reports: {
+              ...prev.reports,
+              pending: pendingCount,
+              total: data.length
+            }
+          }));
+        }
+      } else {
+        console.error('📊 Dashboard - Error loading reports:', res.status);
       }
     } catch (e) {
-      console.error("Erreur chargement signalements:", e);
+      console.error("📊 Dashboard - Erreur chargement signalements:", e);
     }
   };
 
@@ -324,7 +342,7 @@ export default function AdminDashboard({ user }) {
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
                     <span style={{ fontWeight: 600, fontSize: 14 }}>
-                      {formatReportType(report.report_type)}
+                      {formatReportType(report.reported_type || report.report_type)}
                     </span>
                     <span style={{ 
                       fontSize: 12, 

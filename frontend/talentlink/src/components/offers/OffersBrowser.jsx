@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API_OFFERS_URL } from "../../constants/api";
+import { API_OFFERS_URL, API_REPORT_URL } from "../../constants/api";
 import "../../styles/offers.css";
 
 export default function OffersBrowser({ user, candidat }) {
@@ -9,6 +9,10 @@ export default function OffersBrowser({ user, candidat }) {
   const [selected, setSelected] = useState(null);
   const [applyMessage, setApplyMessage] = useState("");
   const [applyStatus, setApplyStatus] = useState({ ok: null, msg: "" });
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [reportReason, setReportReason] = useState("");
+  const [reportDescription, setReportDescription] = useState("");
+  const [reportStatus, setReportStatus] = useState({ ok: null, msg: "" });
 
   const refresh = React.useCallback(async () => {
     setLoading(true);
@@ -55,6 +59,40 @@ export default function OffersBrowser({ user, candidat }) {
       }
     } catch (e) {
       setApplyStatus({ ok: false, msg: "Erreur de connexion" });
+    }
+  };
+
+  const handleReportOffer = async () => {
+    if (!selected || !reportReason.trim()) {
+      alert("Veuillez sélectionner une raison");
+      return;
+    }
+    setReportStatus({ ok: null, msg: "" });
+    try {
+      const res = await fetch(`${API_REPORT_URL}/reports/?user_id=${user.id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reported_type: "offer",
+          reported_id: String(selected.id),
+          reason: reportReason,
+          description: reportDescription.trim() || null
+        })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setReportStatus({ ok: true, msg: "Signalement envoyé avec succès" });
+        setTimeout(() => {
+          setShowReportModal(false);
+          setReportReason("");
+          setReportDescription("");
+          setReportStatus({ ok: null, msg: "" });
+        }, 2000);
+      } else {
+        setReportStatus({ ok: false, msg: data?.detail || "Erreur lors du signalement" });
+      }
+    } catch (e) {
+      setReportStatus({ ok: false, msg: "Erreur de connexion" });
     }
   };
 
@@ -210,13 +248,23 @@ export default function OffersBrowser({ user, candidat }) {
           <div className="offer-detail">
             <div className="offer-detail-header">
               <h3 className="offer-detail-title">{selected.titre}</h3>
-              <button 
-                onClick={() => setSelected(null)}
-                className="offer-detail-close"
-                aria-label="Fermer"
-              >
-                ✕
-              </button>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <button 
+                  onClick={() => setShowReportModal(true)}
+                  className="offer-btn-report"
+                  style={{ padding: '6px 12px', background: '#ef4444', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '14px' }}
+                  title="Signaler cette offre"
+                >
+                  🚩 Signaler
+                </button>
+                <button 
+                  onClick={() => setSelected(null)}
+                  className="offer-detail-close"
+                  aria-label="Fermer"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
             
             <div className="offer-detail-company">
@@ -326,6 +374,63 @@ export default function OffersBrowser({ user, candidat }) {
           </div>
         )}
       </div>
+
+      {/* Modal de signalement */}
+      {showReportModal && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
+          <div style={{ background: 'white', borderRadius: '12px', padding: '24px', width: '90%', maxWidth: '500px', boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <h3 style={{ margin: 0 }}>🚩 Signaler cette offre</h3>
+              <button onClick={() => { setShowReportModal(false); setReportStatus({ ok: null, msg: "" }); }} style={{ background: 'transparent', border: 'none', fontSize: '24px', cursor: 'pointer' }}>✕</button>
+            </div>
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500 }}>Raison du signalement *</label>
+              <select 
+                value={reportReason} 
+                onChange={(e) => setReportReason(e.target.value)}
+                style={{ width: '100%', padding: '10px', border: '1px solid #d1d5db', borderRadius: '6px' }}
+              >
+                <option value="">-- Sélectionnez une raison --</option>
+                <option value="Contenu inapproprié">Contenu inapproprié</option>
+                <option value="Fausse offre">Fausse offre</option>
+                <option value="Discrimination">Discrimination</option>
+                <option value="Salaire trompeur">Salaire trompeur</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500 }}>Description (optionnel)</label>
+              <textarea
+                value={reportDescription}
+                onChange={(e) => setReportDescription(e.target.value)}
+                placeholder="Donnez plus de détails sur votre signalement..."
+                rows={4}
+                style={{ width: '100%', padding: '10px', border: '1px solid #d1d5db', borderRadius: '6px', resize: 'vertical' }}
+              />
+            </div>
+            {reportStatus.msg && (
+              <div style={{ padding: '12px', borderRadius: '6px', marginBottom: '16px', background: reportStatus.ok ? '#d1fae5' : '#fee2e2', color: reportStatus.ok ? '#065f46' : '#7f1d1d' }}>
+                {reportStatus.msg}
+              </div>
+            )}
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+              <button 
+                onClick={() => { setShowReportModal(false); setReportStatus({ ok: null, msg: "" }); }}
+                style={{ padding: '10px 20px', border: '1px solid #d1d5db', borderRadius: '6px', background: 'white', cursor: 'pointer' }}
+              >
+                Annuler
+              </button>
+              <button 
+                onClick={handleReportOffer}
+                disabled={!reportReason.trim()}
+                style={{ padding: '10px 20px', border: 'none', borderRadius: '6px', background: '#ef4444', color: 'white', cursor: reportReason.trim() ? 'pointer' : 'not-allowed', opacity: reportReason.trim() ? 1 : 0.5 }}
+              >
+                Envoyer le signalement
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,74 @@
+# BASE DE DONNÉES: APPOINTMENT_CANDIDATES
+# Extraction du: 2025-11-27T23:09:55.921921
+# Nombre d'enregistrements: 5
+
+================================================================================
+
+=== Participant au rendez-vous ===
+
+ID: 1
+recruiter_id: 14
+ID candidat: 4
+offer_id: 24
+candidate_name: Ibrahima sebe Ibrahima sebe Kourouma
+candidate_email: Kibse03@gmail.com
+position_title: plombier
+company_name: jobgoMontreal
+application_status: interview
+added_at: 2025-11-19 15:03:39.851418
+has_appointment: 1
+
+=== Participant au rendez-vous ===
+
+ID: 2
+recruiter_id: 14
+ID candidat: 15
+offer_id: 29
+candidate_name: nanouga daouda
+candidate_email: nanougadaouda@gmail.com
+position_title: cuisinier
+company_name: jobgoMontreal
+application_status: interview
+added_at: 2025-11-19 15:05:28.461047
+has_appointment: 1
+
+=== Participant au rendez-vous ===
+
+ID: 3
+recruiter_id: 14
+ID candidat: 2
+offer_id: 24
+candidate_name: Candidat Test
+candidate_email: candidat@test.com
+position_title: Plombier
+company_name: Test Company
+application_status: interview
+added_at: 2025-11-19 15:25:01.603826
+has_appointment: 1
+
+=== Participant au rendez-vous ===
+
+ID: 4
+recruiter_id: 14
+ID candidat: 4
+offer_id: 29
+candidate_name: Ibrahima sebe Ibrahima sebe Kourouma
+candidate_email: Kibse03@gmail.com
+position_title: cuisinier
+company_name: jobgoMontreal
+application_status: interview
+added_at: 2025-11-19 18:52:41.368658
+has_appointment: 1
+
+=== Participant au rendez-vous ===
+
+ID: 5
+recruiter_id: 14
+ID candidat: 4
+offer_id: 23
+candidate_name: Ibrahima sebe Ibrahima sebe Kourouma
+candidate_email: Kibse03@gmail.com
+position_title: caissier
+company_name: jobgoMontreal
+application_status: offered
+added_at: 2025-11-19 18:59:21.889677

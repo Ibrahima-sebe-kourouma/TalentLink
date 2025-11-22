@@ -3,6 +3,7 @@ import SidebarRecruiter from "../../components/recruiter/SidebarRecruiter";
 import RecruiterDashboard from "./Dashboard";
 import OffersManager from "../../components/recruiter/OffersManager";
 import Applications from "../../components/recruiter/Applications";
+import AppointmentManager from "../../components/recruiter/AppointmentManager";
 import StepperRecruiter from "../../components/recruiter/StepperRecruiter";
 import AccountSettings from "../../components/AccountSettings";
 import RecruiterMessaging from "../../components/recruiter/RecruiterMessaging";
@@ -24,6 +25,7 @@ export default function RecruiterApp({ user, onLogout }) {
         {active === 'dashboard' && <RecruiterDashboard user={user} />}
         {active === 'offers' && <OffersManager user={user} />}
         {active === 'applications' && <Applications user={user} />}
+        {active === 'appointments' && <AppointmentManager userType="recruiter" recruiterId={user?.id} />}
         {active === 'messages' && <RecruiterMessaging user={user} />}
         {active === 'profile' && <StepperRecruiter user={user} />}
         {active === 'account' && <AccountSettings user={user} onLogout={onLogout} />}

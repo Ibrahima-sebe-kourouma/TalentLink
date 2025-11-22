@@ -12,7 +12,7 @@ import string
 
 # URL of the profile service (adjust via env var PROFILE_SERVICE_URL)
 PROFILE_SERVICE_URL = os.getenv("PROFILE_SERVICE_URL", "http://127.0.0.1:8002")
-MAIL_SERVICE_URL = os.getenv("MAIL_SERVICE_URL", "http://127.0.0.1:8004")
+MAIL_SERVICE_URL = os.getenv("MAIL_SERVICE_URL", "http://127.0.0.1:8005")
 
 # --- Anti brute-force (in-memory) for reset token ---
 # Limites: 5 tentatives puis blocage 10 minutes pour ce token

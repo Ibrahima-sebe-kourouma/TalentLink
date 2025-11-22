@@ -1,0 +1,253 @@
+{
+  "table_name": "profile_views",
+  "columns": [
+    "id",
+    "candidate_id",
+    "recruiter_auth_user_id",
+    "viewed_at"
+  ],
+  "row_count": 40,
+  "extracted_at": "2025-11-27T23:09:55.918924",
+  "data": [
+    {
+      "id": 1,
+      "candidate_id": 12,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-02 21:31:09.797962"
+    },
+    {
+      "id": 2,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-02 21:32:05.462796"
+    },
+    {
+      "id": 3,
+      "candidate_id": 12,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-02 21:34:29.635091"
+    },
+    {
+      "id": 4,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-02 21:43:49.768142"
+    },
+    {
+      "id": 5,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-02 21:43:53.798708"
+    },
+    {
+      "id": 6,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-02 21:47:44.370083"
+    },
+    {
+      "id": 7,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-02 21:54:04.398522"
+    },
+    {
+      "id": 8,
+      "candidate_id": 11,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-02 22:02:35.143386"
+    },
+    {
+      "id": 9,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-03 12:35:13.973830"
+    },
+    {
+      "id": 10,
+      "candidate_id": 12,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-03 13:00:08.839729"
+    },
+    {
+      "id": 11,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-03 13:00:12.925212"
+    },
+    {
+      "id": 12,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-03 13:03:20.917153"
+    },
+    {
+      "id": 13,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-03 13:09:03.376042"
+    },
+    {
+      "id": 14,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-03 13:11:00.839785"
+    },
+    {
+      "id": 15,
+      "candidate_id": 13,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-03 18:58:08.138592"
+    },
+    {
+      "id": 16,
+      "candidate_id": 13,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-03 18:58:11.759623"
+    },
+    {
+      "id": 17,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-13 07:06:52.972277"
+    },
+    {
+      "id": 18,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-13 07:09:15.512508"
+    },
+    {
+      "id": 19,
+      "candidate_id": 11,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-13 09:41:42.905899"
+    },
+    {
+      "id": 20,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-13 20:01:52.795135"
+    },
+    {
+      "id": 21,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-13 20:03:01.795418"
+    },
+    {
+      "id": 22,
+      "candidate_id": 13,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 13:56:24.799495"
+    },
+    {
+      "id": 23,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 13:56:31.175043"
+    },
+    {
+      "id": 24,
+      "candidate_id": 13,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:00:19.864853"
+    },
+    {
+      "id": 25,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:04:29.576342"
+    },
+    {
+      "id": 26,
+      "candidate_id": 12,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:06:04.262786"
+    },
+    {
+      "id": 27,
+      "candidate_id": 13,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:06:33.142150"
+    },
+    {
+      "id": 28,
+      "candidate_id": 13,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:06:58.543923"
+    },
+    {
+      "id": 29,
+      "candidate_id": 11,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:07:03.611733"
+    },
+    {
+      "id": 30,
+      "candidate_id": 12,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:10:23.761895"
+    },
+    {
+      "id": 31,
+      "candidate_id": 13,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:12:00.211033"
+    },
+    {
+      "id": 32,
+      "candidate_id": 11,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:12:39.245857"
+    },
+    {
+      "id": 33,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:12:43.744754"
+    },
+    {
+      "id": 34,
+      "candidate_id": 13,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:16:07.887159"
+    },
+    {
+      "id": 35,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-16 14:17:04.680341"
+    },
+    {
+      "id": 36,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-17 18:47:47.151480"
+    },
+    {
+      "id": 37,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-18 17:24:26.226765"
+    },
+    {
+      "id": 38,
+      "candidate_id": 13,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-19 05:33:06.746900"
+    },
+    {
+      "id": 39,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-19 18:52:15.627844"
+    },
+    {
+      "id": 40,
+      "candidate_id": 2,
+      "recruiter_auth_user_id": 14,
+      "viewed_at": "2025-11-19 18:53:54.870126"
+    }
+  ]
+}

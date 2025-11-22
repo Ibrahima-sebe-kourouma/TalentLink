@@ -1,0 +1,78 @@
+{
+  "conversation_id": "1d1b2240-ae71-46e4-878b-7e2b05e28ede",
+  "user_id": "58",
+  "title": "Comment contacter un recruteur ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Comment contacter un recruteur ?",
+      "timestamp": "2025-12-08T22:36:02.638750",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour contacter un recruteur, vous pouvez utiliser les informations suivantes :\n\n**Recruteur : Jobgo**\n- **Nom** : Jobgo\n- **Email** : jobgo@gmail.com\n- **Téléphone** : 514-559-6868\n- **Entreprise** : JobgoMontreal\n- **Adresse** : 6529 rue Cadina, H4T9Y8\n- **Site web** : [jobgo.com](http://jobgo.com)\n\nVous pouvez choisir de lui envoyer un email ou de l'appeler directement. Assurez-vous de vous présenter et d'expliquer clairement votre intérêt ou votre demande. Si vous êtes inscrit sur une plateforme de recrutement, vous pouvez également utiliser la messagerie interne pour communiquer avec lui.",
+      "timestamp": "2025-12-08T22:36:08.164450",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.6158201319408949,
+          "text": "# BASE DE DONNÉES: RECRUTEURS\r\n# Extraction du: 2025-11-27T23:09:55.916410\r\n# Nombre d'enregistrements: 1\r\n\r\n================================================================================\r\n\r\n=== Profil Recruteur ===\r\n\r\nID: 1\r\nID utilisateur: 14\r\nname: jobgo\r\nprenom: jobgo\r\nemail: jobgo@gmail.com\r\n...",
+          "document_name": "service_profile_recruteurs.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.6012267149142931,
+          "text": " L’interface est responsive (ordinateur, tablette, mobile). \n Une messagerie interne permet la communication entre recruteurs et \ncandidats. \n Le recruteur et le candidat peuvent consulter l’historique des messages \néchangés. \n Le recruteur et le candidat peuvent supprimer une conversation. \n \n ...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.5758559135569519,
+          "text": "Cas d'utilisation 16 — Recevoir une notification de réponse\n\nNom : Notification de candidature\nActeurs : Candidat, Système\nScénario principal :\n\nUn recruteur répond à une candidature.\n\nLe système envoie une notification au candidat (email et/ou interne).\n\nLe candidat consulte la réponse dans son esp...",
+          "document_name": "Doc_Analyse_Besoins - Copie.docx",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Puis-je avoir plusieurs profils ?",
+      "timestamp": "2025-12-08T22:36:17.187074",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Oui, vous pouvez avoir plusieurs profils sur la plateforme. Cela peut être utile si vous souhaitez postuler à différents types de postes ou si vous souhaitez mettre en avant des compétences spécifiques pour chaque opportunité. Assurez-vous simplement que chaque profil est à jour et reflète vos expériences et compétences pertinentes pour les postes que vous visez. Si vous avez besoin d'aide pour créer ou gérer plusieurs profils, n'hésitez pas à contacter le support de la plateforme.",
+      "timestamp": "2025-12-08T22:36:21.074909",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.4918613126432307,
+          "text": "245857\r\n\r\n=== Vue de profil ===\r\n\r\nID: 33\r\ncandidate_id: 2\r\nrecruiter_auth_user_id: 14\r\nVu le: 2025-11-16 14:12:43.744754\r\n\r\n=== Vue de profil ===\r\n\r\nID: 34\r\ncandidate_id: 13\r\nrecruiter_auth_user_id: 14\r\nVu le: 2025-11-16 14:16:07.887159\r\n\r\n=== Vue de profil ===\r\n\r\nID: 35\r\ncandidate_id: 2\r\nrecruiter...",
+          "document_name": "service_profile_profile_views.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.48910825266178004,
+          "text": "# BASE DE DONNÉES: PROFILE_VIEWS\r\n# Extraction du: 2025-11-27T23:09:55.918924\r\n# Nombre d'enregistrements: 40\r\n\r\n================================================================================\r\n\r\n=== Vue de profil ===\r\n\r\nID: 1\r\ncandidate_id: 12\r\nrecruiter_auth_user_id: 14\r\nVu le: 2025-11-02 21:31:0...",
+          "document_name": "service_profile_profile_views.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.48386543651080116,
+          "text": "# BASE DE DONNÉES: CANDIDATS\r\n# Extraction du: 2025-11-27T23:09:55.915405\r\n# Nombre d'enregistrements: 13\r\n\r\n================================================================================\r\n\r\n=== Profil Candidat ===\r\n\r\nID: 1\r\nauth_user_id: 3\r\nNom: daouda\r\nPrénom: ben\r\nEmail: user3@gmail.com\r\nDate d...",
+          "document_name": "service_profile_candidats.txt",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-08T22:36:02.636748",
+  "updated_at": "2025-12-08T22:36:21.074909",
+  "is_active": true
+}

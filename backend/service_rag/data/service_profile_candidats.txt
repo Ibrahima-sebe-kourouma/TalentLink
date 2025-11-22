@@ -1,0 +1,223 @@
+# BASE DE DONNÉES: CANDIDATS
+# Extraction du: 2025-11-27T23:09:55.915405
+# Nombre d'enregistrements: 13
+
+================================================================================
+
+=== Profil Candidat ===
+
+ID: 1
+auth_user_id: 3
+Nom: daouda
+Prénom: ben
+Email: user3@gmail.com
+Date de création: 2025-10-27 18:30:06.891980
+date_modification: 2025-10-27 18:30:06.891980
+Progression du profil: 1
+
+=== Profil Candidat ===
+
+ID: 2
+auth_user_id: 4
+Nom: Kourouma
+Prénom: Ibrahima sebe
+Téléphone: 5145596868
+Adresse: 6522 rue viau
+Ville: Montréal, QC
+Pays: Canada
+Code postal: H1T2Y7
+Résumé professionnel: Curieux et rigoureux, je cherche continuellement à perfectionner mes compétences et à contribuer activement à des projets innovants. Ma formation en informatique et mon expérience pratique me permettent d'aborder les défis techniques avec confiance et créativité.
+
+Avec une solide base en programmation orientée objet, développement web, mobile et intelligence artificielle, je suis capable de m'adapter rapidement aux nouvelles technologies et méthodologies de développement.
+
+Mon objectif est de créer des solutions logicielles robustes, performantes et centrées sur l'utilisateur, en appliquant les meilleures pratiques de développement et d'architecture logicielle.
+Expériences: {'title': 'cuisinier', 'company': 'dufar', 'start_date': '2013', 'end_date': '2019', 'description': 'très belle expérience'}
+Formation: {'school': 'institut teccart', 'degree': 'DEC', 'start': '2023', 'end': '2024'}
+Compétences: {'name': 'c++', 'level': 'Débutant'}
+Langues: {'langue': 'Français', 'niveau': 'Langue maternelle'}
+Certifications: {'nom': 'azure', 'organisme': 'microsoft', 'date': '2025-10-10', 'expiration': '2025-10-31'}
+Projets: {'titre': 'pfc', 'description': 'juste un jeu', 'technologies': 'c#, css', 'lien': 'https://ok.com', 'date_debut': '2025-10-09', 'date_fin': '2025-10-25', 'role': 'jeu', 'resultats': 'tres amusant'}, {'titre': 'banque', 'description': 'cool', 'technologies': 'c# c++', 'date_debut': '2025-10-30', 'date_fin': '2025-10-30', 'role': 'maitriser les transactions'}
+Portfolio: https:ok.com
+CV: uploads\cv\candidate_2_cv_20251102_053336.pdf
+Date de création: 2025-10-27 20:06:20.747206
+date_modification: 2025-11-19 18:57:12.717034
+Progression du profil: 4
+
+=== Profil Candidat ===
+
+ID: 3
+auth_user_id: 5
+Nom: Ibrahima sebe Kourouma
+Prénom: Ibrahima sebe
+Email: Kibse04@gmail.com
+Date de création: 2025-10-27 20:12:12.955842
+date_modification: 2025-10-27 20:12:12.955842
+Progression du profil: 1
+
+=== Profil Candidat ===
+
+ID: 4
+auth_user_id: 7
+Nom: kourouma
+Prénom: mahir
+Email: mahir@gmail.com
+Téléphone: 5145596868
+Adresse: 6522 rue viau
+Ville: Montréal, QC
+Pays: Canada
+Code postal: H1T2Y7
+Expériences: {'title': 'caissier', 'company': 'dollarama', 'start_date': '2022', 'end_date': '2023', 'description': 'horrible'}
+Formation: {'school': 'teccart', 'degree': 'licence', 'start': '2022', 'end': '2023'}
+Compétences: {'name': 'c++', 'level': 'intermediaire'}, {'name': 'c#', 'level': 'avance'}
+Langues: {'langue': 'Francais', 'niveau': 'Langue maternelle'}, {'langue': 'Anglais', 'niveau': 'Débutant'}
+Projets: []
+Portfolio: https://ibrahima-sebe-kourouma.netlify.app/
+CV: Développeur passionné et polyvalent
+Curieux et rigoureux, je cherche continuellement à perfectionner mes compétences et à contribuer activement à des projets innovants. Ma formation en informatique et mon expérience pratique me permettent d'aborder les défis techniques avec confiance et créativité.
+
+Avec une solide base en programmation orientée objet, développement web, mobile et intelligence artificielle, je suis capable de m'adapter rapidement aux nouvelles technologies et méthodologies de développement.
+
+Mon objectif est de créer des solutions logicielles robustes, performantes et centrées sur l'utilisateur, en appliquant les meilleures pratiques de développement et d'architecture logicielle.
+Date de création: 2025-10-31 02:44:24.717036
+date_modification: 2025-10-31 04:34:39.555179
+Progression du profil: 5
+
+=== Profil Candidat ===
+
+ID: 5
+auth_user_id: 8
+Téléphone: 5145596868
+Adresse: 6522 rue viau
+Ville: Montréal, QC
+Pays: Canada
+Code postal: H1T2Y7
+Résumé professionnel: Développeur passionné et polyvalent
+Curieux et rigoureux, je cherche continuellement à perfectionner mes compétences et à contribuer activement à des projets innovants. Ma formation en informatique et mon expérience pratique me permettent d'aborder les défis techniques avec confiance et créativité.
+
+Avec une solide base en programmation orientée objet, développement web, mobile et intelligence artificielle, je suis capable de m'adapter rapidement aux nouvelles technologies et méthodologies de développement.
+
+Mon objectif est de créer des solutions logicielles robustes, performantes et centrées sur l'utilisateur, en appliquant les meilleures pratiques de développement et d'architecture logicielle.
+Expériences: {'title': 'CAISIER', 'company': 'DOLLARAMA', 'start_date': '2023', 'end_date': '2024', 'description': 'horrible'}
+Formation: {'school': 'ep yopougon', 'degree': 'bepc', 'start': '2022', 'end': '2023'}
+Compétences: {'name': 'c++', 'level': 'Intermédiaire'}, {'name': 'c#', 'level': 'Avancé'}, {'name': 'maitise de soie', 'level': 'Expert'}
+Langues: {'langue': 'francais', 'niveau': 'Langue maternelle'}, {'langue': 'Anglais', 'niveau': 'Intermédiaire'}, {'langue': 'espagnol', 'niveau': 'Intermédiaire'}
+Certifications: {'nom': 'azure', 'organisme': 'microsoft', 'date': '2025-10-01', 'expiration': '2025-10-30'}
+Date de création: 2025-10-31 16:02:18.896732
+date_modification: 2025-10-31 16:17:51.611154
+Progression du profil: 8
+
+=== Profil Candidat ===
+
+ID: 6
+auth_user_id: 9
+Nom: Kourouma
+Prénom: Ibrahima sebe
+Email: Kibse03@gmail.com
+Téléphone: 5145596868
+Adresse: 6522 rue viau
+Ville: Montréal, QC
+Pays: Canada
+Code postal: H1T2Y7
+Résumé professionnel: Présentez votre parcours, vos objectifs et ce qui vous motive professionnellement. Un bon résumé permet aux recruteurs de rapidement comprendre votre profil.
+Date de création: 2025-10-31 17:20:29.534999
+date_modification: 2025-10-31 17:22:47.721197
+Progression du profil: 2
+
+=== Profil Candidat ===
+
+ID: 7
+auth_user_id: 10
+Nom: yop
+Prénom: kash
+Email: olognykashifat@gmail.com
+Date de création: 2025-10-31 18:03:32.029687
+date_modification: 2025-10-31 18:03:32.029687
+Progression du profil: 1
+
+=== Profil Candidat ===
+
+ID: 8
+auth_user_id: 11
+Nom:  
+Prénom:  
+Téléphone: 5145596868
+Adresse: 6522 rue viau
+Ville: Montréal, QC
+Pays: Canada
+Code postal: H1T2Y7
+Formation: []
+Date de création: 2025-10-31 18:07:03.328440
+date_modification: 2025-10-31 18:08:29.772669
+Progression du profil: 4
+
+=== Profil Candidat ===
+
+ID: 9
+auth_user_id: 12
+Nom: NOUKPO
+Prénom: Paolo
+Email: paolonoukpo@gmail.com
+Date de création: 2025-11-01 22:13:43.735410
+date_modification: 2025-11-01 22:13:43.735410
+Progression du profil: 1
+
+=== Profil Candidat ===
+
+ID: 10
+auth_user_id: 13
+Nom: NOUKPO
+Prénom: Paolo
+Email: paolonoukpo10@gmail.com
+Date de création: 2025-11-01 22:14:42.094517
+date_modification: 2025-11-01 22:14:42.094517
+Progression du profil: 1
+
+=== Profil Candidat ===
+
+ID: 11
+auth_user_id: 15
+Nom: daouda
+Prénom: nanouga
+Formation: []
+Compétences: []
+Langues: []
+Certifications: []
+Projets: []
+CV: uploads\cv\candidate_11_cv_20251102_061358.pdf
+Date de création: 2025-11-02 03:29:53.387831
+date_modification: 2025-11-02 06:14:35.992478
+Progression du profil: 8
+lettre_motivation: uploads\cover_letters\candidate_11_cover_letter_20251102_061429.pdf
+
+=== Profil Candidat ===
+
+ID: 12
+auth_user_id: 16
+Nom: bouare
+Prénom: daouda
+Adresse: 6522 rue viau 
+Ville: montreal, qc
+Pays: canada
+Code postal: h1t 2y7
+Résumé professionnel: Présentez votre parcours, vos objectifs et ce qui vous motive professionnellement. Un bon résumé permet aux recruteurs de rapidement comprendre votre profil.
+
+
+Formation: []
+Date de création: 2025-11-02 17:39:10.069693
+date_modification: 2025-11-02 17:43:49.007833
+Progression du profil: 4
+
+=== Profil Candidat ===
+
+ID: 13
+auth_user_id: 17
+Nom: benouar
+Prénom: ayoub
+Résumé professionnel: Présentez votre parcours, vos objectifs et ce qui vous motive professionnellement. Un bon résumé permet aux recruteurs de rapidement comprendre votre profil.
+Compétences: []
+Langues: []
+Certifications: []
+Projets: []
+Date de création: 2025-11-03 18:46:40.694545
+date_modification: 2025-11-18 17:18:21.460020
+Progression du profil: 7

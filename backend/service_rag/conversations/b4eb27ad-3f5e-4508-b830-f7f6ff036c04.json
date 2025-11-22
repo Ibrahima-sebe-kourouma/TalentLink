@@ -1,0 +1,44 @@
+{
+  "conversation_id": "b4eb27ad-3f5e-4508-b830-f7f6ff036c04",
+  "user_id": "58",
+  "title": "Quelles sont les fonctionnalités pour les recruteu...",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quelles sont les fonctionnalités pour les recruteurs ?",
+      "timestamp": "2025-12-08T22:35:38.283531",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Les recruteurs disposent de plusieurs fonctionnalités sur la plateforme TalentLink, notamment :\n\n1. **Gestion des comptes** :\n   - Créer un compte et confirmer son inscription par email.\n   - Se connecter à son espace professionnel et accéder à son tableau de bord.\n\n2. **Publication et gestion des offres** :\n   - Publier des offres d’emploi, de stage ou d’alternance.\n   - Modifier ou supprimer une offre publiée.\n   - Désactiver temporairement une offre sans la supprimer.\n   - Archiver une offre expirée.\n\n3. **Gestion des candidatures** :\n   - Consulter la liste des candidatures reçues.\n   - Trier et filtrer les candidatures selon des critères tels que la date, le statut ou le profil du candidat.\n   - Consulter le profil détaillé et le portfolio d’un candidat.\n   - Répondre à une candidature en acceptant, refusant ou demandant un entretien.\n   - Recevoir des notifications lors de nouvelles candidatures.\n\nCes fonctionnalités permettent aux recruteurs de gérer efficacement le processus de recrutement et d'interagir avec les candidats.",
+      "timestamp": "2025-12-08T22:35:45.141819",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.7311760172928247,
+          "text": "➢ Le recruteur peut consulter le profil détaillé d’un candidat.  \n➢ Le recruteur peut consulter le portfolio d’un candidat.  \n➢ Le recruteur peut répondre à une candidature (accepter, refuser, \ndemander un entretien).  \n➢ Le recruteur reçoit une notification lors de nouvelles candidatures.  \n \nExclu...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.7234980532663677,
+          "text": " Le candidat peut supprimer une candidature. \n Le tableau de bord candidat affiche : nombre de vues du profil, \ncandidatures envoyées, candidatures acceptées/refusées. \n Le recruteur peut créer un compte. \n Le recruteur peut confirmer son inscription par email. \n Le recruteur peut se connecter ...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.7142224391712784,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-08T22:35:38.277040",
+  "updated_at": "2025-12-08T22:35:45.141819",
+  "is_active": true
+}

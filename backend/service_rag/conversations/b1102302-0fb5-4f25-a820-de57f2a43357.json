@@ -1,0 +1,146 @@
+{
+  "conversation_id": "b1102302-0fb5-4f25-a820-de57f2a43357",
+  "user_id": "43",
+  "title": "Comment postuler à une offre ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Comment postuler à une offre ?",
+      "timestamp": "2025-12-09T07:54:56.515693",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour postuler à une offre sur la plateforme TalentLink, suivez ces étapes :\n\n1. **Recherche d'offres** : Utilisez les filtres disponibles (domaine, localisation, mots-clés, type de contrat) pour trouver les offres qui vous intéressent.\n\n2. **Consultation des détails** : Cliquez sur l'offre d'emploi pour consulter les détails, y compris les exigences et les responsabilités.\n\n3. **Postuler** : Si vous souhaitez postuler, vous pouvez le faire directement depuis la page de l'offre. Assurez-vous que votre profil est à jour et que vous avez éventuellement préparé un message de motivation.\n\n4. **Suivi de votre candidature** : Une fois votre candidature soumise, vous pourrez suivre son état (en attente, acceptée, refusée) depuis votre tableau de bord.\n\nN'oubliez pas que vous pouvez également recevoir des notifications lorsque votre candidature reçoit une réponse. Si vous avez besoin de modifier ou de retirer votre candidature, cela est également possible via votre tableau de bord.",
+      "timestamp": "2025-12-09T07:55:01.827191",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5886608492629833,
+          "text": "977933\r\nmessage_motivation: [Retrait candidat: non jhe n'ebn veux pas]\r\n[Retrait candidat: non jhe n'ebn veux pas]\r\nDernière modification: 2025-11-19 18:52:41.192645\r\n\r\n=== Candidature ===\r\n\r\nID: 10\r\noffre_id: 29\r\nauth_user_id: 15\r\ncandidat_id: 11\r\nstatut: INTERVIEW\r\ndate_candidature: 2025-11-17 18:...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.5882683080705349,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.573329179910128,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Quelles sont les fonctionnalités pour les recruteurs ?",
+      "timestamp": "2025-12-09T07:55:08.191078",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Les recruteurs sur la plateforme TalentLink disposent de plusieurs fonctionnalités pour faciliter leur processus de recrutement. Voici un aperçu des principales fonctionnalités :\n\n1. **Création et gestion de compte** :\n   - Les recruteurs peuvent créer un compte et confirmer leur inscription par email.\n   - Ils peuvent se connecter à leur espace professionnel et accéder à leur tableau de bord.\n\n2. **Publication d'offres** :\n   - Les recruteurs peuvent publier des offres d'emploi, de stage ou d'alternance.\n   - Ils ont la possibilité de modifier ou de supprimer une offre publiée.\n   - Ils peuvent également désactiver temporairement une offre sans la supprimer ou archiver une offre expirée.\n\n3. **Gestion des candidatures** :\n   - Les recruteurs peuvent consulter la liste des candidatures reçues.\n   - Ils peuvent trier et filtrer les candidatures selon divers critères (date, statut, profil du candidat).\n   - Ils ont accès au profil détaillé et au portfolio des candidats.\n\n4. **Réponses aux candidatures** :\n   - Les recruteurs peuvent répondre aux candidatures en acceptant, refusant ou demandant un entretien.\n   - Ils reçoivent des notifications lors de nouvelles candidatures.\n\n5. **Communication** :\n   - Une messagerie interne permet la communication entre recruteurs et candidats.\n   - Les recruteurs peuvent consulter l'historique des messages échangés et supprimer une conversation si nécessaire.\n\nCes fonctionnalités visent à optimiser le processus de recrutement et à améliorer l'interaction entre recruteurs et candidats. Si vous avez d'autres questions ou besoin de précisions, n'hésitez pas à demander !",
+      "timestamp": "2025-12-09T07:55:15.211475",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.7312147084680671,
+          "text": "➢ Le recruteur peut consulter le profil détaillé d’un candidat.  \n➢ Le recruteur peut consulter le portfolio d’un candidat.  \n➢ Le recruteur peut répondre à une candidature (accepter, refuser, \ndemander un entretien).  \n➢ Le recruteur reçoit une notification lors de nouvelles candidatures.  \n \nExclu...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.7235495191317097,
+          "text": " Le candidat peut supprimer une candidature. \n Le tableau de bord candidat affiche : nombre de vues du profil, \ncandidatures envoyées, candidatures acceptées/refusées. \n Le recruteur peut créer un compte. \n Le recruteur peut confirmer son inscription par email. \n Le recruteur peut se connecter ...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.7142818962002013,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Quels sont les types de contrats disponibles ?",
+      "timestamp": "2025-12-09T07:55:20.885649",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Sur la plateforme TalentLink, plusieurs types de contrats sont disponibles pour les offres d'emploi. Voici les principaux types de contrats que vous pouvez rencontrer :\n\n1. **CDI (Contrat à Durée Indéterminée)** : Un contrat sans date de fin, offrant une stabilité à long terme.\n2. **CDD (Contrat à Durée Déterminée)** : Un contrat avec une date de fin précise, souvent utilisé pour des missions temporaires.\n3. **Freelance** : Un contrat pour les travailleurs indépendants, permettant une flexibilité dans les horaires et les projets.\n\nCes types de contrats peuvent varier selon les offres et les entreprises. Si vous avez besoin de plus d'informations sur un type de contrat spécifique ou sur une offre particulière, n'hésitez pas à demander !",
+      "timestamp": "2025-12-09T07:55:25.178868",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.3706689251782156,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.365871734117223,
+          "text": "Prototypage, design system, tests utilisateurs, accessibilité.\",\r\n      \"type_contrat\": \"FREELANCE\",\r\n      \"localisation\": \"Remote\",\r\n      \"entreprise\": \"TalentLink\",\r\n      \"domaine\": \"Design / Produit\",\r\n      \"mots_cles\": \"figma,ui,ux,design-system\",\r\n      \"remote\": 1,\r\n      \"salaire_min\": 35...",
+          "document_name": "service_offers_offers.json",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.3553169141179288,
+          "text": "Vous interviendrez à distance et sur site.\r\ntype_contrat: CDI\r\nlocalisation: Québec, QC\r\nentreprise: ITCare\r\ndomaine: Support technique\r\nmots_cles: Windows,Helpdesk,Support,Ticketing,AD\r\nsalaire_min: 45000\r\nsalaire_max: 60000\r\nexperience_requise: 1 à 2 ans d'expérience en support informatique\r\neduca...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Comment créer mon profil candidat ?",
+      "timestamp": "2025-12-09T07:55:33.176956",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour créer votre profil candidat sur la plateforme TalentLink, suivez ces étapes :\n\n1. **Créer un compte** : Accédez à la page d'inscription et remplissez les informations requises pour créer votre compte. Vous devrez fournir une adresse email et un mot de passe.\n\n2. **Confirmer votre inscription** : Après avoir créé votre compte, vous recevrez un email de confirmation. Cliquez sur le lien dans cet email pour valider votre inscription.\n\n3. **Se connecter à votre espace personnel** : Une fois votre compte confirmé, allez sur la page de connexion, saisissez votre email et votre mot de passe, puis cliquez sur « Se connecter ».\n\n4. **Accéder à la section « Mon profil »** : Une fois connecté, naviguez vers la section dédiée à votre profil.\n\n5. **Compléter votre profil** : Remplissez les différentes sections de votre profil, notamment :\n   - Informations personnelles (nom, prénom, contact)\n   - Compétences\n   - Formation\n   - Expériences professionnelles\n\n6. **Valider chaque section** : Assurez-vous de valider chaque section après l'avoir remplie. Le système enregistrera vos informations.\n\n7. **Vérifier les champs obligatoires** : Si des champs obligatoires sont vides, le système vous empêchera de valider. Vous pouvez enregistrer un brouillon et revenir plus tard pour compléter votre profil.\n\nUne fois votre profil créé et complété, vous pourrez commencer à rechercher des offres d'emploi et postuler directement depuis la plateforme. Si vous avez besoin d'aide supplémentaire, n'hésitez pas à demander !",
+      "timestamp": "2025-12-09T07:55:39.509133",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.6446662979612965,
+          "text": "Cas d'utilisation 2 — Confirmer son inscription par email\n\nNom : Validation de l'inscription\nActeurs : Candidat\nScénario principal :\n\nLe candidat reçoit un email de confirmation.\n\nIl clique sur le lien de validation.\n\nLe système active son compte.\n\nUn message de confirmation s'affiche.\n\nAlternative ...",
+          "document_name": "Doc_Analyse_Besoins - Copie.docx",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.634097113007804,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.6289836968476195,
+          "text": "3. Périmètre du projet  \n \nInclus dans la V1 :  \n \n Le candidat peut créer un compte. \n Le candidat peut confirmer son inscription par email. \n Le candidat peut se connecter à son espace personnel. \n Le candidat peut récupérer son mot de passe en cas d’oubli. \n Le candidat peut accéder à son ta...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-09T07:54:56.505234",
+  "updated_at": "2025-12-09T07:55:39.509133",
+  "is_active": true
+}

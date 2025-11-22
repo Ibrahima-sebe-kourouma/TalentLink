@@ -1,48 +1,68 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, ForeignKey
+from mongoengine import Document, StringField, IntField, DateTimeField, BooleanField, ObjectIdField
 from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional
+from bson import ObjectId
 
-from database.database import Base
 
-
-class MessageDB(Base):
+class Message(Document):
     """
-    Modèle de message dans une conversation.
+    Modèle MongoDB de message dans une conversation.
     Chaque message est envoyé par un utilisateur et appartient à une conversation.
     """
-    __tablename__ = "messages"
+    meta = {
+        'collection': 'messages',
+        'indexes': [
+            'conversation_id',
+            'sender_user_id',
+            'created_at',
+            'is_read',
+            ('conversation_id', 'created_at'),  # Index composé
+            ('sender_user_id', 'created_at')
+        ]
+    }
 
-    id = Column(Integer, primary_key=True, index=True)
-    conversation_id = Column(Integer, ForeignKey("conversations.id"), index=True, nullable=False)
+    conversation_id = StringField(required=True)  # ObjectId string de la conversation
     
     # Expéditeur (ID du service auth)
-    sender_user_id = Column(Integer, index=True, nullable=False)
+    sender_user_id = IntField(required=True)
     
     # Contenu
-    content = Column(Text, nullable=False)
+    content = StringField(required=True)
     
     # Metadata
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
-    is_read = Column(Boolean, default=False)
-    read_at = Column(DateTime, nullable=True)
+    created_at = DateTimeField(default=datetime.utcnow, required=True)
+    is_read = BooleanField(default=False)
+    read_at = DateTimeField()
+
+    def to_dict(self):
+        """Convertir en dictionnaire pour l'API."""
+        return {
+            'id': str(self.id),
+            'conversation_id': self.conversation_id,
+            'sender_user_id': self.sender_user_id,
+            'content': self.content,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+            'is_read': self.is_read,
+            'read_at': self.read_at.isoformat() if self.read_at else None
+        }
 
 
-# Pydantic Schemas
+# Pydantic Schemas (identiques à l'ancien)
 class MessageCreate(BaseModel):
-    conversation_id: int
+    conversation_id: str  # ObjectId string
     sender_user_id: int
     content: str
 
 
 class MessageResponse(BaseModel):
-    id: int
-    conversation_id: int
+    id: str  # MongoDB utilise des ObjectId string
+    conversation_id: str  # ObjectId string
     sender_user_id: int
     content: str
-    created_at: datetime
+    created_at: str  # ISO format string
     is_read: bool
-    read_at: Optional[datetime]
+    read_at: Optional[str]  # ISO format string
 
     class Config:
         from_attributes = True

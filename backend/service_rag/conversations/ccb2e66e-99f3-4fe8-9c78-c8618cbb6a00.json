@@ -1,0 +1,78 @@
+{
+  "conversation_id": "ccb2e66e-99f3-4fe8-9c78-c8618cbb6a00",
+  "user_id": "77",
+  "title": "Comment créer mon profil candidat ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Comment créer mon profil candidat ?",
+      "timestamp": "2025-12-08T22:37:13.764880",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour créer votre profil candidat sur la plateforme TalentLink, suivez ces étapes :\n\n1. **Accédez à la section « Mon profil »** : Connectez-vous à votre espace personnel en utilisant votre adresse email et votre mot de passe.\n\n2. **Remplissez les sections requises** : Vous devrez fournir des informations personnelles, vos compétences, votre formation et vos expériences professionnelles. Assurez-vous de remplir tous les champs obligatoires.\n\n3. **Validez chaque section** : Après avoir complété une section, cliquez sur le bouton de validation pour enregistrer vos informations.\n\n4. **Enregistrez votre profil** : Une fois que toutes les sections sont complètes et validées, le système enregistrera votre profil.\n\n**Note** : Si vous laissez des champs obligatoires vides, le système vous empêchera de valider votre profil. Vous avez également la possibilité d'enregistrer un brouillon et de compléter votre profil plus tard.\n\nSi vous avez besoin d'aide supplémentaire, n'hésitez pas à demander !",
+      "timestamp": "2025-12-08T22:37:19.438367",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.6440688103286919,
+          "text": "Cas d'utilisation 2 — Confirmer son inscription par email\n\nNom : Validation de l'inscription\nActeurs : Candidat\nScénario principal :\n\nLe candidat reçoit un email de confirmation.\n\nIl clique sur le lien de validation.\n\nLe système active son compte.\n\nUn message de confirmation s'affiche.\n\nAlternative ...",
+          "document_name": "Doc_Analyse_Besoins - Copie.docx",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.63325608199705,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.6280800426720069,
+          "text": "3. Périmètre du projet  \n \nInclus dans la V1 :  \n \n Le candidat peut créer un compte. \n Le candidat peut confirmer son inscription par email. \n Le candidat peut se connecter à son espace personnel. \n Le candidat peut récupérer son mot de passe en cas d’oubli. \n Le candidat peut accéder à son ta...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Comment postuler à une offre ?",
+      "timestamp": "2025-12-08T22:37:24.565156",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour postuler à une offre sur la plateforme TalentLink, suivez ces étapes :\n\n1. **Recherchez l'offre d'emploi** : Utilisez les filtres disponibles (domaine, localisation, mots-clés, type de contrat) pour trouver l'offre qui vous intéresse.\n\n2. **Consultez les détails de l'offre** : Cliquez sur l'offre pour en voir la description complète, les exigences et les informations sur l'entreprise.\n\n3. **Postulez directement** : Si vous souhaitez postuler, cliquez sur le bouton « Postuler » présent sur la page de l'offre.\n\n4. **Vérifiez votre profil** : Assurez-vous que votre profil candidat est complet et à jour, car il sera utilisé pour votre candidature.\n\n5. **Soumettez votre candidature** : Suivez les instructions pour soumettre votre candidature. Vous pouvez également ajouter une lettre de motivation si cela est demandé.\n\n6. **Suivez l'état de votre candidature** : Une fois votre candidature soumise, vous pourrez suivre son statut (en attente, acceptée, refusée) depuis votre tableau de bord.\n\nSi vous avez besoin d'aide supplémentaire ou si vous rencontrez des problèmes lors de votre candidature, n'hésitez pas à demander !",
+      "timestamp": "2025-12-08T22:37:31.728071",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5886608492629833,
+          "text": "977933\r\nmessage_motivation: [Retrait candidat: non jhe n'ebn veux pas]\r\n[Retrait candidat: non jhe n'ebn veux pas]\r\nDernière modification: 2025-11-19 18:52:41.192645\r\n\r\n=== Candidature ===\r\n\r\nID: 10\r\noffre_id: 29\r\nauth_user_id: 15\r\ncandidat_id: 11\r\nstatut: INTERVIEW\r\ndate_candidature: 2025-11-17 18:...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.5882683080705349,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.573329179910128,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-08T22:37:13.758340",
+  "updated_at": "2025-12-08T22:37:31.728071",
+  "is_active": true
+}
