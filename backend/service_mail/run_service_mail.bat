@@ -11,4 +11,4 @@ if exist env\Scripts\activate.bat (
 )
 
 echo Demarrage du serveur...
-uvicorn main:app --reload --host 127.0.0.1 --port 8004
+uvicorn main:app --reload --host 127.0.0.1 --port 8005

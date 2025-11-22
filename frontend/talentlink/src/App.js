@@ -68,10 +68,11 @@ const App = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-  <Route path="/profile" element={<ProfilePage user={user} onLogout={handleLogout} />} />
+        <Route path="/profile" element={<ProfilePage user={user} onLogout={handleLogout} />} />
+        
         {/* Entity workspaces */}
-  <Route path="/candidate/*" element={<CandidateApp user={user} onLogout={handleLogout} />} />
-  <Route path="/recruiter/*" element={<RecruiterApp user={user} onLogout={handleLogout} />} />
+        <Route path="/candidate/*" element={<CandidateApp user={user} onLogout={handleLogout} />} />
+        <Route path="/recruiter/*" element={<RecruiterApp user={user} onLogout={handleLogout} />} />
         <Route path="/admin/*" element={<AdminApp user={user} />} />
       </Routes>
     </div>

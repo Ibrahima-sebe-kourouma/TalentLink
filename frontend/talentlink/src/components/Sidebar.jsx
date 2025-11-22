@@ -9,6 +9,7 @@ const menuItems = [
   { key: "update", icon: "📝", label: "Mettre à jour" },
   { key: "messages", icon: "💬", label: "Messagerie" },
   { key: "candidatures", icon: "📂", label: "Mes candidatures" },
+  { key: "rendezvous", icon: "📅", label: "Rendez-vous" },
   { key: "compte", icon: "⚙️", label: "Compte" },
 ];
 

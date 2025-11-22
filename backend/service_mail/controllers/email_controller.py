@@ -3,6 +3,7 @@ from models.email import (
     WelcomeEmailPayload,
     PasswordResetEmailPayload,
     ApplicationNotificationPayload,
+    AppointmentEmailPayload,
 )
 from services.email_sender import email_sender
 
@@ -26,3 +27,10 @@ def send_application_notification(payload: ApplicationNotificationPayload) -> di
     if not ok:
         raise HTTPException(status_code=500, detail="Echec d'envoi de l'email de notification")
     return {"detail": "Email de notification envoyé"}
+
+
+def send_appointment_email(payload: AppointmentEmailPayload) -> dict:
+    ok = email_sender.send_generic_email(payload.to_email, payload.subject, payload.body)
+    if not ok:
+        raise HTTPException(status_code=500, detail="Echec d'envoi de l'email de rendez-vous")
+    return {"detail": "Email de rendez-vous envoyé"}

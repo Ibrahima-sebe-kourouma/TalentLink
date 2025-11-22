@@ -5,6 +5,7 @@ const items = [
   { key: "dashboard", icon: "📊", label: "Tableau de bord" },
   { key: "offers", icon: "📝", label: "Mes offres" },
   { key: "applications", icon: "📥", label: "Candidatures reçues" },
+  { key: "appointments", icon: "📅", label: "Rendez-vous" },
   { key: "messages", icon: "💬", label: "Messagerie" },
   { key: "profile", icon: "🏢", label: "Profil recruteur" },
   { key: "account", icon: "⚙️", label: "Compte" },

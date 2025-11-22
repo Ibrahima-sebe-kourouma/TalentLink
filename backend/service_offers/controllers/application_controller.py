@@ -14,7 +14,8 @@ from controllers.notification_controller import create_application_notification,
 
 PROFILE_SERVICE_URL = os.getenv("PROFILE_SERVICE_URL", "http://127.0.0.1:8002")
 AUTH_SERVICE_URL = os.getenv("AUTH_SERVICE_URL", "http://127.0.0.1:8001")
-MAIL_SERVICE_URL = os.getenv("MAIL_SERVICE_URL", "http://127.0.0.1:8004")
+MAIL_SERVICE_URL = os.getenv("MAIL_SERVICE_URL", "http://127.0.0.1:8005")
+APPOINTMENT_SERVICE_URL = os.getenv("APPOINTMENT_SERVICE_URL", "http://127.0.0.1:8006")
 
 
 def _ensure_candidate_exists(auth_user_id: int) -> bool:
@@ -168,6 +169,51 @@ def update_application_status(db: Session, app_id: int, payload: ApplicationUpda
                     print(f"[offers] Erreur notification offre fermée: {e}")
         except Exception as e:
             print(f"[offers] Erreur lors de la décrémentation des places: {e}")
+
+    # Ajouter le candidat à la liste des rendez-vous si le statut permet les rendez-vous
+    appointment_eligible_statuses = [ApplicationStatus.IN_REVIEW, ApplicationStatus.INTERVIEW, ApplicationStatus.OFFERED]
+    if payload.statut in appointment_eligible_statuses:
+        try:
+            # Récupérer les informations complètes pour le service de rendez-vous
+            offer = db.query(OfferDB).filter(OfferDB.id == app.offre_id).first()
+            user_info = _get_user_info(app.auth_user_id) or {}
+            
+            if offer and user_info:
+                appointment_data = {
+                    "candidate_id": app.auth_user_id,
+                    "offer_id": app.offre_id,
+                    "candidate_name": f"{user_info.get('prenom', '')} {user_info.get('name', '')}".strip(),
+                    "candidate_email": user_info.get('email', ''),
+                    "position_title": offer.titre or "Poste",
+                    "company_name": offer.entreprise or "Entreprise",
+                    "application_status": payload.statut.value
+                }
+                
+                # Appel au service de rendez-vous
+                print(f"[DEBUG] Tentative d'ajout du candidat aux RDV - URL: {APPOINTMENT_SERVICE_URL}/appointments/candidates/add")
+                print(f"[DEBUG] Données envoyées: {appointment_data}")
+                print(f"[DEBUG] Recruiter ID: {offer.recruiter_user_id}")
+                
+                appointment_response = requests.post(
+                    f"{APPOINTMENT_SERVICE_URL}/appointments/candidates/add",
+                    params={"recruiter_id": offer.recruiter_user_id},
+                    json=appointment_data,
+                    timeout=5
+                )
+                
+                print(f"[DEBUG] Réponse service RDV - Status: {appointment_response.status_code}")
+                print(f"[DEBUG] Contenu réponse: {appointment_response.text}")
+                
+                if appointment_response.status_code == 200:
+                    print(f"[offers] Candidat {app.auth_user_id} ajouté à la liste des rendez-vous pour l'offre {app.offre_id}")
+                else:
+                    print(f"[offers] Erreur ajout candidat aux rendez-vous: {appointment_response.status_code}")
+                    print(f"[offers] Détail erreur: {appointment_response.text}")
+                    
+        except Exception as e:
+            print(f"[offers] Erreur intégration service rendez-vous: {e}")
+            import traceback
+            print(f"[offers] Traceback: {traceback.format_exc()}")
 
     # Notify candidate about the status change
     try:

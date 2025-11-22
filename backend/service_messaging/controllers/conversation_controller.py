@@ -1,30 +1,24 @@
-from sqlalchemy.orm import Session
-from sqlalchemy import or_, and_, func, desc
+from mongoengine import Q
+from mongoengine.errors import DoesNotExist
 from fastapi import HTTPException
 from datetime import datetime
 from typing import List, Optional
+from bson import ObjectId
 
-from models.conversation import ConversationDB, ConversationCreate
-from models.message import MessageDB
+from models.conversation import Conversation, ConversationCreate
+from models.message import Message
+from database.database import connect_to_mongodb
 
 
-def create_conversation(db: Session, payload: ConversationCreate) -> ConversationDB:
+def create_conversation(payload: ConversationCreate) -> Conversation:
     """
     Crée une nouvelle conversation entre un candidat et un recruteur.
     Vérifie qu'une conversation n'existe pas déjà entre ces deux utilisateurs.
     """
     # Vérifier si une conversation existe déjà entre ces deux utilisateurs
-    existing = db.query(ConversationDB).filter(
-        or_(
-            and_(
-                ConversationDB.candidate_user_id == payload.candidate_user_id,
-                ConversationDB.recruiter_user_id == payload.recruiter_user_id
-            ),
-            and_(
-                ConversationDB.candidate_user_id == payload.recruiter_user_id,
-                ConversationDB.recruiter_user_id == payload.candidate_user_id
-            )
-        )
+    existing = Conversation.objects(
+        Q(candidate_user_id=payload.candidate_user_id, recruiter_user_id=payload.recruiter_user_id) |
+        Q(candidate_user_id=payload.recruiter_user_id, recruiter_user_id=payload.candidate_user_id)
     ).first()
     
     if existing:
@@ -32,7 +26,7 @@ def create_conversation(db: Session, payload: ConversationCreate) -> Conversatio
         return existing
     
     # Créer une nouvelle conversation
-    conversation = ConversationDB(
+    conversation = Conversation(
         candidate_user_id=payload.candidate_user_id,
         recruiter_user_id=payload.recruiter_user_id,
         application_id=payload.application_id,
@@ -42,89 +36,85 @@ def create_conversation(db: Session, payload: ConversationCreate) -> Conversatio
         is_archived=False
     )
     
-    db.add(conversation)
-    db.commit()
-    db.refresh(conversation)
+    conversation.save()
     return conversation
 
 
-def get_conversation(db: Session, conversation_id: int) -> ConversationDB:
+def get_conversation(conversation_id: str) -> Conversation:
     """Récupère une conversation par son ID."""
-    conversation = db.query(ConversationDB).filter(ConversationDB.id == conversation_id).first()
-    if not conversation:
+    try:
+        conversation = Conversation.objects.get(id=conversation_id)
+        return conversation
+    except DoesNotExist:
         raise HTTPException(status_code=404, detail="Conversation non trouvée")
-    return conversation
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"ID de conversation invalide: {str(e)}")
 
 
-def list_conversations_for_user(db: Session, user_id: int, include_archived: bool = False) -> List[dict]:
+def list_conversations_for_user(user_id: int, include_archived: bool = False) -> List[dict]:
     """
     Liste toutes les conversations d'un utilisateur (en tant que candidat ou recruteur).
     Retourne les conversations avec le nombre de messages non lus.
     """
-    query = db.query(ConversationDB).filter(
-        or_(
-            ConversationDB.candidate_user_id == user_id,
-            ConversationDB.recruiter_user_id == user_id
-        )
-    )
+    query = Q(candidate_user_id=user_id) | Q(recruiter_user_id=user_id)
     
     if not include_archived:
-        query = query.filter(ConversationDB.is_archived == False)
+        query = query & Q(is_archived=False)
     
-    conversations = query.order_by(desc(ConversationDB.last_message_at)).all()
+    conversations = Conversation.objects(query).order_by('-last_message_at')
     
     # Enrichir avec le nombre de messages non lus
     result = []
     for conv in conversations:
         # Compter les messages non lus reçus par cet utilisateur
-        unread_count = db.query(func.count(MessageDB.id)).filter(
-            MessageDB.conversation_id == conv.id,
-            MessageDB.sender_user_id != user_id,
-            MessageDB.is_read == False
-        ).scalar() or 0
+        unread_count = Message.objects(
+            conversation_id=str(conv.id),
+            sender_user_id__ne=user_id,
+            is_read=False
+        ).count()
         
-        conv_dict = {
-            "id": conv.id,
-            "candidate_user_id": conv.candidate_user_id,
-            "recruiter_user_id": conv.recruiter_user_id,
-            "application_id": conv.application_id,
-            "offer_id": conv.offer_id,
-            "created_at": conv.created_at,
-            "last_message_at": conv.last_message_at,
-            "is_archived": conv.is_archived,
-            "unread_count": unread_count
-        }
+        conv_dict = conv.to_dict()
+        conv_dict["unread_count"] = unread_count
         result.append(conv_dict)
     
     return result
 
 
-def archive_conversation(db: Session, conversation_id: int, user_id: int) -> ConversationDB:
+def archive_conversation(conversation_id: str, user_id: int) -> Conversation:
     """Archive une conversation (soft delete)."""
-    conversation = get_conversation(db, conversation_id)
+    conversation = get_conversation(conversation_id)
     
     # Vérifier que l'utilisateur fait partie de la conversation
     if conversation.candidate_user_id != user_id and conversation.recruiter_user_id != user_id:
         raise HTTPException(status_code=403, detail="Non autorisé à archiver cette conversation")
     
     conversation.is_archived = True
-    db.commit()
-    db.refresh(conversation)
+    conversation.save()
     return conversation
 
 
-def delete_conversation(db: Session, conversation_id: int, user_id: int):
+def delete_conversation(conversation_id: str, user_id: int):
     """Supprime définitivement une conversation et tous ses messages."""
-    conversation = get_conversation(db, conversation_id)
+    conversation = get_conversation(conversation_id)
     
     # Vérifier que l'utilisateur fait partie de la conversation
     if conversation.candidate_user_id != user_id and conversation.recruiter_user_id != user_id:
         raise HTTPException(status_code=403, detail="Non autorisé à supprimer cette conversation")
     
     # Supprimer tous les messages associés
-    db.query(MessageDB).filter(MessageDB.conversation_id == conversation_id).delete()
+    Message.objects(conversation_id=conversation_id).delete()
     
     # Supprimer la conversation
-    db.delete(conversation)
-    db.commit()
+    conversation.delete()
     return {"detail": "Conversation supprimée"}
+
+
+def update_last_message_time(conversation_id: str):
+    """Met à jour le timestamp du dernier message pour une conversation."""
+    try:
+        conversation = Conversation.objects.get(id=conversation_id)
+        conversation.last_message_at = datetime.utcnow()
+        conversation.save()
+    except DoesNotExist:
+        # Conversation introuvable, on ignore silencieusement
+        pass

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "candidate_user_id": 4,
+    "recruiter_user_id": 14,
+    "application_id": 8,
+    "offer_id": 28,
+    "created_at": "2025-11-13T20:03:04.428662",
+    "last_message_at": "2025-11-18T17:25:25.329119",
+    "is_archived": 0
+  },
+  {
+    "id": 2,
+    "candidate_user_id": 16,
+    "recruiter_user_id": 14,
+    "application_id": 5,
+    "offer_id": 24,
+    "created_at": "2025-11-16T14:06:06.222380",
+    "last_message_at": "2025-11-16T14:09:42.042572",
+    "is_archived": 0
+  },
+  {
+    "id": 3,
+    "candidate_user_id": 17,
+    "recruiter_user_id": 14,
+    "application_id": 7,
+    "offer_id": 24,
+    "created_at": "2025-11-16T14:06:34.512632",
+    "last_message_at": "2025-11-16T14:06:34.512632",
+    "is_archived": 0
+  },
+  {
+    "id": 4,
+    "candidate_user_id": 15,
+    "recruiter_user_id": 14,
+    "application_id": 2,
+    "offer_id": 24,
+    "created_at": "2025-11-16T14:07:07.736245",
+    "last_message_at": "2025-11-16T14:07:07.736245",
+    "is_archived": 0
+  }
+]

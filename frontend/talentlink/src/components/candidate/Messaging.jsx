@@ -27,16 +27,20 @@ export default function Messaging({ user }) {
     const loadConversations = async () => {
       if (!user?.id) return;
       try {
+        console.log("🔍 Tentative de connexion au service de messagerie:", `${API_MESSAGING_URL}/conversations/?user_id=${user.id}`);
         const res = await fetch(`${API_MESSAGING_URL}/conversations/?user_id=${user.id}`);
+        console.log("📊 Réponse du service:", res.status);
         if (res.ok) {
           const data = await res.json();
+          console.log("✅ Conversations chargées:", data);
           setConversations(Array.isArray(data) ? data : []);
           setServiceUnavailable(false);
         } else {
+          console.error("❌ Erreur HTTP:", res.status, res.statusText);
           setServiceUnavailable(true);
         }
       } catch (e) {
-        console.error("Service de messagerie non accessible:", e);
+        console.error("💥 Service de messagerie non accessible:", e);
         setServiceUnavailable(true);
       } finally {
         setLoading(false);

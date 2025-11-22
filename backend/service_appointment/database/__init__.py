@@ -1,0 +1,1 @@
+# Configuration de base de données pour le service de rendez-vous

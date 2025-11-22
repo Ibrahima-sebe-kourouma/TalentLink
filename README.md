@@ -18,6 +18,7 @@
 - ✅ Authentication JWT sécurisée
 - ✅ Upload et gestion de documents (CV, lettres de motivation)
 - ✅ Système de messagerie en temps réel
+- ✅ Système de rendez-vous automatisé
 - ✅ Tableaux de bord analytiques
 - ✅ Notifications par email
 - 🔄 **TalentBot IA** (en développement) - Assistant intelligent pour optimiser le recrutement
@@ -31,7 +32,8 @@
 ├── 👤 service_profile   # Profils candidats/recruteurs
 ├── 💼 service_offers    # Offres d'emploi & candidatures
 ├── 💬 service_messaging # Messagerie instantanée
-└── 📧 service_mail      # Notifications email
+├── 📧 service_mail      # Notifications email
+└── 📅 service_appointment # Gestion des rendez-vous
 ```
 
 ### **Frontend - React SPA**
@@ -115,6 +117,7 @@ PROFILE_SERVICE_PORT=8002
 OFFERS_SERVICE_PORT=8003
 MESSAGING_SERVICE_PORT=8004
 MAIL_SERVICE_PORT=8005
+APPOINTMENT_SERVICE_PORT=8006
 
 # Sécurité
 JWT_SECRET_KEY=your-super-secure-secret-key
@@ -138,6 +141,7 @@ REACT_APP_PROFILE_SERVICE_PORT=8002
 REACT_APP_OFFERS_SERVICE_PORT=8003
 REACT_APP_MESSAGING_SERVICE_PORT=8004
 REACT_APP_MAIL_SERVICE_PORT=8005
+REACT_APP_APPOINTMENT_SERVICE_PORT=8006
 ```
 
 ## 📚 Documentation API
@@ -150,6 +154,7 @@ REACT_APP_MAIL_SERVICE_PORT=8005
 | Offers | 8003 | `http://localhost:8003/docs` |
 | Messaging | 8004 | `http://localhost:8004/docs` |
 | Mail | 8005 | `http://localhost:8005/docs` |
+| Appointment | 8006 | `http://localhost:8006/docs` |
 
 ### Endpoints Principaux
 
@@ -187,6 +192,17 @@ GET    /conversations/{id}/messages # Messages
 POST   /conversations/{id}/messages # Envoyer message
 ```
 
+#### 📅 Rendez-vous (`/appointments`)
+```
+POST   /candidates/add           # Ajouter candidat éligible
+GET    /candidates/{recruiter_id} # Liste candidats éligibles
+POST   /create                   # Créer proposition RDV
+GET    /candidate/{candidate_id} # RDV d'un candidat
+POST   /candidate/choose-slot    # Candidat choisit créneau
+POST   /candidate/refuse-all/{id} # Candidat refuse tous créneaux
+POST   /send-final-email/{id}    # Envoyer email final
+```
+
 ## 🗄️ Base de Données
 
 ### Schéma Principal
@@ -215,6 +231,13 @@ conversations: id, candidate_user_id, recruiter_user_id, created_at
 messages: id, conversation_id, sender_user_id, content, sent_at
 ```
 
+#### Appointments (service_appointment)
+```sql
+appointment_candidates: id, recruiter_id, candidate_id, offer_id, candidate_name, candidate_email
+appointments: id, recruiter_id, candidate_id, offer_id, status, chosen_datetime, mode
+appointment_slots: id, appointment_id, proposed_datetime, is_chosen
+```
+
 ## 🧪 Tests
 
 ```bash
@@ -241,6 +264,7 @@ TalentLink/
 │   ├── 📁 service_offers/      # Offres & Candidatures
 │   ├── 📁 service_messaging/   # Messages & Conversations
 │   ├── 📁 service_mail/        # Notifications Email
+│   ├── 📁 service_appointment/ # Gestion des rendez-vous
 │   ├── 📄 .env                 # Configuration
 │   ├── 📄 requirements.txt     # Dépendances Python
 │   └── 🔧 start_all_services.* # Scripts de démarrage
@@ -304,6 +328,7 @@ SMTP_SERVER=your-smtp-server.com
 - [x] Système de messagerie
 - [x] Notifications email
 - [x] Upload documents
+- [x] **Système de rendez-vous** - Gestion automatisée des entretiens
 - [ ] **TalentBot IA** - Assistant intelligent
 - [ ] Système de notifications en temps réel
 

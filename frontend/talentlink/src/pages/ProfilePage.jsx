@@ -6,6 +6,7 @@ import OffersBrowser from "../components/offers/OffersBrowser";
 import MyApplications from "../components/offers/MyApplications";
 import CandidateDashboard from "../modules/candidate/Dashboard";
 import CandidateMessaging from "../components/candidate/Messaging";
+import CandidateAppointments from "../components/candidate/CandidateAppointments";
 import StepperProfile from "../components/StepperProfile";
 import TalentBotCandidate from "../components/candidate/TalentBot";
 import "../components/ProfilePage.css";
@@ -23,7 +24,7 @@ export default function ProfilePage({ user, onLogout }) {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const tab = params.get("tab");
-    const allowed = new Set(["profil", "dashboard", "annonces", "update", "messages", "candidatures", "compte", "talentbot"]);
+    const allowed = new Set(["profil", "dashboard", "annonces", "update", "messages", "candidatures", "rendezvous", "compte", "talentbot"]);
     if (tab && allowed.has(tab)) {
       setActiveMenu(tab);
     }
@@ -258,6 +259,10 @@ export default function ProfilePage({ user, onLogout }) {
 
           {activeMenu === 'candidatures' && (
             <MyApplications user={user} />
+          )}
+
+          {activeMenu === 'rendezvous' && (
+            <CandidateAppointments userType="candidate" candidateId={user?.id} />
           )}
 
           {activeMenu === 'compte' && (
