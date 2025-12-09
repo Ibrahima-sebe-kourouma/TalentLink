@@ -16,6 +16,7 @@
 
 ### 🔧 **Fonctionnalités Avancées**
 - ✅ Authentication JWT sécurisée avec gestion de rôles
+- ✅ **Google OAuth 2.0** - Inscription/Connexion avec compte Google (One-Click Sign-In)
 - ✅ Upload et gestion de documents (CV, lettres de motivation) - max 5MB
 - ✅ Système de messagerie interne avec suppression de conversations
 - ✅ Système de rendez-vous automatisé entre candidats et recruteurs
@@ -65,6 +66,7 @@
 - **Git**
 - **OpenAI API Key** (pour TalentBot RAG)
 - **SMTP Server** (pour notifications email)
+- **Google Cloud Project** (pour OAuth 2.0 - optionnel)
 
 ### 1. Clonage du Repository
 ```bash
@@ -152,6 +154,11 @@ SERVICE_RAG_PORT=8008
 JWT_SECRET_KEY=your-super-secure-secret-key
 JWT_ALGORITHM=HS256
 
+# Google OAuth 2.0
+GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_REDIRECT_URI=http://localhost:8001/auth/google/callback
+
 # Email (SMTP)
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=465
@@ -175,6 +182,52 @@ RAG_CONVERSATIONS_DIR=./conversations
 # CORS
 CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 ```
+
+### Configuration Google OAuth 2.0 (Optionnel)
+
+Pour activer la connexion avec Google :
+
+#### 1. Créer un projet Google Cloud
+1. Allez sur [Google Cloud Console](https://console.cloud.google.com/)
+2. Créez un nouveau projet ou sélectionnez-en un existant
+3. Activez l'API **Google+ API** ou **Google Identity Services**
+
+#### 2. Configurer OAuth 2.0
+1. Allez dans **APIs & Services > Credentials**
+2. Cliquez sur **Create Credentials > OAuth 2.0 Client ID**
+3. Configurez l'écran de consentement OAuth :
+   - Type : Externe
+   - Ajoutez les scopes : `email`, `profile`, `openid`
+4. Créez le Client ID OAuth 2.0 :
+   - Type d'application : **Application Web**
+   - Origines JavaScript autorisées : `http://localhost:3000`
+   - URI de redirection : `http://localhost:8001/auth/google/callback`
+5. Copiez le **Client ID** et **Client Secret**
+
+#### 3. Configurer les variables d'environnement
+```env
+GOOGLE_CLIENT_ID=votre-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=votre-client-secret
+GOOGLE_REDIRECT_URI=http://localhost:8001/auth/google/callback
+```
+
+#### 4. Migration de la base de données
+```bash
+cd backend/service_auth/database
+python migrate_google_oauth.py
+```
+
+Cette migration ajoute les colonnes `google_id` et `picture` à la table `users`.
+
+#### 5. Fonctionnalités OAuth
+- ✅ Inscription en un clic avec compte Google
+- ✅ Connexion automatique pour utilisateurs existants
+- ✅ Création automatique de profil candidat
+- ✅ Envoi d'email de bienvenue automatique
+- ✅ Gestion de photo de profil Google
+- ✅ Disponible sur pages Login et Register
+
+**Note :** Si Google OAuth n'est pas configuré, les utilisateurs peuvent toujours utiliser l'inscription/connexion classique par email/mot de passe.
 
 ### Configuration Frontend (.env.local)
 ```env
@@ -208,6 +261,9 @@ REACT_APP_APPOINTMENT_SERVICE_PORT=8006
 ```
 POST /auth/register              # Inscription
 POST /auth/login                 # Connexion
+GET  /auth/google/login          # URL de connexion Google OAuth
+GET  /auth/google/callback       # Callback OAuth (redirection Google)
+POST /auth/google/token          # Connexion avec token Google (frontend)
 POST /auth/logout                # Déconnexion
 GET  /auth/me                    # Profil utilisateur
 GET  /admin/users                # Liste utilisateurs (admin)
@@ -280,10 +336,14 @@ POST   /send-final-email/{id}    # Envoyer email final
 
 #### Users (service_auth)
 ```sql
-users: id, email, password_hash, role, status, suspended_until, created_at
+users: id, email, password_hash, role, status, suspended_until, google_id, picture, created_at
 admin_audit: id, admin_user_id, target_user_id, action_type, action_details, created_at
 user_status: id, user_id, status, reason, suspended_until, changed_by_admin_id
 ```
+
+**Nouveaux champs Google OAuth :**
+- `google_id` (VARCHAR, UNIQUE, NULLABLE) : Identifiant Google unique pour OAuth
+- `picture` (VARCHAR, NULLABLE) : URL de la photo de profil Google
 
 #### Candidates (service_profile)
 ```sql
@@ -486,6 +546,9 @@ SMTP_SERVER=your-smtp-server.com
 - [x] **TalentBot avec historique** - Conversations persistantes avec contexte
 - [x] **Tests de charge Locust** - Infrastructure complète de performance testing
 - [x] Mode dégradé pour emails (graceful failure)
+- [x] **Google OAuth 2.0** - Inscription/Connexion One-Click avec compte Google
+- [x] Envoi d'email de bienvenue automatique pour nouveaux utilisateurs OAuth
+- [x] Migration base de données pour support Google OAuth (google_id, picture)
 
 ### 🎯 Phase 4 - Performance & Scalabilité (En cours)
 - [x] Tests de charge avec Locust (auth, RAG, offers, user journeys)

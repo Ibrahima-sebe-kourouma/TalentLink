@@ -211,6 +211,28 @@
   animation: slideUp 0.5s ease-out;
 }
 
+/* Google OAuth Divider */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 24px 0;
+  color: #5f6368;
+  font-size: 14px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #dadce0;
+}
+
+.auth-divider span {
+  padding: 0 16px;
+  text-transform: lowercase;
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
   .auth-container {

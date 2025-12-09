@@ -1,8 +1,11 @@
 from fastapi import APIRouter, Depends
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
+from pydantic import BaseModel
 from database.database import get_db
 from controllers.auth_controller import create_user, authenticate_user, request_password_reset, reset_password_with_token
 from controllers.user_controller import get_user_by_id,get_all_users, update_user, delete_user, nbr_users,nbr_admins,nbr_candidats,nbr_recruteurs
+from controllers.google_oauth_controller import get_google_login_url, google_oauth_callback, google_token_login
 from models.user import UserCreate, UserResponse
 from utils.security import create_access_token
 from datetime import timedelta
@@ -120,4 +123,48 @@ def total_recruteurs(db: Session = Depends(get_db)):
     Retourne le nombre total de recruteurs dans le système.
     """
     return {"total_recruteurs": nbr_recruteurs(db)}
+
+
+# ============================================
+# GOOGLE OAUTH 2.0 ROUTES
+# ============================================
+
+class GoogleTokenRequest(BaseModel):
+    token: str
+
+@router.get("/google/login")
+def google_login():
+    """
+    Redirige vers la page de connexion Google OAuth 2.0
+    """
+    login_url = get_google_login_url()
+    return {"url": login_url}
+
+
+@router.get("/google/callback")
+def google_callback(code: str, db: Session = Depends(get_db)):
+    """
+    Callback OAuth après authentification Google
+    Crée ou connecte l'utilisateur et retourne un token JWT
+    """
+    result = google_oauth_callback(db, code)
+    
+    # Rediriger vers le frontend avec le token
+    frontend_url = "http://localhost:3000/auth/google/success"
+    token = result["access_token"]
+    user_data = result["user"]
+    
+    # Redirection avec token et user data (le frontend les récupérera)
+    return RedirectResponse(
+        url=f"{frontend_url}?token={token}&user={user_data['email']}"
+    )
+
+
+@router.post("/google/token")
+def google_token(request: GoogleTokenRequest, db: Session = Depends(get_db)):
+    """
+    Authentification directe avec un token Google ID
+    Utilisé par le frontend pour connexion client-side
+    """
+    return google_token_login(db, request.token)
 

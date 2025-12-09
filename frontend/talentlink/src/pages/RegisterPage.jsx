@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { API_AUTH_URL } from '../constants/api';
+import GoogleLoginButton from '../components/GoogleLoginButton';
 import '../styles/Auth.css';
 
 const RegisterPage = () => {
@@ -51,6 +52,23 @@ const RegisterPage = () => {
     }
   };
 
+  const handleGoogleSuccess = (data) => {
+    // Inscription réussie avec Google - redirection automatique selon le rôle
+    const role = (data?.user?.role || '').toLowerCase();
+    if (role === 'recruteur') {
+      navigate('/recruiter');
+    } else if (role === 'admin') {
+      navigate('/admin');
+    } else {
+      navigate('/candidate');
+    }
+  };
+
+  const handleGoogleError = (error) => {
+    setError('Échec de l\'inscription avec Google. Veuillez réessayer.');
+    console.error('Erreur Google Register:', error);
+  };
+
   return (
     <div className="auth-container">
       <div className="auth-card">
@@ -68,6 +86,16 @@ const RegisterPage = () => {
 
           <form onSubmit={handleSubmit} className="auth-form">
             {error && <div className="form-error">{error}</div>}
+            
+            {/* Bouton Google OAuth */}
+            <GoogleLoginButton 
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleError}
+            />
+            
+            <div className="auth-divider">
+              <span>ou</span>
+            </div>
             
             <div className="form-group">
               <label htmlFor="prenom" className="form-label">Prénom</label>

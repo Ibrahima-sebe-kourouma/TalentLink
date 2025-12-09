@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { API_AUTH_URL } from '../constants/api';
+import GoogleLoginButton from '../components/GoogleLoginButton';
 import '../styles/Auth.css';
 
 const LoginPage = ({ setUser }) => {
@@ -47,6 +48,29 @@ const LoginPage = ({ setUser }) => {
     }
   };
 
+  const handleGoogleSuccess = (data) => {
+    // Connexion réussie avec Google
+    const userData = {
+      ...data.user,
+      access_token: data.access_token
+    };
+    setUser(userData);
+    
+    const role = (data?.user?.role || '').toLowerCase();
+    if (role === 'recruteur') {
+      navigate('/recruiter');
+    } else if (role === 'admin') {
+      navigate('/admin');
+    } else {
+      navigate('/candidate');
+    }
+  };
+
+  const handleGoogleError = (error) => {
+    setError('Échec de la connexion avec Google. Veuillez réessayer.');
+    console.error('Erreur Google Login:', error);
+  };
+
   return (
     <div className="auth-container">
       <div className="auth-card">
@@ -64,6 +88,16 @@ const LoginPage = ({ setUser }) => {
 
           <form onSubmit={handleSubmit} className="auth-form">
             {error && <div className="form-error">{error}</div>}
+            
+            {/* Bouton Google OAuth */}
+            <GoogleLoginButton 
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleError}
+            />
+            
+            <div className="auth-divider">
+              <span>ou</span>
+            </div>
             
             <div className="form-group">
               <label htmlFor="email" className="form-label">Adresse e-mail</label>

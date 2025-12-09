@@ -1,0 +1,21 @@
+.google-login-wrapper {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.google-login-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+}
+
+/* Styles pour le bouton Google rendu par l'API */
+.google-login-button-container > div {
+  width: 100% !important;
+}
+
+.google-login-button-container iframe {
+  width: 100% !important;
+}

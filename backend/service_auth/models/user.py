@@ -26,6 +26,9 @@ class UserDB(Base):
     # Password reset fields (nullable for users without an active reset)
     reset_token = Column(String, nullable=True, index=True)
     reset_token_expiry = Column(DateTime, nullable=True)
+    # Google OAuth fields
+    google_id = Column(String, nullable=True, unique=True, index=True)
+    picture = Column(String, nullable=True)  # URL de la photo de profil Google
 
 # ---- Schéma Pydantic ----
 class UserCreate(BaseModel):
