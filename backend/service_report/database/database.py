@@ -8,10 +8,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configuration de la base de données
-# Utiliser le dossier database pour stocker la base de données
-DATABASE_DIR = os.path.join(os.path.dirname(__file__))
-DEFAULT_DB_PATH = os.path.join(DATABASE_DIR, "reports.db")
-DATABASE_URL = os.getenv("REPORT_DATABASE_URL", f"sqlite:///{DEFAULT_DB_PATH}")
+DATABASE_URL = os.getenv('DATABASE_URL_REPORT')
+if not DATABASE_URL:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    database_path = os.path.join(current_dir, "database.db")
+    DATABASE_URL = f"sqlite:///{database_path}"
+
+print(f"📊 Report DB: {DATABASE_URL}")
 
 # Créer le moteur SQLAlchemy
 engine = create_engine(

@@ -65,7 +65,7 @@ def modify_user_status(
     user_status = update_user_status(db, user_id, status_update, admin_user.id)
     
     return {
-        "detail": f"Statut utilisateur mis à jour: {status_update.status.value}",
+        "detail": f"Statut utilisateur mis à jour: {status_update.status}",
         "user_status": user_status
     }
 

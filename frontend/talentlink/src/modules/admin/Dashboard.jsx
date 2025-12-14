@@ -15,6 +15,10 @@ import {
 } from 'chart.js';
 import SignalementsAdmin from "../../components/admin/SignalementsAdmin";
 import UserManagement from "../../components/admin/UserManagement";
+import ContentManagement from "../../components/admin/ContentManagement";
+import Settings from "../../components/admin/Settings";
+import { ProductTour, TourHelpButton, useProductTour, adminDashboardTour } from "../../components/onboarding";
+import { isFirstVisit } from "../../utils/tourHelpers";
 import "../../styles/dashboard.css";
 
 // Enregistrer les composants Chart.js
@@ -48,6 +52,15 @@ export default function AdminDashboard({ user }) {
   const [recentReports, setRecentReports] = useState([]);
   const [auditLogs, setAuditLogs] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Configuration du tour
+  const userId = user?.id;
+  const { run, startTour, handleTourComplete, isReady } = useProductTour(
+    'admin_dashboard',
+    adminDashboardTour,
+    userId,
+    true
+  );
 
   // Charger les statistiques
   useEffect(() => {
@@ -212,6 +225,23 @@ export default function AdminDashboard({ user }) {
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#f9fafb' }}>
+      {/* Tour et bouton d'aide */}
+      {isReady && (
+        <>
+          <ProductTour
+            steps={adminDashboardTour}
+            tourKey="admin_dashboard"
+            userId={userId}
+            onComplete={handleTourComplete}
+            run={run}
+          />
+          <TourHelpButton
+            onClick={startTour}
+            isFirstVisit={isFirstVisit(userId)}
+          />
+        </>
+      )}
+
       {/* Sidebar Admin */}
       <aside style={{ 
         width: 280, 
@@ -619,55 +649,11 @@ export default function AdminDashboard({ user }) {
         )}
 
         {activeTab === 'content' && (
-          <div>
-            <div style={{ marginBottom: 24 }}>
-              <h1 style={{ margin: 0, marginBottom: 8, fontSize: '28px', fontWeight: 700 }}>
-                📝 Gestion du contenu
-              </h1>
-              <p style={{ color: '#6b7280', margin: 0 }}>
-                Modération et gestion du contenu de la plateforme
-              </p>
-            </div>
-            <div style={{ 
-              padding: 40, 
-              background: '#fff', 
-              borderRadius: 12, 
-              border: '1px solid #e5e7eb',
-              textAlign: 'center'
-            }}>
-              <div style={{ fontSize: 48, marginBottom: 16 }}>🚧</div>
-              <h3 style={{ marginBottom: 8 }}>Fonctionnalité en développement</h3>
-              <p style={{ color: '#6b7280' }}>
-                Cette fonctionnalité sera bientôt disponible
-              </p>
-            </div>
-          </div>
+          <ContentManagement user={user} />
         )}
 
         {activeTab === 'settings' && (
-          <div>
-            <div style={{ marginBottom: 24 }}>
-              <h1 style={{ margin: 0, marginBottom: 8, fontSize: '28px', fontWeight: 700 }}>
-                ⚙️ Paramètres système
-              </h1>
-              <p style={{ color: '#6b7280', margin: 0 }}>
-                Configuration et paramètres de la plateforme
-              </p>
-            </div>
-            <div style={{ 
-              padding: 40, 
-              background: '#fff', 
-              borderRadius: 12, 
-              border: '1px solid #e5e7eb',
-              textAlign: 'center'
-            }}>
-              <div style={{ fontSize: 48, marginBottom: 16 }}>🚧</div>
-              <h3 style={{ marginBottom: 8 }}>Fonctionnalité en développement</h3>
-              <p style={{ color: '#6b7280' }}>
-                Cette fonctionnalité sera bientôt disponible
-              </p>
-            </div>
-          </div>
+          <Settings user={user} />
         )}
       </main>
     </div>

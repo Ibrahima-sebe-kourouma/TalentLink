@@ -1,0 +1,67 @@
+# Bases de données SQLite
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Variables d'environnement avec secrets
+.env
+.env.production
+.env.local
+.env.*.local
+
+# Fichiers uploadés (CVs, lettres de motivation)
+uploads/
+!uploads/.gitkeep
+
+# Backups
+backups/
+*.tar.gz
+*.zip
+backup_*/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+.eggs/
+
+# MongoDB dumps
+dump/
+mongo_backup/
+
+# Docker volumes
+docker-compose.override.yml
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ChromaDB (service RAG)
+storage/
+chroma_db/
+*.parquet
+*.bin
+
+# Temporary files
+tmp/
+temp/
+*.tmp

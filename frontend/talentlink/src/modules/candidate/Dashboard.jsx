@@ -15,6 +15,8 @@ import {
 } from 'chart.js';
 import { Line, Doughnut } from 'react-chartjs-2';
 import { API_OFFERS_URL, API_PROFILE_URL } from "../../constants/api";
+import { ProductTour, TourHelpButton, useProductTour, candidateDashboardPageTour } from "../../components/onboarding";
+import { isFirstVisit } from "../../utils/tourHelpers";
 import "../../styles/dashboard.css";
 
 ChartJS.register(
@@ -46,6 +48,15 @@ export default function CandidateDashboard({ user }) {
   });
   const [loading, setLoading] = useState(true);
   const [profileComplete, setProfileComplete] = useState(0);
+
+  // Configuration du tour
+  const userId = user?.id;
+  const { run, startTour, handleTourComplete, isReady } = useProductTour(
+    'candidate_dashboard_page',
+    candidateDashboardPageTour,
+    userId,
+    true // Auto-start pour les nouveaux utilisateurs
+  );
 
   const loadDashboardData = useCallback(async () => {
     if (!user?.id) return;
@@ -230,6 +241,23 @@ export default function CandidateDashboard({ user }) {
 
   return (
     <div className="dashboard-container">
+      {/* Tour et bouton d'aide */}
+      {isReady && (
+        <>
+          <ProductTour
+            steps={candidateDashboardPageTour}
+            tourKey="candidate_dashboard_page"
+            userId={userId}
+            onComplete={handleTourComplete}
+            run={run}
+          />
+          <TourHelpButton
+            onClick={startTour}
+            isFirstVisit={isFirstVisit(userId)}
+          />
+        </>
+      )}
+
       {/* En-tête */}
       <div style={{ marginBottom: '2rem' }}>
         <h1 className="dashboard-title">

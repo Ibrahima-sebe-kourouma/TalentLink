@@ -1,0 +1,157 @@
+/* Styles personnalisés pour le Product Tour */
+
+/* Bouton d'aide pour relancer le tour */
+.tour-help-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.tour-help-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.5);
+}
+
+.tour-help-button:active {
+  transform: scale(0.95);
+}
+
+/* Tooltip personnalisé pour le bouton d'aide */
+.tour-help-button::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1f2937;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  font-weight: 400;
+}
+
+.tour-help-button:hover::before {
+  opacity: 1;
+}
+
+/* Animation d'entrée pour le bouton */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tour-help-button {
+  animation: slideInUp 0.5s ease;
+}
+
+/* Pulse animation pour attirer l'attention lors de la première visite */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.7);
+  }
+}
+
+.tour-help-button.first-visit {
+  animation: slideInUp 0.5s ease, pulse 2s ease infinite 0.5s;
+}
+
+/* Badge pour les notifications */
+.tour-help-button .badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+/* Responsive : masquer sur mobile pour ne pas gêner */
+@media (max-width: 768px) {
+  .tour-help-button {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    bottom: 16px;
+    right: 16px;
+  }
+  
+  .tour-help-button::before {
+    display: none;
+  }
+}
+
+/* Override Joyride styles pour correspondre au thème TalentLink */
+.__floater__open {
+  z-index: 10001 !important;
+}
+
+/* Personnalisation du spotlight */
+.react-joyride__spotlight {
+  border-radius: 8px !important;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Améliorer la lisibilité du contenu du tooltip */
+.react-joyride__tooltip {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+/* Style pour les emojis dans les tours */
+.react-joyride__tooltip__body {
+  line-height: 1.6;
+}
+
+/* Animation smooth pour le changement d'étapes */
+.react-joyride__tooltip {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

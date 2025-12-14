@@ -1,0 +1,58 @@
+{
+  "conversation_id": "c967eedf-3d8e-4dce-9f8d-911b7b389259",
+  "user_id": "14",
+  "title": "je cherche un poste de develeopper §",
+  "messages": [
+    {
+      "role": "user",
+      "content": "je cherche un poste de develeopper §",
+      "timestamp": "2025-12-09T19:36:35.487242",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Voici quelques offres d'emploi pour des postes de développeur :\n\n1. **Développeur Full Stack JavaScript**\n   - **Entreprise**: TechNova Solutions\n   - **Localisation**: Montréal, QC\n   - **Type de contrat**: CDI\n   - **Description**: Conception, développement et maintenance d'applications web basées sur React et Node.js. Collaboration avec les équipes design et produit.\n   - **Salaire**: 70,000 - 95,000 CAD\n   - **Expérience requise**: 3 ans en développement web\n   - **Places restantes**: 1\n\n2. **Développeur Full-Stack React / FastAPI**\n   - **Entreprise**: TalentLink\n   - **Localisation**: Paris, France (remote possible)\n   - **Type de contrat**: CDI\n   - **Description**: Construction d'applications web modernes avec React, Chart.js, FastAPI, SQLAlchemy.\n   - **Salaire**: 45,000 - 60,000 EUR\n   - **Expérience requise**: 2+ ans en développement web\n   - **Places restantes**: 1\n\n3. **Analyste Programmeur**\n   - **Entreprise**: jobgoMontreal\n   - **Localisation**: Laval\n   - **Type de contrat**: CDI\n   - **Description**: Recherche d'un développeur senior.\n   - **Salaire**: 200,000 - 40,000,000 CAD\n   - **Places restantes**: 2\n\nSi l'une de ces offres vous intéresse, je peux vous aider à obtenir plus d'informations ou à postuler.",
+      "timestamp": "2025-12-09T19:36:46.914658",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5796528291867665,
+          "text": "# BASE DE DONNÉES: OFFERS\r\n# Extraction du: 2025-11-27T23:09:55.911917\r\n# Nombre d'enregistrements: 29\r\n\r\n================================================================================\r\n\r\n=== Offre d'emploi ===\r\n\r\nID: 1\r\ntitre: Développeur Full Stack JavaScript\r\nDescription: Nous recherchons un dé...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.562099753264554,
+          "text": "type_contrat: CDI\r\nlocalisation: Lévis, QC\r\nentreprise: NetSecure\r\ndomaine: Informatique\r\nmots_cles: Cisco,Réseau,Maintenance,Sécurité\r\nsalaire_min: 60000\r\nsalaire_max: 85000\r\nexperience_requise: 2 ans en administration réseau\r\neducation_requise: DEC en informatique\r\nnb_postes: 2\r\ndate_publication: ...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.5596806607571654,
+          "text": "\",\r\n      \"type_contrat\": \"CDI\",\r\n      \"localisation\": \"Lévis, QC\",\r\n      \"entreprise\": \"NetSecure\",\r\n      \"domaine\": \"Informatique\",\r\n      \"mots_cles\": \"Cisco,Réseau,Maintenance,Sécurité\",\r\n      \"remote\": 0,\r\n      \"salaire_min\": 60000,\r\n      \"salaire_max\": 85000,\r\n      \"experience_requise\":...",
+          "document_name": "service_offers_offers.json",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.5509241946329917,
+          "text": "Ma formation en informatique et mon expérience pratique me permettent d'aborder les défis techniques avec confiance et créativité.\r\n\r\nAvec une solide base en programmation orientée objet, développement web, mobile et intelligence artificielle, je suis capable de m'adapter rapidement aux nouvelles te...",
+          "document_name": "service_profile_candidats.txt",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.5429411188437424,
+          "text": "Maîtrise d'Excel, SQL et un outil de dataviz (Chart.js ou équivalent).\r\ntype_contrat: CDD\r\nlocalisation: Lyon, France\r\nentreprise: TalentLink\r\ndomaine: Data / RH\r\nmots_cles: sql,excel,dataviz,kpi\r\nsalaire_min: 30000\r\nsalaire_max: 38000\r\nexperience_requise: Stage/alternance ou 0-1 an d'expérience\r\ned...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-09T19:36:35.471254",
+  "updated_at": "2025-12-09T19:36:46.914658",
+  "is_active": true
+}

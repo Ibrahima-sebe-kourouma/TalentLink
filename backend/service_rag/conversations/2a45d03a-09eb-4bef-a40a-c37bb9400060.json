@@ -1,0 +1,44 @@
+{
+  "conversation_id": "2a45d03a-09eb-4bef-a40a-c37bb9400060",
+  "user_id": "45",
+  "title": "Comment postuler à une offre ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Comment postuler à une offre ?",
+      "timestamp": "2025-12-09T18:58:08.810467",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour postuler à une offre sur la plateforme TalentLink, suivez ces étapes :\n\n1. **Recherche d'offres** : Utilisez les filtres disponibles (domaine, localisation, mots-clés, type de contrat) pour trouver les offres qui vous intéressent.\n\n2. **Consultation des détails** : Cliquez sur l'offre d'emploi pour consulter tous les détails, y compris les exigences et les responsabilités.\n\n3. **Postuler** : Si vous souhaitez postuler, vous pouvez le faire directement depuis la page de l'offre. Assurez-vous que votre profil est à jour et que vous avez éventuellement préparé un message de motivation.\n\n4. **Suivi de votre candidature** : Après avoir postulé, vous pourrez suivre l'état de votre candidature (en attente, acceptée, refusée) depuis votre tableau de bord.\n\nN'oubliez pas que vous pouvez également recevoir des notifications lorsque votre candidature reçoit une réponse. Si vous avez besoin de modifier ou de retirer votre candidature, cela est également possible via la plateforme.",
+      "timestamp": "2025-12-09T18:58:13.872128",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5886608492629833,
+          "text": "977933\r\nmessage_motivation: [Retrait candidat: non jhe n'ebn veux pas]\r\n[Retrait candidat: non jhe n'ebn veux pas]\r\nDernière modification: 2025-11-19 18:52:41.192645\r\n\r\n=== Candidature ===\r\n\r\nID: 10\r\noffre_id: 29\r\nauth_user_id: 15\r\ncandidat_id: 11\r\nstatut: INTERVIEW\r\ndate_candidature: 2025-11-17 18:...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.5882683080705349,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.573329179910128,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-09T18:58:08.787223",
+  "updated_at": "2025-12-09T18:58:13.872128",
+  "is_active": true
+}

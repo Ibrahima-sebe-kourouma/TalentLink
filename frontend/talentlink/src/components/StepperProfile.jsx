@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Step1InfoPerso from "./steps/Step1InfoPerso";
 import Step2Resume from "./steps/Step2Resume";
 import Step3Formation from "./steps/Step3Formation";
-import Step2Experience from "./steps/Step2Experience";
-import Step5CompetencesLangues from "./steps/Step5CompetencesLangues";
-import Step6Certifications from "./steps/Step6Certifications";
-import Step7Projets from "./steps/Step7Projets";
-import Step5CV from "./steps/Step5CV";
+import Step2Experience from "./steps/Step4Experience";
+import Step5CompetencesLangues from "./steps/Step6Langues";
+import Step6Certifications from "./steps/Step7Certifications";
+import Step7Projets from "./steps/Step8Projets";
+import Step5CV from "./steps/Step9CV";
 import "./Stepper.css";
 import { API_PROFILE_URL } from "../constants/api";
 

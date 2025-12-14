@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { API_OFFERS_URL, API_PROFILE_URL, API_AUTH_URL, API_MESSAGING_URL } from "../../constants/api";
 import { formatDate, formatStatus, statusStyle } from "../../utils/format";
+import { ProductTour, TourHelpButton, useProductTour, applicationsRecruiterPageTour } from "../onboarding";
+import { isFirstVisit } from "../../utils/tourHelpers";
 
 export default function Applications({ user }) {
   const [recruteur, setRecruteur] = useState(null);
@@ -20,6 +22,14 @@ export default function Applications({ user }) {
   const [searchFilter, setSearchFilter] = useState('');
   const [sortBy, setSortBy] = useState('date');
   const [sortOrder, setSortOrder] = useState('desc');
+
+  // Tour guidé
+  const { isReady, run, tourSteps, startTour, handleTourComplete } = useProductTour(
+    'applications_recruiter_page',
+    applicationsRecruiterPageTour,
+    user?.id,
+    true
+  );
 
   const entreprise = recruteur?.entreprise || "";
 
@@ -244,6 +254,12 @@ export default function Applications({ user }) {
   return (
     <>
     <div>
+      {isReady && (
+        <>
+          <ProductTour steps={tourSteps} tourKey="applications_recruiter_page" userId={user?.id} onComplete={handleTourComplete} run={run} />
+          <TourHelpButton onClick={startTour} isFirstVisit={isFirstVisit(user?.id)} />
+        </>
+      )}
       <h3>Candidatures reçues</h3>
       {error && <div style={{ color: '#7f1d1d' }}>{error}</div>}
 

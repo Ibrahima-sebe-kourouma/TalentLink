@@ -1,0 +1,58 @@
+{
+  "conversation_id": "6b7e90a5-c6ec-4674-bc28-5e6a33433262",
+  "user_id": "461",
+  "title": "Aide-moi",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Aide-moi",
+      "timestamp": "2025-12-09T18:57:25.965930",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Bien sûr, je suis là pour vous aider ! Pourriez-vous préciser le type d'assistance dont vous avez besoin ? Que ce soit pour des conseils sur votre profil, des offres d'emploi, ou toute autre question, n'hésitez pas à me le faire savoir.",
+      "timestamp": "2025-12-09T18:57:29.436473",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.36308845167746234,
+          "text": "Ma formation en informatique et mon expérience pratique me permettent d'aborder les défis techniques avec confiance et créativité.\r\n\r\nAvec une solide base en programmation orientée objet, développement web, mobile et intelligence artificielle, je suis capable de m'adapter rapidement aux nouvelles te...",
+          "document_name": "service_profile_candidats.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.3630838498704621,
+          "text": "# BASE DE DONNÉES: APPLICATIONS\r\n# Extraction du: 2025-11-27T23:09:55.913406\r\n# Nombre d'enregistrements: 12\r\n\r\n================================================================================\r\n\r\n=== Candidature ===\r\n\r\nID: 1\r\noffre_id: 23\r\nauth_user_id: 4\r\ncandidat_id: 2\r\nstatut: OFFERED\r\ndate_candi...",
+          "document_name": "service_offers_applications.txt",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.358179075403189,
+          "text": "Vous assurerez la sécurité et la connectivité des systèmes d’entreprise.\r\ntype_contrat: CDI\r\nlocalisation: Montréal, QC\r\nentreprise: NetLink Services\r\ndomaine: Réseaux informatiques\r\nmots_cles: Cisco,Firewall,LAN,WAN,VPN\r\nsalaire_min: 55000\r\nsalaire_max: 70000\r\nexperience_requise: 2 ans d'expérience...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        },
+        {
+          "index": 3,
+          "score": 0.35774325820840847,
+          "text": "# BASE DE DONNÉES: CANDIDATS\r\n# Extraction du: 2025-11-27T23:09:55.915405\r\n# Nombre d'enregistrements: 13\r\n\r\n================================================================================\r\n\r\n=== Profil Candidat ===\r\n\r\nID: 1\r\nauth_user_id: 3\r\nNom: daouda\r\nPrénom: ben\r\nEmail: user3@gmail.com\r\nDate d...",
+          "document_name": "service_profile_candidats.txt",
+          "page_number": null
+        },
+        {
+          "index": 4,
+          "score": 0.35567526411846484,
+          "text": "Vous travaillerez avec les équipes commerciales pour accroître la visibilité de la marque.\r\ntype_contrat: CDI\r\nlocalisation: Montréal, QC\r\nentreprise: MarketBoost Agency\r\ndomaine: Marketing\r\nmots_cles: SEO,Google Ads,Facebook Ads,Analytics,Content\r\nremote: 1\r\nsalaire_min: 55000\r\nsalaire_max: 75000\r\n...",
+          "document_name": "service_offers_offers.txt",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-09T18:57:25.957898",
+  "updated_at": "2025-12-09T18:57:29.436473",
+  "is_active": true
+}

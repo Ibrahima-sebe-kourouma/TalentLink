@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API_OFFERS_URL, API_PROFILE_URL } from "../../constants/api";
+import { ProductTour, TourHelpButton, useProductTour, offersManagerPageTour } from "../onboarding";
+import { isFirstVisit } from "../../utils/tourHelpers";
 
 export default function OffersManager({ user }) {
   const [recruteur, setRecruteur] = useState(null);
@@ -26,6 +28,14 @@ export default function OffersManager({ user }) {
     education_requise: "",
     date_expiration: ""
   });
+
+  // Tour guidé
+  const { isReady, run, tourSteps, startTour, handleTourComplete } = useProductTour(
+    'offers_manager_page',
+    offersManagerPageTour,
+    user?.id,
+    true
+  );
 
   const entreprise = recruteur?.entreprise || "";
 
@@ -202,6 +212,12 @@ export default function OffersManager({ user }) {
 
   return (
     <div>
+      {isReady && (
+        <>
+          <ProductTour steps={tourSteps} tourKey="offers_manager_page" userId={user?.id} onComplete={handleTourComplete} run={run} />
+          <TourHelpButton onClick={startTour} isFirstVisit={isFirstVisit(user?.id)} />
+        </>
+      )}
       <h3>Mes offres</h3>
       {error && <div style={{ color: "#7f1d1d" }}>{error}</div>}
 
@@ -212,8 +228,8 @@ export default function OffersManager({ user }) {
           <Select label="Type de contrat" value={form.type_contrat} onChange={(v) => setForm({ ...form, type_contrat: v })} options={["CDI","CDD","STAGE","FREELANCE","ALTERNANCE"]} />
           <Input label="Localisation" value={form.localisation} onChange={(v) => setForm({ ...form, localisation: v })} />
           <Input label="Domaine" value={form.domaine} onChange={(v) => setForm({ ...form, domaine: v })} />
-          <Input label="Salaire min" type="number" value={form.salaire_min} onChange={(v) => setForm({ ...form, salaire_min: v })} />
-          <Input label="Salaire max" type="number" value={form.salaire_max} onChange={(v) => setForm({ ...form, salaire_max: v })} />
+          <Input label="Salaire min (CAD$)" type="number" value={form.salaire_min} onChange={(v) => setForm({ ...form, salaire_min: v })} />
+          <Input label="Salaire max (CAD$)" type="number" value={form.salaire_max} onChange={(v) => setForm({ ...form, salaire_max: v })} />
           <Input label="Nombre total de postes" type="number" value={form.nb_postes} onChange={(v) => setForm({ ...form, nb_postes: parseInt(v || 1, 10), places_restantes: parseInt(v || 1, 10) })} />
           <Input label="Places disponibles" type="number" value={form.places_restantes} onChange={(v) => setForm({ ...form, places_restantes: parseInt(v || 1, 10) })} />
           <Checkbox label="Télétravail" checked={form.remote} onChange={(v) => setForm({ ...form, remote: v })} />

@@ -69,10 +69,12 @@ def verify_google_token(token: str):
     """
     try:
         # Vérifier le token avec Google
+        # clock_skew_in_seconds permet de tolérer un décalage d'horloge de 10 secondes
         idinfo = id_token.verify_oauth2_token(
             token, 
             google_requests.Request(), 
-            GOOGLE_CLIENT_ID
+            GOOGLE_CLIENT_ID,
+            clock_skew_in_seconds=10
         )
         
         # Vérifier que le token provient bien de Google

@@ -1,0 +1,78 @@
+{
+  "conversation_id": "f08911d6-4f93-4355-9e89-6526fdd7ee9a",
+  "user_id": "45",
+  "title": "Comment puis-je modifier mon CV ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Comment puis-je modifier mon CV ?",
+      "timestamp": "2025-12-09T18:57:20.944613",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour modifier votre CV, vous devez accéder à votre profil sur la plateforme TalentLink. Voici les étapes à suivre :\n\n1. Connectez-vous à votre compte TalentLink.\n2. Accédez à votre tableau de bord candidat.\n3. Recherchez la section dédiée à votre CV.\n4. Vous aurez la possibilité de télécharger un nouveau CV ou de modifier les informations existantes.\n5. Assurez-vous de sauvegarder vos modifications avant de quitter la page.\n\nSi vous avez besoin d'aide supplémentaire, n'hésitez pas à consulter la documentation ou à contacter le support technique de la plateforme.",
+      "timestamp": "2025-12-09T18:57:25.948891",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.5474395014109436,
+          "text": "Un bon résumé permet aux recruteurs de rapidement comprendre votre profil.\r\nDate de création: 2025-10-31 17:20:29.534999\r\ndate_modification: 2025-10-31 17:22:47.721197\r\nProgression du profil: 2\r\n\r\n=== Profil Candidat ===\r\n\r\nID: 7\r\nauth_user_id: 10\r\nNom: yop\r\nPrénom: kash\r\nEmail: olognykashifat@gmail...",
+          "document_name": "service_profile_candidats.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.5314571932698611,
+          "text": "➢ Le candidat peut modifier les informations de son profil.  \n➢ Le candidat peut supprimer son profil.  \n➢ Le candidat peut ajouter un portfolio (projets, liens GitHub, Behance, \nvidéos de présentation).  \n➢ Le candidat peut modifier ou supprimer un élément de son portfolio.  \n➢ Le candidat peut rec...",
+          "document_name": "Document-de-Conception_Sprint2_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.5304086132625517,
+          "text": "Ma formation en informatique et mon expérience pratique me permettent d'aborder les défis techniques avec confiance et créativité.\r\n\r\nAvec une solide base en programmation orientée objet, développement web, mobile et intelligence artificielle, je suis capable de m'adapter rapidement aux nouvelles te...",
+          "document_name": "service_profile_candidats.txt",
+          "page_number": null
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Comment contacter un recruteur ?",
+      "timestamp": "2025-12-09T18:57:36.001664",
+      "sources": []
+    },
+    {
+      "role": "assistant",
+      "content": "Pour contacter un recruteur sur la plateforme TalentLink, vous pouvez utiliser la messagerie interne qui permet une communication directe entre recruteurs et candidats. Voici les étapes à suivre :\n\n1. **Connectez-vous à votre compte TalentLink.**\n2. **Accédez à votre tableau de bord candidat.**\n3. **Recherchez l'offre d'emploi ou le profil du recruteur avec lequel vous souhaitez communiquer.**\n4. **Utilisez la fonction de messagerie interne pour envoyer un message au recruteur.** Vous pourrez poser vos questions ou exprimer votre intérêt pour le poste.\n\nSi vous avez besoin de plus d'informations, vous pouvez également consulter l'historique des messages échangés ou contacter le support technique de la plateforme pour toute assistance supplémentaire.\n\nPour un contact direct, voici les coordonnées du recruteur \"jobgo\" de l'entreprise jobgoMontreal :\n\n- **Email :** jobgo@gmail.com\n- **Téléphone :** 514-559-6868\n\nN'hésitez pas à les utiliser si vous préférez un contact par email ou téléphone.",
+      "timestamp": "2025-12-09T18:57:41.924419",
+      "sources": [
+        {
+          "index": 0,
+          "score": 0.6158201319408949,
+          "text": "# BASE DE DONNÉES: RECRUTEURS\r\n# Extraction du: 2025-11-27T23:09:55.916410\r\n# Nombre d'enregistrements: 1\r\n\r\n================================================================================\r\n\r\n=== Profil Recruteur ===\r\n\r\nID: 1\r\nID utilisateur: 14\r\nname: jobgo\r\nprenom: jobgo\r\nemail: jobgo@gmail.com\r\n...",
+          "document_name": "service_profile_recruteurs.txt",
+          "page_number": null
+        },
+        {
+          "index": 1,
+          "score": 0.6012267149142931,
+          "text": " L’interface est responsive (ordinateur, tablette, mobile). \n Une messagerie interne permet la communication entre recruteurs et \ncandidats. \n Le recruteur et le candidat peuvent consulter l’historique des messages \néchangés. \n Le recruteur et le candidat peuvent supprimer une conversation. \n \n ...",
+          "document_name": "Document-de-Conception_Yeo_Sebe_-1.pdf",
+          "page_number": null
+        },
+        {
+          "index": 2,
+          "score": 0.5758559135569519,
+          "text": "Cas d'utilisation 16 — Recevoir une notification de réponse\n\nNom : Notification de candidature\nActeurs : Candidat, Système\nScénario principal :\n\nUn recruteur répond à une candidature.\n\nLe système envoie une notification au candidat (email et/ou interne).\n\nLe candidat consulte la réponse dans son esp...",
+          "document_name": "Doc_Analyse_Besoins - Copie.docx",
+          "page_number": null
+        }
+      ]
+    }
+  ],
+  "created_at": "2025-12-09T18:57:20.921094",
+  "updated_at": "2025-12-09T18:57:41.924419",
+  "is_active": true
+}

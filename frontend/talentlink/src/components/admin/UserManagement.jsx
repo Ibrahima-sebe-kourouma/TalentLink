@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ProductTour, TourHelpButton, useProductTour, userManagementPageTour } from '../onboarding';
+import { isFirstVisit } from '../../utils/tourHelpers';
 
 const API_AUTH = 'http://localhost:8001';
 
@@ -16,6 +18,20 @@ export default function UserManagement({ user }) {
   const [newRole, setNewRole] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
+
+  // Debug: Vérifier l'objet user
+  useEffect(() => {
+    console.log('👤 UserManagement - User object:', user);
+    console.log('🔑 UserManagement - Access token:', user?.access_token);
+  }, [user]);
+
+  // Tour guidé
+  const { isReady, run, tourSteps, startTour, handleTourComplete } = useProductTour(
+    'user_management_page',
+    userManagementPageTour,
+    user?.id,
+    true
+  );
 
   const fetchUsers = async () => {
     setLoading(true);
@@ -68,11 +84,17 @@ export default function UserManagement({ user }) {
         };
       }
 
+      const token = user?.access_token;
+      if (!token) {
+        alert('Erreur: Token d\'authentification manquant');
+        return;
+      }
+
       const response = await fetch(url, {
         method: method,
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('talentlink_token')}`
+          'Authorization': `Bearer ${token}`
         },
         body: method === 'PATCH' ? JSON.stringify(body) : undefined
       });
@@ -162,6 +184,12 @@ export default function UserManagement({ user }) {
 
   return (
     <div>
+      {isReady && (
+        <>
+          <ProductTour steps={tourSteps} tourKey="user_management_page" userId={user?.id} onComplete={handleTourComplete} run={run} />
+          <TourHelpButton onClick={startTour} isFirstVisit={isFirstVisit(user?.id)} />
+        </>
+      )}
       <div style={{ marginBottom: 24 }}>
         <h1 style={{ margin: 0, marginBottom: 8, fontSize: '28px', fontWeight: 700 }}>
           👥 Gestion des utilisateurs

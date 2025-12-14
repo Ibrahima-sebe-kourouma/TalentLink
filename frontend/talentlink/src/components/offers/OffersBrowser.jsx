@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API_OFFERS_URL, API_REPORT_URL } from "../../constants/api";
+import { ProductTour, TourHelpButton, useProductTour, offersPageTour } from "../onboarding";
+import { isFirstVisit } from "../../utils/tourHelpers";
 import "../../styles/offers.css";
 
 export default function OffersBrowser({ user, candidat }) {
@@ -13,6 +15,14 @@ export default function OffersBrowser({ user, candidat }) {
   const [reportReason, setReportReason] = useState("");
   const [reportDescription, setReportDescription] = useState("");
   const [reportStatus, setReportStatus] = useState({ ok: null, msg: "" });
+
+  // Tour
+  const { run, startTour, handleTourComplete, isReady } = useProductTour(
+    'offers_page',
+    offersPageTour,
+    user?.id,
+    true
+  );
 
   const refresh = React.useCallback(async () => {
     setLoading(true);
@@ -144,6 +154,12 @@ export default function OffersBrowser({ user, candidat }) {
 
   return (
     <div className="offers-browser">
+      {isReady && (
+        <>
+          <ProductTour steps={offersPageTour} tourKey="offers_page" userId={user?.id} onComplete={handleTourComplete} run={run} />
+          <TourHelpButton onClick={startTour} isFirstVisit={isFirstVisit(user?.id)} />
+        </>
+      )}
       <h2>Annonces d'emploi</h2>
 
       {/* Barre de filtres */}

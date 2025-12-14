@@ -15,6 +15,8 @@ import {
 import { Bar, Line, Pie } from 'react-chartjs-2';
 import { API_OFFERS_URL, API_PROFILE_URL } from "../../constants/api";
 import NotificationCenter from "../../components/recruiter/NotificationCenter";
+import { ProductTour, TourHelpButton, useProductTour, recruiterDashboardTour } from "../../components/onboarding";
+import { isFirstVisit } from "../../utils/tourHelpers";
 import "../../components/Stepper.css";
 
 // Register Chart.js components
@@ -46,6 +48,15 @@ export default function RecruiterDashboard({ user }) {
   });
   const [loading, setLoading] = useState(true);
   const [recruiter, setRecruiter] = useState(null);
+
+  // Configuration du tour
+  const userId = user?.id;
+  const { run, startTour, handleTourComplete, isReady } = useProductTour(
+    'recruiter_dashboard',
+    recruiterDashboardTour,
+    userId,
+    true
+  );
 
   const loadDashboardData = useCallback(async () => {
     if (!user?.id) return;
@@ -281,6 +292,23 @@ export default function RecruiterDashboard({ user }) {
 
   return (
     <div style={{ padding: 0 }}>
+      {/* Tour et bouton d'aide */}
+      {isReady && (
+        <>
+          <ProductTour
+            steps={recruiterDashboardTour}
+            tourKey="recruiter_dashboard"
+            userId={userId}
+            onComplete={handleTourComplete}
+            run={run}
+          />
+          <TourHelpButton
+            onClick={startTour}
+            isFirstVisit={isFirstVisit(userId)}
+          />
+        </>
+      )}
+
       {/* Header */}
       <div style={{ marginBottom: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>

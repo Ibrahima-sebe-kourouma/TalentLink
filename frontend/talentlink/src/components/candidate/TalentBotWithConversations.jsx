@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { toast } from "react-toastify";
 import { API_RAG_URL } from "../../constants/api";
+import { ProductTour, TourHelpButton, useProductTour, talentBotPageTour } from "../onboarding";
+import { isFirstVisit } from "../../utils/tourHelpers";
 
 export default function TalentBotWithConversations({ user }) {
   const [conversations, setConversations] = useState([]);
@@ -17,6 +19,14 @@ export default function TalentBotWithConversations({ user }) {
   const [showConversationList, setShowConversationList] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Tour guidé
+  const { isReady, run, tourSteps, startTour, handleTourComplete } = useProductTour(
+    'talentbot_page',
+    talentBotPageTour,
+    user?.id,
+    true
+  );
 
   // Auto-scroll vers le dernier message
   const scrollToBottom = () => {
@@ -198,6 +208,12 @@ export default function TalentBotWithConversations({ user }) {
       display: 'flex',
       gap: '16px'
     }}>
+      {isReady && (
+        <>
+          <ProductTour steps={tourSteps} tourKey="talentbot_page" userId={user?.id} onComplete={handleTourComplete} run={run} />
+          <TourHelpButton onClick={startTour} isFirstVisit={isFirstVisit(user?.id)} />
+        </>
+      )}
       {/* Sidebar - Liste des conversations */}
       <div style={{
         width: showConversationList ? '300px' : '60px',

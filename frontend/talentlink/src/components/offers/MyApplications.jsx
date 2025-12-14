@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { API_OFFERS_URL } from "../../constants/api";
 import { formatStatus, statusStyle, formatDate } from "../../utils/format";
+import { ProductTour, TourHelpButton, useProductTour, applicationsPageTour } from "../../components/onboarding";
+import { isFirstVisit } from "../../utils/tourHelpers";
 
 const statusOptions = [
   { value: "", label: "Tous" },
@@ -19,6 +21,14 @@ export default function MyApplications({ user }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [withdrawModal, setWithdrawModal] = useState({ open: false, appId: null, reason: "" });
+
+  // Tour guidé
+  const { isReady, run, tourSteps, startTour, handleTourComplete } = useProductTour(
+    'applications_page',
+    applicationsPageTour,
+    user?.id,
+    true
+  );
 
   const params = useMemo(() => {
     const p = new URLSearchParams();
@@ -88,6 +98,12 @@ export default function MyApplications({ user }) {
 
   return (
     <div style={{ padding: 16 }}>
+      {isReady && (
+        <>
+          <ProductTour steps={tourSteps} tourKey="applications_page" userId={user?.id} onComplete={handleTourComplete} run={run} />
+          <TourHelpButton onClick={startTour} isFirstVisit={isFirstVisit(user?.id)} />
+        </>
+      )}
       <h2>Mes candidatures</h2>
       <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
         <select value={statut} onChange={(e) => setStatut(e.target.value)}>

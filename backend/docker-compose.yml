@@ -1,0 +1,168 @@
+version: "3.8"
+
+services:
+  # MongoDB pour le service messaging
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: talentlink
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-changeme123}
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "127.0.0.1:27017:27017"
+    networks:
+      - talent_net
+
+  # Service Auth (Port 8001)
+  service_auth:
+    build: ./service_auth
+    container_name: service_auth
+    restart: always
+    environment:
+      - PORT=8001
+      - CORS_ORIGINS=https://talentlinkmtl.ca,https://www.talentlinkmtl.ca
+      - SECRET_KEY=${SECRET_KEY:-change_this_secret_key_in_production}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - DATABASE_URL_AUTH=sqlite:////app/data/database.db
+    ports:
+      - "127.0.0.1:8001:8001"
+    volumes:
+      - auth_data:/app/data
+    networks:
+      - talent_net
+
+  # Service Profile (Port 8002)
+  service_profile:
+    build: ./service_profile
+    container_name: service_profile
+    restart: always
+    environment:
+      - PORT=8002
+      - CORS_ORIGINS=https://talentlinkmtl.ca,https://www.talentlinkmtl.ca
+      - DATABASE_URL_PROFILE=sqlite:////app/data/database.db
+    ports:
+      - "127.0.0.1:8002:8002"
+    volumes:
+      - profile_data:/app/data
+    networks:
+      - talent_net
+  # Service Offers (Port 8003)
+  service_offers:
+    build: ./service_offers
+    container_name: service_offers
+    restart: always
+    environment:
+      - PORT=8003
+      - CORS_ORIGINS=https://talentlinkmtl.ca,https://www.talentlinkmtl.ca
+      - DATABASE_URL_OFFERS=sqlite:////app/data/database.db
+    ports:
+      - "127.0.0.1:8003:8003"
+    volumes:
+      - offers_data:/app/data
+      - uploads_data:/app/uploads
+    networks:
+      - talent_net
+      - talent_net
+  # Service Mail (Port 8004)
+  service_mail:
+    build: ./service_mail
+    container_name: service_mail
+    restart: always
+    environment:
+      - PORT=8004
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - CORS_ORIGINS=https://talentlinkmtl.ca,https://www.talentlinkmtl.ca
+    ports:
+      - "127.0.0.1:8004:8004"
+    networks:
+      - talent_net
+      - talent_net
+
+  # Service Messaging (Port 8005) - Utilise MongoDB
+  service_messaging:
+    build: ./service_messaging
+    container_name: service_messaging
+    restart: always
+    environment:
+      - PORT=8005
+      - CORS_ORIGINS=https://talentlinkmtl.ca,https://www.talentlinkmtl.ca
+      - MONGODB_URL_MESSAGING=mongodb://talentlink:${MONGO_PASSWORD:-changeme123}@mongodb:27017/
+      - MONGODB_DATABASE_MESSAGING=talentlink_messaging
+    ports:
+      - "127.0.0.1:8005:8005"
+    depends_on:
+      - mongodb
+    networks:
+      - talent_net
+  # Service Appointment (Port 8006)
+  service_appointment:
+    build: ./service_appointment
+    container_name: service_appointment
+    restart: always
+    environment:
+      - PORT=8006
+      - CORS_ORIGINS=https://talentlinkmtl.ca,https://www.talentlinkmtl.ca
+      - DATABASE_URL_APPOINTMENT=sqlite:////app/data/database.db
+    ports:
+      - "127.0.0.1:8006:8006"
+    volumes:
+      - appointment_data:/app/data
+    networks:
+      - talent_net
+  # Service Report (Port 8007)
+  service_report:
+    build: ./service_report
+    container_name: service_report
+    restart: always
+    environment:
+      - PORT=8007
+      - CORS_ORIGINS=https://talentlinkmtl.ca,https://www.talentlinkmtl.ca
+      - DATABASE_URL_REPORT=sqlite:////app/data/database.db
+    ports:
+      - "127.0.0.1:8007:8007"
+    volumes:
+      - report_data:/app/data
+    networks:
+      - talent_netreport/report.db:/app/report.db
+    networks:
+  # Service RAG (Port 8008)
+  service_rag:
+    build: ./service_rag
+    container_name: service_rag
+    restart: always
+    environment:
+      - PORT=8008
+      - CORS_ORIGINS=https://talentlinkmtl.ca,https://www.talentlinkmtl.ca
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    ports:
+      - "127.0.0.1:8008:8008"
+    volumes:
+      - rag_storage:/app/storage
+      - rag_conversations:/app/conversations
+    networks:
+      - talent_net
+
+volumes:
+  mongodb_data:
+  auth_data:
+  profile_data:
+  offers_data:
+  appointment_data:
+  report_data:
+  uploads_data:
+  rag_storage:
+  rag_conversations:
+
+networks:
+  talent_net:
+    driver: bridge
+  talent_net:
+    driver: bridge

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { API_MESSAGING_URL, API_AUTH_URL, API_REPORT_URL } from "../../constants/api";
 import { apiGet } from "../../utils/apiHandler";
 import "../../styles/messaging.css";
+import { ProductTour, TourHelpButton, useProductTour, messagingCandidatePageTour } from "../onboarding";
+import { isFirstVisit } from "../../utils/tourHelpers";
 
 export default function Messaging({ user }) {
   const [conversations, setConversations] = useState([]);
@@ -21,6 +23,14 @@ export default function Messaging({ user }) {
   const [reportStatus, setReportStatus] = useState({ ok: null, msg: "" });
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [conversationToDelete, setConversationToDelete] = useState(null);
+
+  // Tour guidé
+  const { isReady, run, tourSteps, startTour, handleTourComplete } = useProductTour(
+    'messaging_candidate_page',
+    messagingCandidatePageTour,
+    user?.id,
+    true
+  );
 
   // Auto-scroll to bottom when new messages arrive
   const scrollToBottom = () => {
@@ -229,6 +239,12 @@ export default function Messaging({ user }) {
 
   return (
     <div className="messaging-container">
+      {isReady && (
+        <>
+          <ProductTour steps={tourSteps} tourKey="messaging_candidate_page" userId={user?.id} onComplete={handleTourComplete} run={run} />
+          <TourHelpButton onClick={startTour} isFirstVisit={isFirstVisit(user?.id)} />
+        </>
+      )}
       <div className="messaging-layout">
         {/* Sidebar: conversation list */}
         <aside className="conversations-sidebar">
