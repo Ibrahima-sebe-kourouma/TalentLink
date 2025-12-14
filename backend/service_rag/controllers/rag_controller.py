@@ -94,15 +94,16 @@ class RAGController:
 
         embedding_model = self.get_embedding_model("openai")  # Par défaut OpenAI
 
-        if not os.path.exists(PERSIST_DIR):
+        # Créer les répertoires s'ils n'existent pas
+        os.makedirs(PERSIST_DIR, exist_ok=True)
+        os.makedirs(DATA_DIR, exist_ok=True)
+
+        # Vérifier si l'index existe déjà (docstore.json)
+        docstore_path = os.path.join(PERSIST_DIR, "docstore.json")
+        
+        if not os.path.exists(docstore_path):
             # Si le répertoire n'existe pas, créer les indices
             print("📚 Création des indices à partir des documents...")
-            
-            if not os.path.exists(DATA_DIR):
-                os.makedirs(DATA_DIR)
-                print(f"⚠️ Le dossier {DATA_DIR} n'existe pas. Veuillez ajouter des documents "
-                      "dans ce dossier et redémarrer l'application.")
-                return
             
             # Charger les documents
             documents = SimpleDirectoryReader(
@@ -112,16 +113,20 @@ class RAGController:
             
             if len(documents) == 0:
                 print(f"⚠️ Aucun document trouvé dans le dossier {DATA_DIR}.")
-                return
-            
-            print(f"📄 {len(documents)} document(s) chargé(s)")
-            
-            # Créer l'index vectoriel
-            self.index = VectorStoreIndex.from_documents(
-                documents,
-                embed_model=embedding_model,
-                show_progress=True
-            )
+                print("📝 Création d'un index vide...")
+                # Créer un index vide
+                self.index = VectorStoreIndex.from_documents(
+                    [],
+                    embed_model=embedding_model
+                )
+            else:
+                print(f"📄 {len(documents)} document(s) chargé(s)")
+                # Créer l'index vectoriel
+                self.index = VectorStoreIndex.from_documents(
+                    documents,
+                    embed_model=embedding_model,
+                    show_progress=True
+                )
             
             # Sauvegarder l'index
             self.index.storage_context.persist(persist_dir=PERSIST_DIR)
