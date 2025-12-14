@@ -14,3 +14,4 @@ sentence-transformers>=3.0.0
 torch>=2.5.0
 transformers>=4.46.0
 requests>=2.31.0
+docx2txt>=0.8
