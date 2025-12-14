@@ -66,7 +66,6 @@ services:
       - uploads_data:/app/uploads
     networks:
       - talent_net
-      - talent_net
   # Service Mail (Port 8004)
   service_mail:
     build: ./service_mail
@@ -82,7 +81,6 @@ services:
     ports:
       - "127.0.0.1:8004:8004"
     networks:
-      - talent_net
       - talent_net
 
   # Service Messaging (Port 8005) - Utilise MongoDB
@@ -130,8 +128,7 @@ services:
     volumes:
       - report_data:/app/data
     networks:
-      - talent_netreport/report.db:/app/report.db
-    networks:
+      - talent_net
   # Service RAG (Port 8008)
   service_rag:
     build: ./service_rag
@@ -162,7 +159,5 @@ volumes:
   rag_conversations:
 
 networks:
-  talent_net:
-    driver: bridge
   talent_net:
     driver: bridge
