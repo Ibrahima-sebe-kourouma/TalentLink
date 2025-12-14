@@ -17,7 +17,8 @@ create_tables()
 app = FastAPI(
     title="TalentLink Report Service", 
     version="1.0.0",
-    description="Service de gestion des signalements pour TalentLink"
+    description="Service de gestion des signalements pour TalentLink",
+    root_path="/api/report"
 )
 
 app.include_router(report_router)

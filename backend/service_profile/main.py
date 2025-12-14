@@ -17,7 +17,11 @@ from routes.recruteur_routes import router as recruteur_router
 # create tables (ensure models are imported via routers above)
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Service Profile", version="1.1")
+app = FastAPI(
+    title="Service Profile", 
+    version="1.1",
+    root_path="/api/profile"
+)
 
 app.include_router(candidat_router)
 app.include_router(recruteur_router)

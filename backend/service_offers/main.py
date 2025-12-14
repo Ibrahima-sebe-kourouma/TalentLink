@@ -18,7 +18,11 @@ from routes.notification_routes import router as notification_router
 Base.metadata.create_all(bind=engine)
 ensure_recruiter_columns()
 
-app = FastAPI(title="Service Offers", version="1.1")
+app = FastAPI(
+    title="Service Offers", 
+    version="1.1",
+    root_path="/api/offers"
+)
 
 app.include_router(offer_router)
 app.include_router(application_router)

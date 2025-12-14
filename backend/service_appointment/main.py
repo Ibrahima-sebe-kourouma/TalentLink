@@ -8,7 +8,8 @@ import uvicorn
 app = FastAPI(
     title="TalentLink - Service de Rendez-vous",
     description="API pour la gestion des rendez-vous entre recruteurs et candidats",
-    version="1.0.0"
+    version="1.0.0",
+    root_path="/api/appointment"
 )
 
 # Configuration CORS

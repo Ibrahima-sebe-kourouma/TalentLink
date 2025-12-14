@@ -14,7 +14,11 @@ load_dotenv()
 # Créer les tables
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="TalentLink - Auth Service", version="1.0")
+app = FastAPI(
+    title="TalentLink - Auth Service", 
+    version="1.0",
+    root_path="/api/auth"
+)
 
 # Enregistrer les routes
 app.include_router(auth_routes.router)

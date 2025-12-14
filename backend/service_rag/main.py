@@ -16,7 +16,8 @@ load_dotenv()
 app = FastAPI(
     title="Service RAG - TalentLink",
     description="Service de requête de documents avec RAG (Retrieval-Augmented Generation)",
-    version="1.0.0"
+    version="1.0.0",
+    root_path="/api/rag"
 )
 
 # Configuration CORS

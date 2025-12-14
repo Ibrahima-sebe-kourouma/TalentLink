@@ -13,7 +13,11 @@ from database.database import connect_to_mongodb
 from routes.conversation_routes import router as conversation_router
 from routes.message_routes import router as message_router
 
-app = FastAPI(title="Service Messaging MongoDB", version="2.0")
+app = FastAPI(
+    title="Service Messaging MongoDB", 
+    version="2.0",
+    root_path="/api/messaging"
+)
 
 # Connexion à MongoDB au démarrage
 @app.on_event("startup")

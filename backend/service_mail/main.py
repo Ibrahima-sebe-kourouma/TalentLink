@@ -8,7 +8,11 @@ load_dotenv()
 
 from routes.email_routes import router as email_router
 
-app = FastAPI(title="TalentLink Mail Service", version="1.0.0")
+app = FastAPI(
+    title="TalentLink Mail Service", 
+    version="1.0.0",
+    root_path="/api/mail"
+)
 
 @app.get("/")
 def root():
