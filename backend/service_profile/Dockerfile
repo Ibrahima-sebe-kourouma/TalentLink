@@ -7,9 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN mkdir -p /app/data && chmod 755 /app/data
+RUN mkdir -p /app/data /uploads && chmod 755 /app/data /uploads
 
-RUN useradd -m appuser && chown -R appuser:appuser /app
+RUN useradd -m appuser && chown -R appuser:appuser /app /uploads
 USER appuser
 
 EXPOSE 8002
