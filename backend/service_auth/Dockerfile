@@ -11,6 +11,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copier tout le code du service
 COPY . .
 
+# Créer le dossier pour la base de données
+RUN mkdir -p /app/data && chmod 755 /app/data
+
 # Créer un utilisateur non-root pour la sécurité
 RUN useradd -m appuser && chown -R appuser:appuser /app
 USER appuser
