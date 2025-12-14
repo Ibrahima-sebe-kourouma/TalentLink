@@ -12,6 +12,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+RUN mkdir -p /app/storage /app/conversations && chmod 755 /app/storage /app/conversations
+
 RUN useradd -m appuser && chown -R appuser:appuser /app
 USER appuser
 
