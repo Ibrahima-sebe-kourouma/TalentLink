@@ -1,11 +1,11 @@
-export const API_AUTH_URL = 'http://localhost:8001';
-export const API_PROFILE_URL = 'http://localhost:8002';
-export const API_OFFERS_URL = 'http://localhost:8003';
-export const API_MESSAGING_URL = 'http://localhost:8004';  // Service de messagerie
-export const API_MAIL_URL = 'http://localhost:8005';       // Service de mail
-export const API_APPOINTMENT_URL = 'http://localhost:8006'; // Service de rendez-vous
-export const API_REPORT_URL = 'http://localhost:8007';     // Service de signalement
-export const API_RAG_URL = 'http://localhost:8008';        // Service RAG (TalentBot)
+export const API_AUTH_URL = 'https://talentlinkmtl.ca/api/auth';
+export const API_PROFILE_URL = 'https://talentlinkmtl.ca/api/profile';
+export const API_OFFERS_URL = 'https://talentlinkmtl.ca/api/offers';
+export const API_MESSAGING_URL = 'https://talentlinkmtl.ca/api/messaging';  // Service de messagerie
+export const API_MAIL_URL = 'https://talentlinkmtl.ca/api/mail';       // Service de mail
+export const API_APPOINTMENT_URL = 'https://talentlinkmtl.ca/api/appointment'; // Service de rendez-vous
+export const API_REPORT_URL = 'https://talentlinkmtl.ca/api/report';     // Service de signalement
+export const API_RAG_URL = 'https://talentlinkmtl.ca/api/rag';        // Service RAG (TalentBot)
 
 // Debug - afficher les URLs au chargement
 console.log('📍 URLs des services configurées:');
