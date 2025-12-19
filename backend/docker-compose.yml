@@ -28,6 +28,8 @@ services:
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
       - DATABASE_URL_AUTH=sqlite:////app/data/database.db
+      - PROFILE_SERVICE_URL=http://service_profile:8002
+      - MAIL_SERVICE_URL=http://service_mail:8004
     ports:
       - "127.0.0.1:8001:8001"
     volumes:
